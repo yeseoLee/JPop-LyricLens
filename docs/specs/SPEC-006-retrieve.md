@@ -32,7 +32,7 @@ def retrieve(store, song_id: str, question: str, settings) -> list[Evidence]
 1. `song_meta` 에서 `song_id` 를 **ID로 조회**(검색 아님) → 있으면 항상 1번
 2. `song_lyrics` 를 `where={"song_id": song_id}` 로 `retrieval.lyrics_top_k` 개 검색
 3. `wiki_docs` 를 `where={"song_id": song_id}` 로 `retrieval.wiki_top_k` 개 검색
-4. 순서 메타 → 가사 → 위키로 합치고, 같은 `chunk_id` 와 같은 `(source_type, 문서 ID, 본문)` 은 처음 것만 남긴다
+4. 순서 메타 → 가사 → 위키로 합치고, 같은 `chunk_id` 와 같은 `(source_type, 본문)` 은 처음 것만 남긴다 (서로 다른 문서에 같은 문단이 있어도 근거는 하나)
 5. 번호를 1부터 다시 매긴다
 - 제목 규칙: 곡 정보 `"{title} — {artist}"`, 가사 `"{title} 가사 ({stanza_seq+1}연)"`, 위키 `doc_title`
 - 곡 메타가 없으면(색인 안 됨) 가사·위키 근거만 돌려준다.
