@@ -102,3 +102,53 @@ def make_song(song_id="ut_aa0001", **kw):
     )
     data.update(kw)
     return Song(**data)
+
+
+class FakeMessage:
+    def __init__(self, content: str):
+        self.content = content
+
+
+class FakeChatModel:
+    """정해진 응답을 차례로 돌려주는 채팅 모델 대역. 응답이 떨어지면 마지막 응답을 반복한다."""
+
+    def __init__(self, responses: list[str] | None = None):
+        self.responses = list(responses or ["[]"])
+        self.calls: list = []
+
+    def invoke(self, messages, **kw):
+        self.calls.append(messages)
+        content = self.responses.pop(0) if len(self.responses) > 1 else self.responses[0]
+        return FakeMessage(content)
+
+
+class FakeWikiClient:
+    """제목 → 문서 사전으로 동작하는 위키 클라이언트 대역."""
+
+    def __init__(self, pages: list[dict], search_map: dict[str, list[int]] | None = None):
+        from lyriclens.collect.wikipedia import WikiCandidate, WikiPage
+
+        self._cand, self._page = WikiCandidate, WikiPage
+        self.pages = {p["page_id"]: p for p in pages}
+        self.search_map = search_map or {}
+        self.calls: list[tuple[str, object]] = []
+
+    def search(self, query, limit):
+        self.calls.append(("search", query))
+        ids = self.search_map.get(query, [])[:limit]
+        return [self._cand(i, self.pages[i]["title"], self.pages[i]["text"][:50]) for i in ids]
+
+    def find_page(self, title):
+        self.calls.append(("find_page", title))
+        for p in self.pages.values():
+            if p["title"] == title:
+                return self._cand(p["page_id"], p["title"], p["text"][:50])
+        return None
+
+    def fetch(self, page_id):
+        self.calls.append(("fetch", page_id))
+        p = self.pages[page_id]
+        return self._page(page_id, p["title"], p["url"], p["text"])
+
+    def count(self, kind):
+        return sum(1 for k, _ in self.calls if k == kind)
