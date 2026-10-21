@@ -75,3 +75,25 @@ def test_verify_limit(tmp_path):
         pages, {"夜に駆ける": [1, 2, 3, 4], "夜に駆ける 요아소비": [5, 6]}, tmp_path, settings
     )
     assert len([p for k, p in wiki.calls if k == "fetch"]) <= 2
+
+
+def test_disambiguation_skipped_and_paren_rule(tmp_path):
+    """T-F2004-12 동음이의어는 빼고 '곡 (아티스트의 노래)' 문서를 본문 확인 없이 고른다."""
+    song = SongInfo("ut_i1", "アイドル", "YOASOBI", "요아소비")
+    pages = [
+        {
+            "page_id": 30,
+            "title": "아이돌 (동음이의)",
+            "url": "u30",
+            "text": "アイドル는 요아소비의 곡 등을 가리킨다. " + LONG,
+        },
+        {"page_id": 31, "title": "아이돌 (요아소비의 노래)", "url": "u31", "text": LONG},
+        {"page_id": 32, "title": "요아소비", "url": "u32", "text": LONG},
+    ]
+    wiki = FakeWikiClient(pages, {"アイドル": [30], "アイドル 요아소비": [31]})
+    result = collect_documents(
+        song, "q", FakeChatModel(["[]"]), wiki, CollectCache(tmp_path / "c.json"), load_settings()
+    )
+    primary = {d.page.page_id for d in result.indexed if d.is_primary}
+    assert primary == {31, 32}
+    assert 30 not in [p for k, p in wiki.calls if k == "fetch"]
