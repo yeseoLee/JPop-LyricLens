@@ -1,7 +1,10 @@
 import re
 import subprocess
 
-KEY_PATTERNS = [re.compile(r"sk-[A-Za-z0-9_-]{20,}"), re.compile(r"GMS_KEY[ \t]*=[ \t]*[A-Za-z0-9_\-]{16,}")]
+KEY_PATTERNS = [
+    re.compile(r"sk-[A-Za-z0-9_-]{20,}"),
+    re.compile(r"GMS_KEY[ \t]*=[ \t]*[A-Za-z0-9_\-]{16,}"),
+]
 
 
 def _tracked(repo_root):
