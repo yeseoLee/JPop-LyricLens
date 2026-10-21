@@ -92,8 +92,14 @@ def main() -> int:
         service = LyricLensService(settings, store, chat,
                                    WikiClient(contact=settings.wiki_contact),
                                    CollectCache(settings.path("collect_cache")), aux_chat=aux)
+        mmr_settings = load_settings(overrides={"retrieval": {**settings.retrieval,
+                                                              "search_type": "mmr"}})
+        mmr_service = LyricLensService(mmr_settings, store, chat,
+                                       WikiClient(contact=settings.wiki_contact),
+                                       CollectCache(settings.path("collect_cache")), aux_chat=aux)
         modes = {
             "rag": lambda c: service.ask(c["song_id"], c["question"], []).answer.text,
+            "rag_mmr": lambda c: mmr_service.ask(c["song_id"], c["question"], []).answer.text,
             "norag": lambda c: norag_answer(c, chat),
         }
         judge = make_chat(load_settings(overrides={
