@@ -45,9 +45,17 @@ def test_case_files_valid():
 
 def test_validation_catches_errors():
     """T-BENCH-2 잘못된 케이스를 잡아낸다."""
-    bad = [{"id": "x", "category": "title_ja", "lang": "jp", "query": "a", "split": "dev"},
-           {"id": "x", "category": "title_ja", "lang": "ja", "query": "b", "split": "dev",
-            "relevant": []}]
+    bad = [
+        {"id": "x", "category": "title_ja", "lang": "jp", "query": "a", "split": "dev"},
+        {
+            "id": "x",
+            "category": "title_ja",
+            "lang": "ja",
+            "query": "b",
+            "split": "dev",
+            "relevant": [],
+        },
+    ]
     errors = validate_cases(bad, [], [], min_counts={})
     assert any("lang" in e for e in errors) and any("중복" in e for e in errors)
     assert any("relevant" in e for e in errors)
@@ -75,8 +83,10 @@ def test_lyric_refs_valid_and_not_committed():
     ja = [r for r in refs if r["lang"] == "ja"]
     cases, missing = materialize_lyric_queries(ja, songs, translations={})
     assert missing == [] and all(c["query"] for c in cases)
-    committed = "".join((ROOT / "bench" / f).read_text(encoding="utf-8")
-                        for f in ("search_cases.yaml", "lyric_refs.yaml"))
+    committed = "".join(
+        (ROOT / "bench" / f).read_text(encoding="utf-8")
+        for f in ("search_cases.yaml", "lyric_refs.yaml")
+    )
     assert not [c["query"] for c in cases if len(c["query"]) >= 6 and c["query"] in committed]
 
 
@@ -99,10 +109,22 @@ def test_parse_judgement():
 def test_run_search_summary():
     """T-BENCH-7 대역 시스템으로 범주·언어·split별 요약을 낸다."""
     cases = [
-        {"id": "1", "category": "title_ja", "lang": "ja", "split": "dev", "query": "a",
-         "relevant_ids": ["s1"]},
-        {"id": "2", "category": "title_ko", "lang": "ko", "split": "test", "query": "b",
-         "relevant_ids": ["s2"]},
+        {
+            "id": "1",
+            "category": "title_ja",
+            "lang": "ja",
+            "split": "dev",
+            "query": "a",
+            "relevant_ids": ["s1"],
+        },
+        {
+            "id": "2",
+            "category": "title_ko",
+            "lang": "ko",
+            "split": "test",
+            "query": "b",
+            "relevant_ids": ["s2"],
+        },
     ]
     systems = {"perfect": lambda q: ["s1"] if q == "a" else ["s2"], "none": lambda q: []}
     report = run_search(cases, systems)
@@ -120,3 +142,70 @@ def test_typo_queries_are_not_exact():
             continue
         names = {r["title"] for r in c.get("relevant") or []} | {c.get("relevant_artist")}
         assert c["query"] not in names, c["id"]
+
+
+def test_run_qa_summary():
+    """T-BENCH-9 QA 실행기가 모드별·유형별 지표를 낸다."""
+    from lyriclens.bench.qa import run_qa
+    from tests.fakes import FakeChatModel
+
+    cases = [
+        {
+            "id": "q1",
+            "type": "credit",
+            "lang": "ko",
+            "split": "dev",
+            "question": "작곡가?",
+            "song_id": "s1",
+            "answer_keywords": [["米津玄師", "요네즈"]],
+        },
+        {
+            "id": "q2",
+            "type": "unanswerable",
+            "lang": "ko",
+            "split": "test",
+            "question": "마이크 모델?",
+            "song_id": "s1",
+        },
+        {
+            "id": "q3",
+            "type": "release",
+            "lang": "en",
+            "split": "dev",
+            "question": "year?",
+            "song_id": "s1",
+            "answer_keywords": [["2018"]],
+        },
+    ]
+    answers = {
+        "q1": "요네즈 켄시입니다 [근거 1]",
+        "q2": "제공된 문서에서 확인되지 않습니다.",
+        "q3": "It was released in 2017.",
+    }
+    judge = FakeChatModel(
+        ['{"verdict": "correct"}', '{"verdict": "abstain"}', '{"verdict": "incorrect"}']
+    )
+    report = run_qa(cases, {"rag": lambda c: answers[c["id"]]}, judge)
+    s = report["summary"]["rag"]["all"]
+    assert s["kw_acc"] == 0.5 and s["llm_acc"] == 0.5
+    assert s["abstain_rate"] == 1.0 and s["wrong_rate"] == 0.5
+    assert s["citation_rate"] == pytest.approx(1 / 3, abs=1e-3)
+    assert s["agreement"] == 1.0
+    assert report["summary"]["rag"]["by_type"]["credit"]["kw_acc"] == 1.0
+
+
+def test_judge_prompt_and_norag_prompt():
+    """T-BENCH-10 판정 프롬프트와 norag 프롬프트 내용."""
+    from lyriclens.bench.qa import judge_answer, norag_answer
+    from tests.fakes import FakeChatModel
+
+    judge = FakeChatModel(['{"verdict": "abstain"}'])
+    case = {"type": "unanswerable", "question": "마이크 모델?", "lang": "ko"}
+    assert judge_answer(case, "모르겠습니다", judge) == "abstain"
+    human = judge.calls[0][-1].content
+    assert "마이크 모델?" in human and "모르겠습니다" in human and "모른다고" in human
+
+    chat = FakeChatModel(["답"])
+    norag_answer({"question": "작곡가?", "song_title": "Lemon", "song_artist": "米津玄師"}, chat)
+    system = chat.calls[0][0].content
+    assert "모르" in system and "Lemon" in chat.calls[0][-1].content
