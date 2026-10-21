@@ -11,6 +11,7 @@
 | [`docs/SPEC.md`](docs/SPEC.md) | 요구사항 정의서 (도메인 확정 근거, PRD 요구사항별 기능 SPEC, 의사결정 기록) |
 | [`docs/rag_pipeline.md`](docs/rag_pipeline.md) | RAG 파이프라인 설계문서 |
 | [`docs/verification.md`](docs/verification.md) | 검증 결과 (요구사항 대조표, 실행 결과, 체크리스트) |
+| [`docs/benchmark.md`](docs/benchmark.md) | 검색·답변 벤치마크 (케이스 281개, 기준선) |
 | [`docs/specs/`](docs/specs) | 이슈별 상세 SPEC |
 | [`AGENTS.md`](AGENTS.md) | 개발 흐름 (SPEC → 테스트 → 구현 → PR → CI → 리뷰 → 머지) |
 
