@@ -95,7 +95,7 @@ def test_aux_model(monkeypatch, tmp_path):
 
     monkeypatch.setenv("GMS_KEY", "k" * 20)
     aux = make_chat(load_settings(), aux=True)
-    assert aux.model_name == "gpt-5.4-nano" and aux.temperature == 0
+    assert aux.model_name == "gpt-5.4-nano"  # temperature는 langchain-openai가 gpt-5 계열에서 생략
 
     store = VectorStore(tmp_path / "chroma", FakeEmbeddings())
     index_songs([make_song("ut_aa0001")], store, item_text_max_chars=6000, lyrics_chunk_lines=8)

@@ -32,7 +32,10 @@ python scripts/crawl_songs.py
 # 4) 곡 색인 (song_meta 240건, song_lyrics 약 2,800건)
 python scripts/index_songs.py
 
-# 5) 실행
+# 5) (권장) 곡·아티스트 위키 문서 미리 수집 — 첫 질문 시간 단축 (약 15~20분)
+python scripts/prefetch_wiki.py
+
+# 6) 실행
 streamlit run src/lyriclens/ui/app.py
 ```
 
@@ -92,4 +95,4 @@ ruff check .
 
 ## 기술 스택
 
-Python · LangChain / LangGraph · ChromaDB · Streamlit · SSAFY GMS(OpenAI 호환: `gpt-6-luna`, `text-embedding-3-large`). 버전은 PRD 고정 버전을 따릅니다(`requirements.txt`).
+Python · LangChain / LangGraph · ChromaDB · Streamlit · SSAFY GMS(OpenAI 호환: 답변 `gpt-6-luna`, 보조 작업 `gpt-5.4-nano`, 임베딩 `text-embedding-3-large`). 버전은 PRD 고정 버전을 따릅니다(`requirements.txt`).

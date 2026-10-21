@@ -43,7 +43,8 @@ def _service(_settings) -> LyricLensService:
                       interval_sec=_settings.collect["request_interval_sec"],
                       max_retries=_settings.collect["max_retries"])
     return LyricLensService(_settings, store, make_chat(_settings), wiki,
-                            CollectCache(_settings.path("collect_cache")))
+                            CollectCache(_settings.path("collect_cache")),
+                            aux_chat=make_chat(_settings, aux=True))
 
 
 def _safe(fn, *args, **kwargs):
@@ -132,16 +133,31 @@ def _chat_tab(service, settings, chats: ChatStore, song_id: str | None) -> None:
                 elif step == "answer":
                     st.write(msg.STEP_ANSWER)
 
-            result = _safe(service.ask, song_id, question, history, on_step=on_step)
+            prepared = _safe(service.prepare, song_id, question, on_step=on_step)
             status.update(label=msg.STEP_DONE, state="complete", expanded=False)
-        if result is None:
+        if prepared is None:
             return
-        if not any(e.source_type == "wikipedia" for e in result.evidence):
+        evidence, _ = prepared
+        if not any(e.source_type == "wikipedia" for e in evidence):
             st.caption(msg.NO_WIKI_DOCS)
-        st.markdown(result.answer.text)
-        _render_evidence(result.answer.cited, result.answer.no_citation, max_lines)
-        chats.add(song_id, "assistant", result.answer.text, citations=result.answer.cited,
-                  no_citation=result.answer.no_citation)
+        final: list = []
+
+        def pieces():
+            for item in service.answer_stream(question, evidence, history):
+                if isinstance(item, str):
+                    yield item
+                else:
+                    final.append(item)
+
+        streamed = _safe(st.write_stream, pieces)
+        if streamed is None or not final:
+            return
+        answer = final[0]
+        if not isinstance(streamed, str) or not streamed:  # 근거가 없어 조각 없이 끝난 경우
+            st.markdown(answer.text)
+        _render_evidence(answer.cited, answer.no_citation, max_lines)
+        chats.add(song_id, "assistant", answer.text, citations=answer.cited,
+                  no_citation=answer.no_citation)
 
 
 def _condition_tab(service) -> None:

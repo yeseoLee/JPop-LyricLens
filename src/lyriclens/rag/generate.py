@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterator
 from dataclasses import dataclass, field
 
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -30,12 +31,8 @@ def _format_history(history) -> str:
     return "\n".join(f"{role}: {content}" for role, content in recent) or "(없음)"
 
 
-def generate_answer(question: str, evidence: list[Evidence], chat, settings,
-                    history=()) -> Answer:
-    lang = detect_language(question)
-    if not evidence:
-        return Answer(prompts.NOT_FOUND[lang])
-    language = prompts.LANGUAGE_NAMES[lang]
+def _messages(question, evidence, settings, history):
+    language = prompts.LANGUAGE_NAMES[detect_language(question)]
     system = prompts.ANSWER_SYSTEM.format(
         quote_max_lines=settings.display["lyrics_quote_max_lines"], language=language
     )
@@ -43,6 +40,32 @@ def generate_answer(question: str, evidence: list[Evidence], chat, settings,
         history=_format_history(history), evidence=format_evidence(evidence), question=question,
         language=language,
     )
-    text = chat.invoke([SystemMessage(system), HumanMessage(human)]).content
+    return [SystemMessage(system), HumanMessage(human)]
+
+
+def _finish(text: str, evidence: list[Evidence]) -> Answer:
     cited = select_cited(evidence, text)
     return Answer(text, cited, no_citation=not cited)
+
+
+def generate_answer(question: str, evidence: list[Evidence], chat, settings,
+                    history=()) -> Answer:
+    if not evidence:
+        return Answer(prompts.NOT_FOUND[detect_language(question)])
+    text = chat.invoke(_messages(question, evidence, settings, history)).content
+    return _finish(text, evidence)
+
+
+def generate_answer_stream(question: str, evidence: list[Evidence], chat, settings,
+                           history=()) -> Iterator[str | Answer]:
+    """답변 조각(str)을 차례로 내보내고, 마지막에 Answer 를 내보낸다 (SPEC-014 §2-3)."""
+    if not evidence:
+        yield Answer(prompts.NOT_FOUND[detect_language(question)])
+        return
+    parts: list[str] = []
+    for chunk in chat.stream(_messages(question, evidence, settings, history)):
+        piece = chunk.content if isinstance(chunk.content, str) else ""
+        if piece:
+            parts.append(piece)
+            yield piece
+    yield _finish("".join(parts), evidence)
