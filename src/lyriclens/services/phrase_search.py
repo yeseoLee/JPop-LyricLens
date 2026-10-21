@@ -39,7 +39,7 @@ def search_phrase(text: str, store, chat, settings) -> list[PhraseHit]:
     best: dict[str, PhraseHit] = {}
     for query in _queries(text, chat):
         for doc, score in store.search(SONG_LYRICS, query, top_k * 3):
-            song_id = doc.metadata.get("song_id", doc.id.split(":")[0])
+            song_id = doc.metadata["song_id"]
             if song_id in best and best[song_id].score >= score:
                 continue
             md = doc.metadata

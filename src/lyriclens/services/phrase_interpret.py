@@ -8,7 +8,7 @@ from langchain_core.messages import HumanMessage, SystemMessage
 
 from lyriclens.domain.lyrics import quote_lines
 from lyriclens.index.store import IndexDoc
-from lyriclens.jsonparse import invoke_json
+from lyriclens.jsonparse import invoke_json_with_raw
 from lyriclens.rag import prompts
 from lyriclens.rag.citations import select_cited
 from lyriclens.rag.evidence import Evidence
@@ -64,7 +64,9 @@ def interpret_phrase(song_id: str, phrase: str, target_lang: str, store, chat,
         language=prompts.TARGET_LANGUAGES.get(target_lang, "한국어"), quote_max_lines=max_lines
     )
     human = prompts.INTERPRET_HUMAN.format(evidence=format_evidence(evidence), phrase=phrase)
-    data = invoke_json(chat, [SystemMessage(system), HumanMessage(human)], dict) or {}
+    data, raw = invoke_json_with_raw(chat, [SystemMessage(system), HumanMessage(human)], dict)
+    if data is None:  # 형식이 깨져도 응답은 버리지 않는다 (SPEC-009 §3.1-5)
+        data = {"background": raw.strip()}
 
     notes = [str(n) for n in data.get("notes", []) if n] if isinstance(data.get("notes"), list) \
         else []

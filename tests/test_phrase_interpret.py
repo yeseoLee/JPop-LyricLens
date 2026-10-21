@@ -88,3 +88,12 @@ def test_interpret_prompt_rules(tmp_path):
     interpret_phrase("ut_aa0001", "星の街で待ってる", "en", _store(tmp_path), chat, load_settings())
     system = chat.calls[0][0].content
     assert "근거" in system and "JSON" in system and "English" in system
+
+
+def test_unparseable_response_kept_as_background(tmp_path):
+    """T-F2010-1 JSON 파싱이 끝내 실패하면 응답 원문을 background 에 넣는다."""
+    chat = FakeChatModel(["형식 없는 답 1", "형식 없는 답 2 [근거 1]"])
+    res = interpret_phrase("ut_aa0001", "星の街で待ってる", "ko", _store(tmp_path), chat,
+                           load_settings())
+    assert res.status == "ok" and res.background == "형식 없는 답 2 [근거 1]"
+    assert [e.num for e in res.citations] == [1]
