@@ -32,8 +32,9 @@ def judge_answer(case: dict, answer: str, judge_chat) -> str:
     )
 
 
-def _rate(rows: list[dict], pred) -> float:
-    return round(sum(1 for r in rows if pred(r)) / len(rows), 4) if rows else 0.0
+def _rate(rows: list[dict], pred) -> float | None:
+    """해당 문항이 없으면 None (표에는 '-')."""
+    return round(sum(1 for r in rows if pred(r)) / len(rows), 4) if rows else None
 
 
 def _aggregate(rows: list[dict]) -> dict:
@@ -96,7 +97,8 @@ QA_METRICS = ["kw_acc", "llm_acc", "wrong_rate", "agreement", "abstain_rate", "c
 def qa_markdown(report: dict) -> str:
     def table(header, lines):
         out = ["| " + " | ".join(header) + " |", "|" + "---|" * len(header)]
-        return "\n".join(out + ["| " + " | ".join(str(c) for c in ln) + " |" for ln in lines])
+        cell = lambda c: "-" if c is None else str(c)  # noqa: E731
+        return "\n".join(out + ["| " + " | ".join(cell(c) for c in ln) + " |" for ln in lines])
 
     summary = report["summary"]
     parts = ["### 전체", table(["모드", *QA_METRICS, "n"], [

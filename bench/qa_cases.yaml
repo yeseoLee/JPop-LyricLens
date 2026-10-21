@@ -354,11 +354,14 @@
     artist: YOASOBI
   question: What kind of group is the artist of this song (how many members)?
   answer_keywords:
-  - - '2'
-    - two
-    - duo
+  - - 2인조
+    - 2인 그룹
     - 二人組
-    - 2인
+    - 2人組
+    - duo
+    - two-member
+    - 2-member
+    - two-piece
   split: test
 - id: Q-background-03
   type: background
@@ -501,12 +504,16 @@
   song:
     title: マリーゴールド
     artist: あいみょん
-  question: What is the flower in the title of this song?
+  question: What colors are the flowers named in this song's title usually?
   answer_keywords:
-  - - marigold
-    - 마리골드
-    - 메리골드
-    - マリーゴールド
+  - - orange
+    - yellow
+    - 주황
+    - 노랑
+    - 노란
+    - 橙
+    - オレンジ
+    - 黄
   split: test
 - id: Q-meaning-05
   type: meaning
@@ -878,21 +885,16 @@
     artist: YOASOBI
   question: 이 곡의 정확한 발매일(연·월·일)은 언제인가요?
   answer_keywords:
-  - - '2026'
-  - - 10월
-    - 10月
-    - -10-
-    - /10/
-    - .10.
-    - 2026-10
-    - October
-  - - 14일
-    - 14日
-    - '-14'
-    - /14
-    - '.14'
-    - ' 14,'
-    - ' 14 '
+  - - 10월 14일
+    - 10월14일
+    - 10月14日
+    - '2026-10-14'
+    - 2026/10/14
+    - 2026.10.14
+    - 2026/10/14
+    - 2026.10.14
+    - October 14
+    - 14 October
   hard: true
   split: dev
 - id: Q-release-10
@@ -903,21 +905,16 @@
     artist: RADWIMPS
   question: What is the exact release date (year, month, day) of this song?
   answer_keywords:
-  - - '2026'
-  - - 10월
-    - 10月
-    - -10-
-    - /10/
-    - .10.
-    - 2026-10
-    - October
-  - - 2일
-    - 2日
-    - '-02'
-    - /02
-    - '.02'
-    - ' 2,'
-    - ' 2 '
+  - - 10월 2일
+    - 10월2일
+    - 10月2日
+    - '2026-10-02'
+    - 2026/10/02
+    - 2026.10.02
+    - 2026/10/2
+    - 2026.10.2
+    - October 2
+    - 2 October
   hard: true
   split: test
 - id: Q-release-11
@@ -928,21 +925,16 @@
     artist: ヨルシカ
   question: この曲の正確なリリース日（年月日）はいつですか？
   answer_keywords:
-  - - '2026'
-  - - 4월
-    - 4月
-    - -04-
-    - /04/
-    - .04.
-    - 2026-04
-    - April
-  - - 22일
-    - 22日
-    - '-22'
-    - /22
-    - '.22'
-    - ' 22,'
-    - ' 22 '
+  - - 4월 22일
+    - 4월22일
+    - 4月22日
+    - '2026-04-22'
+    - 2026/04/22
+    - 2026.04.22
+    - 2026/4/22
+    - 2026.4.22
+    - April 22
+    - 22 April
   hard: true
   split: dev
 - id: Q-release-12
@@ -953,21 +945,16 @@
     artist: tuki.
   question: 이 곡의 정확한 발매일(연·월·일)은 언제인가요?
   answer_keywords:
-  - - '2026'
-  - - 8월
-    - 8月
-    - -08-
-    - /08/
-    - .08.
-    - 2026-08
-    - August
-  - - 23일
-    - 23日
-    - '-23'
-    - /23
-    - '.23'
-    - ' 23,'
-    - ' 23 '
+  - - 8월 23일
+    - 8월23일
+    - 8月23日
+    - '2026-08-23'
+    - 2026/08/23
+    - 2026.08.23
+    - 2026/8/23
+    - 2026.8.23
+    - August 23
+    - 23 August
   hard: true
   split: test
 - id: Q-release-13
@@ -978,21 +965,16 @@
     artist: なとり
   question: What is the exact release date (year, month, day) of this song?
   answer_keywords:
-  - - '2026'
-  - - 6월
-    - 6月
-    - -06-
-    - /06/
-    - .06.
-    - 2026-06
-    - June
-  - - 12일
-    - 12日
-    - '-12'
-    - /12
-    - '.12'
-    - ' 12,'
-    - ' 12 '
+  - - 6월 12일
+    - 6월12일
+    - 6月12日
+    - '2026-06-12'
+    - 2026/06/12
+    - 2026.06.12
+    - 2026/6/12
+    - 2026.6.12
+    - June 12
+    - 12 June
   hard: true
   split: dev
 - id: Q-release-14
@@ -1003,21 +985,16 @@
     artist: ずっと真夜中でいいのに。
   question: 이 곡의 정확한 발매일(연·월·일)은 언제인가요?
   answer_keywords:
-  - - '2026'
-  - - 7월
-    - 7月
-    - -07-
-    - /07/
-    - .07.
-    - 2026-07
-    - July
-  - - 6일
-    - 6日
-    - '-06'
-    - /06
-    - '.06'
-    - ' 6,'
-    - ' 6 '
+  - - 7월 6일
+    - 7월6일
+    - 7月6日
+    - '2026-07-06'
+    - 2026/07/06
+    - 2026.07.06
+    - 2026/7/6
+    - 2026.7.6
+    - July 6
+    - 6 July
   hard: true
   split: test
 - id: Q-release-15
@@ -1028,21 +1005,16 @@
     artist: milet
   question: この曲の正確なリリース日（年月日）はいつですか？
   answer_keywords:
-  - - '2026'
-  - - 7월
-    - 7月
-    - -07-
-    - /07/
-    - .07.
-    - 2026-07
-    - July
-  - - 12일
-    - 12日
-    - '-12'
-    - /12
-    - '.12'
-    - ' 12,'
-    - ' 12 '
+  - - 7월 12일
+    - 7월12일
+    - 7月12日
+    - '2026-07-12'
+    - 2026/07/12
+    - 2026.07.12
+    - 2026/7/12
+    - 2026.7.12
+    - July 12
+    - 12 July
   hard: true
   split: dev
 - id: Q-release-16
@@ -1053,21 +1025,16 @@
     artist: King Gnu
   question: 이 곡의 정확한 발매일(연·월·일)은 언제인가요?
   answer_keywords:
-  - - '2026'
-  - - 7월
-    - 7月
-    - -07-
-    - /07/
-    - .07.
-    - 2026-07
-    - July
-  - - 29일
-    - 29日
-    - '-29'
-    - /29
-    - '.29'
-    - ' 29,'
-    - ' 29 '
+  - - 7월 29일
+    - 7월29일
+    - 7月29日
+    - '2026-07-29'
+    - 2026/07/29
+    - 2026.07.29
+    - 2026/7/29
+    - 2026.7.29
+    - July 29
+    - 29 July
   hard: true
   split: test
 - id: Q-tieup-11
