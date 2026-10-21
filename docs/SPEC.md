@@ -140,7 +140,7 @@ PRD 1.2-5)의 고정 버전을 그대로 쓴다 (`requirements.txt`). PRD 목록
 | `artist_ko` | str \| null | `요네즈 켄시` | `artists.yaml` 에서 가져옴 |
 | `lyricist` / `composer` / `arranger` | str \| null | | |
 | `release_date` | str \| null | `2018-03-14` | ISO 형식으로 정규화 |
-| `tieup` | str \| null | | utaten에 구조화된 정보가 없어 MVP에서는 null (SPEC-002 §3.2). 위키백과로 보완 |
+| `tieup` | str \| null | `劇場版「チェンソーマン レゼ篇」主題歌` | utaten 제목 부제목(`.newLyricTitle__subTitle`). 없으면 null |
 | `lyrics` | str | | 루비 제거한 원문 (줄바꿈 유지) |
 | `lyrics_kana` | str | | 후리가나를 적용한 히라가나 읽기 |
 | `lyrics_romaji` | str \| null | | |

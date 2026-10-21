@@ -10,6 +10,7 @@ from lyriclens.domain.models import Song
 
 SEL_TITLE = ".newLyricTitle__main"
 SEL_TITLE_SUFFIX = ".newLyricTitle_afterTxt"
+SEL_SUBTITLE = ".newLyricTitle__subTitle"
 SEL_KANA = ".newLyricTitle__kana"
 SEL_ARTIST = ".newLyricWork__name a"
 SEL_DATE = ".newLyricWork__date"
@@ -22,7 +23,7 @@ CREDIT_FIELDS = {"作詞": "lyricist", "作曲": "composer", "編曲": "arranger
 LYRIC_ID = re.compile(r"^/lyric/([a-z]{2}\d+)/$")
 ARTIST_ID = re.compile(r"^/artist/(?:lyric/)?(\d+)")
 BR = "\u2028"
-DATE = re.compile(r"(\d{4})\.(\d{2})\.(\d{2})")
+DATE = re.compile(r"(\d{4})\.(\d{1,2})\.(\d{1,2})")
 
 
 class ParseError(ValueError):
@@ -56,6 +57,13 @@ def _normalize_lines(text: str) -> str:
     return "\n".join(out)
 
 
+def _iso_date(match) -> str | None:
+    if not match:
+        return None
+    year, month, day = match.groups()
+    return f"{year}-{int(month):02d}-{int(day):02d}"
+
+
 def parse_song(html: str, url: str) -> Song:
     soup = BeautifulSoup(html, "lxml")
     title_node = soup.select_one(SEL_TITLE)
@@ -64,6 +72,10 @@ def parse_song(html: str, url: str) -> Song:
         raise ParseError(f"제목 또는 가사가 없습니다: {url}")
     for suffix in title_node.select(SEL_TITLE_SUFFIX):
         suffix.decompose()
+    subtitle = title_node.select_one(SEL_SUBTITLE)
+    tieup = _text(subtitle) or None
+    if subtitle:
+        subtitle.decompose()
 
     match = re.search(r"/lyric/([a-z]{2}\d+)", url)
     if not match:
@@ -91,7 +103,8 @@ def parse_song(html: str, url: str) -> Song:
         lyrics=lyrics,
         lyrics_kana=_lyrics_text(lyrics_node, reading=True),
         lyrics_romaji=_lyrics_text(romaji_node, reading=False) if romaji_node else None,
-        release_date="-".join(date_match.groups()) if date_match else None,
+        release_date=_iso_date(date_match),
+        tieup=tieup,
         url=url,
         **credits,
     )
