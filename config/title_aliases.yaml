@@ -1,0 +1,1055 @@
+# 곡 제목 별칭 (SPEC-016 §2.3). scripts/build_title_aliases.py 가 곡 240개 전체를
+# 같은 방식으로 생성한다 (특정 벤치마크 케이스에 맞추지 않음). 키: song_id
+aliases:
+  ut_ks25070443:
+  - 아이리스 아웃
+  ut_hw24011801:
+  - 안녕, 또 언젠가!
+  - 사요나라 마타 이츠카!
+  - Goodbye, see you again someday!
+  - Sayonara Mata Itsuka!
+  ut_mi17101620:
+  - 모래 행성
+  - 스나노 와쿠세이
+  - Planet of Sand
+  - DUNE
+  - Suna no Wakusei
+  ut_jb51406034:
+  - 우울한 부엌
+  - 멜랑콜리 키친
+  - Melancholy Kitchen
+  - Merankorī Kitchin
+  ut_sa18020902:
+  - 레몬
+  ut_sa17101201:
+  - 회색과 푸름
+  - 하이이로토아오
+  - Gray and Blue
+  - Haiiro to Ao
+  ut_sz26092603:
+  - 당당히 피어나라
+  - 사키호코레
+  - Bloom proudly
+  - Sakihokore
+  ut_rq20031716:
+  - 밤을 달리다
+  - 요루니 카케루
+  - Racing into the Night
+  - Yoru ni Kakeru
+  ut_hw23041229:
+  - 아이돌
+  - Idol
+  - Aidoru
+  ut_un21010602:
+  - 괴물
+  - 카이부츠
+  - Monster
+  - Kaibutsu
+  ut_hw24070102:
+  - 언데드
+  ut_mi23092717:
+  - 용사
+  - 유샤
+  - The Brave
+  - Yūsha
+  ut_hw22060904:
+  - 덧없는 자장가
+  - 우타카타 라라바이
+  - Fleeting Lullaby
+  - Utakata Rarabai
+  ut_tt23091305:
+  - 노래
+  - 쇼
+  - Chant
+  - Show
+  - Shō
+  ut_ma20102329:
+  - 시끄러워
+  - 웃세와
+  - Usseewa
+  ut_hw22060905:
+  - 토트 무지카
+  - Tot Musica
+  - Totto Mujika
+  ut_mi21021201:
+  - 번쩍번쩍
+  - 기라기라
+  - Dazzling
+  - Gira Gira
+  - Giragira
+  ut_hw22060903:
+  - 역광
+  - 갸코
+  - Backlight
+  - Gyakkō
+  ut_qk19044046:
+  - 프리텐더
+  - 사칭자
+  ut_mi18040607:
+  - 의심할 여지 없이
+  - 노 다우트
+  - No Doubt
+  - Nō Dauto
+  ut_qk19070093:
+  - 숙명
+  - 슈쿠메이
+  - Destiny
+  - Shukumei
+  ut_mi18040606:
+  - 115만 킬로미터의 필름
+  - 햐쿠주고만 키로노 피루무
+  - A Film of 1.15 Million Kilometers
+  - Hyakujuugo-man kiro no firumu
+  ut_mi22033031:
+  - 혼합 견과류
+  - 믹스 너츠
+  - Mixed Nuts
+  - Mikkusu Nattsu
+  ut_ma22101113:
+  - 자막
+  - 서브타이틀
+  ut_mz26082401:
+  - 공범
+  - 쿄한
+  - Accomplice
+  - Kyōhan
+  ut_qk18078071:
+  - 점묘의 노래
+  - 텐뵤노 우타
+  - Song of Pointillism
+  - Tenbyō no Uta
+  ut_mz26082404:
+  - 후험적으로
+  - 아 포스테리오리
+  - A Posteriori
+  - A Posuteriori
+  ut_mi24041201:
+  - 라일락
+  - Lilac
+  - Rairakku
+  ut_sz26070605:
+  - 새로운
+  - 브랜드 뉴
+  ut_mz26082408:
+  - 속임수
+  - 마야카시
+  - Deception
+  - Mayakashi
+  ut_qa30810005:
+  - 스페셜즈
+  - 특별한 것들
+  ut_sz25122201:
+  - 애증
+  - 아이조
+  - Love and Hate
+  - Aizō
+  ut_ac19030852:
+  - 대낮
+  - 하쿠지츠
+  - Daylight
+  - Hakujitsu
+  ut_qa11203010:
+  - 역몽
+  - 사카유메
+  - Reverse Dream
+  - Sakayume
+  ut_sz26070603:
+  - 고 고스트
+  ut_th19112501:
+  - 비행정
+  - 히코테이
+  - Flying Boat
+  - Hikoutei
+  ut_hw21092808:
+  - 베텔게우스
+  - Betelgeuse
+  - Beterugiusu
+  ut_ma20102802:
+  - 말린 꽃
+  - 드라이 플라워
+  - Dry Flower
+  - Dorai Furawā
+  ut_hw22011226:
+  - 레오
+  - Leo
+  - Reo
+  ut_nm20081802:
+  - 피터 팬
+  - 피타 판
+  - Peter Pan
+  - Pītā Pan
+  ut_ma21070780:
+  - 셔터
+  - Shutter
+  - Shattā
+  ut_ni20060401:
+  - 숨바꼭질
+  - 카쿠렌보
+  - Hide and Seek
+  - Kakurenbo
+  ut_ys22062802:
+  - 나이트 댄서
+  - 밤의 댄서
+  ut_hw24101140:
+  - 말린 꽃
+  - 드라이 플라워
+  ut_tt21111107:
+  - 도피행
+  - 토히코
+  - Escape
+  - Touhikou
+  ut_sz25092915:
+  - 소용돌이
+  - 우즈
+  - Whirlpool
+  - Uzu
+  ut_ks25060901:
+  - 미스터 문라이트
+  - Mr. Moonlight
+  - Misutā Mūnraito
+  ut_mi25041641:
+  - 이름 없는 나날
+  - 나마에노나이 히비
+  - Nameless Days
+  - Namae no Nai Hibi
+  ut_sa16080308:
+  - 반짝임
+  - 스파클
+  - Sparkle
+  - Supākuru
+  ut_sa16112814:
+  - 반짝임
+  - 스파클
+  - Sparkle
+  - Supākuru
+  ut_sa16080310:
+  - 아무것도 아니야
+  - 난데모나이야
+  - It's Nothing
+  - Nandemonaiya
+  ut_ya16072701:
+  - 전전전세
+  - 젠젠젠세
+  - Zenzenzense (movie ver.)
+  - Previous Previous Previous Life
+  - Zenzenzense
+  ut_sz26080302:
+  - 저녁별
+  - 유즈츠
+  - Evening Star
+  - Yūzutsu
+  ut_sa16080309:
+  - 꿈의 등불
+  - 유메토로
+  - Dream Lantern
+  - Yume Tōrō
+  ut_mi24010923:
+  - 블링뱅뱅본
+  ut_hw24062687:
+  - 오토노케
+  - Otonoke
+  ut_na19020101:
+  - 합법적으로 취하는 법
+  - 고호오테키 토비카타노 스스메
+  - How to Get High Legally
+  - Gōhōteki Tobikata no Susume
+  ut_mi21081842:
+  - 성장 가능성
+  - 노비시로
+  - Room to Grow
+  - Nobishiro
+  ut_tt24112602:
+  - 도플갱어
+  - Double
+  - Dopperugengā
+  ut_ky22062239:
+  - 타천
+  - 다텐
+  - Fall from Heaven
+  - Daten
+  ut_ma18062909:
+  - 금잔화
+  - 마리골드
+  - Marigold
+  - Mārigōrudo
+  ut_sa17070510:
+  - 너는 록을 듣지 않아
+  - 키미와 록쿠오 키카나이
+  - You Don't Listen to Rock
+  - Kimi wa rokku o kikanai
+  ut_sa17040511:
+  - 사랑을 전하고 싶다든가
+  - 아이오 츠타에타이다 토카
+  - I'd Like to Tell You I Love You
+  - Ai o tsutaetai da toka
+  ut_qk19037095:
+  - 봄날
+  - 하루노히
+  - Spring Day
+  - Harunohi
+  ut_ma20051211:
+  - 벌거벗은 마음
+  - 하다카노 코코로
+  - Naked Heart
+  - Hadaka no Kokoro
+  ut_mi23032729:
+  - 사랑의 꽃
+  - 아이노 하나
+  - Flower of Love
+  - Ai no Hana
+  ut_sa15102704:
+  - 크리스마스 노래
+  - 크리스마스 송
+  - Christmas Song
+  - Kurisumasu Songu
+  ut_hw20081801:
+  - 수평선
+  - 스이헤이센
+  - Horizon
+  - Suiheisen
+  ut_jb71306082:
+  - 높은 봉우리의 하나코 씨
+  - 타카네노 하나코상
+  - Hanako-san of the High Peak
+  - The Unattainable Hanako
+  - Takane no Hanako-san
+  ut_hw25041402:
+  - 푸른 호박
+  - 블루 앰버
+  - Blue Amber
+  - Burū Anbā
+  ut_jb81203004:
+  - 사랑
+  - 코이
+  - Love
+  - Koi
+  ut_jb51170088:
+  - 행복
+  - 시아와세
+  - Happiness
+  - Shiawase
+  ut_un21050601:
+  - 반짝임
+  - 키라리
+  - Sparkle
+  - Kirari
+  ut_mi24031426:
+  - 차오르다
+  - 미치테유쿠
+  - Overflowing
+  - Michi Teyu Ku
+  - Michite yuku
+  ut_mi22031418:
+  - 정원
+  - 가든
+  - Garden
+  - Gāden
+  ut_nm20052060:
+  - 죽는 게 나아
+  - 시누노가 이이와
+  - I'd Rather Die
+  - Shinunoga E-Wa
+  ut_nm20011401:
+  - 뭐야ㅋㅋ
+  - 난난
+  - What is it?
+  - Nan-Nan
+  ut_mi22031419:
+  - 젠장
+  - 댐
+  ut_nm20051304:
+  - 괴수의 꽃노래
+  - 카이주노 하나우타
+  - Kaiju's Flower Song
+  - Kaiju no Hanauta
+  - Kaijū no Hanauta
+  ut_nm20052728:
+  - 나폴리
+  - Naples
+  - Napoli
+  ut_un20092501:
+  - 불가항력
+  - 후카코오료쿠
+  - Fukakōryoku
+  ut_ma21041401:
+  - 행복
+  - 시와아와세
+  - Happiness
+  - Shiwaawase
+  ut_ma21111952:
+  - 무희
+  - 오도리코
+  - Dancer
+  - Odoriko
+  ut_ma22011710:
+  - 벌거벗은 용사
+  - 하다카노 유샤
+  - Naked Hero
+  - Hadaka no Yūsha
+  ut_sz26082501:
+  - 구름을 빠져나와 바람이 불어가는 쪽으로, 나만
+  - 쿠모오 누케 카자시모에 와타시다케
+  - Through the Clouds, Downwind, Just Me
+  - Kumo o nuke kazashimo e watashi dake
+  ut_yb18050913:
+  - 그저 너에게 맑음
+  - 타다 키미니 하레
+  - Just a Sunny Day for You
+  - Tada Kimi ni Hare
+  ut_mi20040917:
+  - 꽃에 망령
+  - 하나니 보레이
+  - Ghost in a Flower
+  - Hana ni Bōrei
+  ut_sz26031903:
+  - 거품
+  - 아부쿠
+  - Bubbles
+  - Abuku
+  ut_mi19040247:
+  - 그래서 나는 음악을 그만두었다
+  - 다카라 보쿠와 온가쿠오 야메타
+  - That's Why I Gave Up on Music
+  - Dakara Boku wa Ongaku o Yameta
+  ut_mi24010501:
+  - 맑음
+  - 하루
+  - Sunny
+  - Haru
+  ut_ma19042309:
+  - 홍련화
+  - 구렌게
+  - Red Lotus
+  - Gurenge
+  ut_ni20080301:
+  - 불꽃
+  - 호무라
+  - Homura
+  ut_ma25063010:
+  - 잔혹한 밤에 빛나라
+  - 잔코쿠나 요루니 카가야케
+  - Shine in the Cruel Night
+  - Zankoku na Yoru ni Kagayake
+  ut_sa18081716:
+  - 아다마스
+  - 다이아몬드
+  ut_jb51210097:
+  - 크로싱 필드
+  ut_mi26092418:
+  - 소피리아
+  - Sophilia
+  - Sofiria
+  ut_sz26092604:
+  - 아이유
+  ut_iz17110802:
+  - 극작술
+  - 드라마투르기
+  - Dramaturgy
+  - Doramatsurugī
+  ut_mi20100703:
+  - 회회기담
+  - 카이카이키탄
+  - Kaikai Kitan
+  ut_nm20021228:
+  - 마음 예보
+  - 코코로 요호우
+  - Heart Forecast
+  - Kokoro Yohō
+  ut_ks25071121:
+  - 유령 대로
+  - 고스트 애비뉴
+  - Ghost Avenue
+  - Gōsuto Abenyū
+  ut_hw22092004:
+  - 파이트 송
+  - 응원가
+  - Fight Song
+  - Faito Songu
+  ut_na21092501:
+  - 잔향산가
+  - 잔쿄 산카
+  - Zankyosanka
+  - Zankyō Sanka
+  ut_yc16111601:
+  - 짝사랑
+  - 카타오모이
+  - Unrequited Love
+  - Kataomoi
+  ut_sa16112211:
+  - 붉게 물들다
+  - 아카네 사스
+  - Crimson Glow
+  - Akane Sasu
+  ut_ma20070610:
+  - 다시 타오르다
+  - 스파크 어게인
+  ut_qk19011101:
+  - 간청할게요
+  - 아이 벡 유
+  ut_yf15060301:
+  - 용감한 빛
+  - 브레이브 샤인
+  ut_mi23101157:
+  - 만찬가
+  - 반산카
+  - Banquet Song
+  - Bansanka
+  ut_tt24072901:
+  - 휴루리라팟파
+  - Hyururirapappa
+  ut_hw24011049:
+  - 벚꽃, 너, 나
+  - 사쿠라 키미 와타시
+  - Cherry Blossoms, You, and Me
+  - Sakura Kimi Watashi
+  ut_hw24041796:
+  - 지옥의 연애편지
+  - 지고쿠 코이부미
+  - Love Letter from Hell
+  - Jigoku Koibumi
+  ut_sz25082744:
+  - 최악의 동네
+  - 사이테이 카이와이
+  - Worst Neighborhood
+  - Saitei Kaiwai
+  ut_mz26082603:
+  - 버블
+  - 바부루
+  - Bubble
+  - Baburu
+  ut_sz25110561:
+  - 세레나데
+  - Serenade
+  - Serenāde
+  ut_mi25060501:
+  - 청혼
+  - 프로포즈
+  - Propose
+  - Proposal
+  - Puropōzu
+  ut_mi22082236:
+  - 과다 복용
+  - 오버도즈
+  ut_sz26061217:
+  - 꼭두각시
+  - 퍼펫
+  ut_ma24032613:
+  - 절대영도
+  - 젯타이레이도
+  - Absolute Zero
+  - Zettai Reido
+  ut_sz26100233:
+  - 번데기
+  - 퓨파
+  ut_jb71304138:
+  - 알피지
+  - 역할수행게임
+  - Role-playing game
+  - Āru Pī Jī
+  ut_sa14121808:
+  - 용의 밤
+  - 드래곤 나이트
+  ut_hw23092001:
+  - 최고 도달점
+  - 사이코 토타츠텐
+  - 최고 도달 지점
+  - Highest Point
+  - Highest Point Reached
+  - Saikō Tōtatsuten
+  ut_sa15072301:
+  - 반영웅
+  - 안티히어로
+  ut_sa15092403:
+  - 용의 밤 (영어 버전)
+  - 드래곤 나이트 (영어 버전)
+  - Doragon Naito
+  ut_mi22042804:
+  - 습관
+  - 해빗
+  ut_jb51008354:
+  - 어디에 있든
+  - 웨어버 유 아
+  ut_jb71001228:
+  - 완전감각 몽상가
+  - 완전감각 드리머
+  - Kanzen Kankaku Dreamer
+  ut_jb71208131:
+  - 시작
+  - 더 비기닝
+  ut_jb20801048:
+  - 욕망으로 가득 찬 청년단
+  - 요쿠보오니 미치타 세이넨단
+  - A Youth Group Filled with Desire
+  - Yokubō ni Michita Seinen-dan
+  ut_jb51111038:
+  - 카오스미스
+  - Chaosmyth
+  ut_jb51111043:
+  - 네게 달린 열차
+  - 키미시다이렛샤
+  - The Train Is Up to You
+  - Kimi Shidai Ressha
+  ut_to15012002:
+  - 실루엣
+  - Silhouette
+  - Shiruetto
+  ut_jb51308085:
+  - 없는 것을 바라다
+  - 나이모노네다리
+  - Wanting What You Don't Have
+  - Naimono Nedari
+  ut_nm20102601:
+  - 자유의 횃불
+  - 토치 오브 리버티
+  - Tōchi obu ribati
+  ut_qk20022092:
+  - 별 표식
+  - 스타마커
+  - Star Marker
+  - Sutā Mākā
+  ut_ks25060503:
+  - 초신성
+  - 슈퍼노바
+  ut_qa30820076:
+  - 죽음의 노래
+  - 송 오브 더 데드
+  - Song of the Dead
+  - Songu obu za deddo
+  ut_tt20052101:
+  - 봄을 알리다
+  - 하루오 츠게루
+  - Announcing Spring
+  - Haru o Tsugeru
+  ut_sz25102245:
+  - 마법 증후군
+  - 매지컬 신드롬
+  - Magical Syndrome
+  - Majikaru Shindorōmu
+  ut_hw22100201:
+  - 색채
+  - 시키사이
+  - Color
+  - Shikisai
+  ut_mi24011740:
+  - 가짜 얼굴
+  - 기간
+  - False Face
+  - Gigan
+  ut_sz26020428:
+  - 날아가자
+  - 토보오요
+  - Let's Fly
+  - Tobō yo
+  ut_hw21100501:
+  - 오즈
+  ut_mi26100510:
+  - 붉게 물들 무렵
+  - 아카네사스 코로
+  - When It Turns Crimson
+  - Akane sasu koro
+  ut_un21062101:
+  - 그 녀석들 전원 동창회
+  - 아이츠라 젠인 도소카이
+  - Inside Joke
+  - Aitsura Zen'in Dōsōkai
+  ut_iz18121375:
+  - 초침을 씹다
+  - 뵤신오 카무
+  - Bite the Second Hand
+  - Byōshin o Kamu
+  ut_ma20121862:
+  - 올바를 수 없어
+  - 타다시쿠 나레나이
+  - Can't Be Right
+  - Tadashiku Narenai
+  ut_mi26062908:
+  - 무화과 연기
+  - 이치지쿠 케무리
+  - Fig Smoke
+  - Ichijiku Kemuri
+  ut_mi24092022:
+  - 타이다다
+  ut_tt21122213:
+  - 그저 목소리 하나
+  - 타다 코에 히토츠
+  - One Voice
+  - Tada Koe Hitotsu
+  ut_mi23052315:
+  - 스피카
+  - Spica
+  - Supika
+  ut_mi23020309:
+  - 사랑이 켜지다
+  - 아이가 토모루
+  - Love Lights Up
+  - Ai ga Tomoru
+  ut_mi24082315:
+  - 알비레오
+  - Albireo
+  - Arubireo
+  ut_mi26092432:
+  - 별을 여행하다
+  - 호시 오 메구루
+  - Traveling Around the Stars
+  - Hoshi o Meguru
+  ut_mi26070137:
+  - 혜성
+  - 호키보시
+  - Comet
+  - Hōkiboshi
+  ut_qk19018084:
+  - 갈증을 울부짖다
+  - 카와키오아메쿠
+  - Crying for Rain
+  - Kawaki wo Ameku
+  ut_qk19018086:
+  - 라일락
+  - 라이락쿠
+  - Lilac
+  - Rairakku
+  ut_tu19060334:
+  - 영원한 푸름
+  - 이터널 블루
+  ut_iz18120629:
+  - 독백
+  - 모놀로그
+  ut_nm20070319:
+  - 비를 기다려
+  - 아메오마츠
+  - Waiting for the Rain
+  - Ame o matsu
+  ut_qk19018085:
+  - 주연
+  - 메인 액터
+  ut_mi26093038:
+  - 드림캐처
+  ut_hw23092237:
+  - 안녕, 안녕
+  - 굿바이 바이
+  - Goodbye Bye
+  - Gubbai bai
+  ut_mi24020315:
+  - 사랑에 빠진 행성 「너」
+  - 코이스루 와쿠세이 「아나타」
+  - Planet in Love “You”
+  - Koi suru Wakusei “Anata”
+  ut_ma24082211:
+  - 안녕, 안녕
+  - 굿바이바이
+  - Goodbye Bye
+  - Gubbai bai
+  ut_ma24082210:
+  - 잘 가, 안녕
+  - 굿바이바이
+  - Goodbye-bye
+  - Gubbai bai
+  ut_mi23111709:
+  - 사랑은 네 사랑이 필요해
+  - 아이 니드 유어 러브
+  - Love Needs Your Love
+  - Ai need your love
+  ut_ya17081607:
+  - 고양이
+  - 네코
+  - Cat
+  - Neko
+  ut_tt21102803:
+  - 천리향
+  - 진초게
+  - Winter Daphne
+  - Jinchōge
+  ut_mi24070335:
+  - 계획 A
+  - 플랜 A
+  - Plan A
+  - Puran A
+  ut_qa20909030:
+  - 다시 재생
+  - 리플레이
+  ut_nm21040801:
+  - 1위
+  - 넘버원
+  ut_sz26052615:
+  - 사랑의 말
+  - 아이코토바
+  - Words of Love
+  - Aikotoba
+  ut_hw21051805:
+  - 더블유 엑스 와이
+  - Daburyū Ekkusu Wai
+  ut_mi21120705:
+  - 어서 와
+  - 오카에리
+  - Welcome Home
+  - Okaeri
+  ut_hw22091602:
+  - 다시 한 번
+  - 모우이치도
+  - Once Again
+  - Mou Ichido
+  ut_ni20063001:
+  - 마이라
+  ut_rq20072204:
+  - 사랑의 말
+  - 아이코토바
+  - Words of Love
+  - Aikotoba
+  ut_sz25100337:
+  - 만약의 이야기
+  - 모시모노가타리
+  - What If Story
+  - Moshimonogatari
+  ut_jb81104032:
+  - 사무라이 하트
+  - Some Like It Hot!!
+  - Samurai Heart
+  ut_mi24013028:
+  - 오렌지
+  - Orange
+  - Orenji
+  ut_jb71404062:
+  - 상상
+  - 이마지네이션
+  - Imagination
+  - Imajinēshon
+  ut_sa15101501:
+  - 나는 믿는 사람이야
+  - 아임 어 빌리버
+  - I'm a Believer
+  - Aimu a Birībā
+  ut_to16102807:
+  - 먼지의 분노
+  - 레이지 오브 더스트
+  ut_jb71302059:
+  - 벚꽃 만월
+  - 사쿠라 미츠츠키
+  - Cherry Blossom Full Moon
+  - Sakura Mitsutsuki
+  ut_ja00007650:
+  - 첫사랑
+  - 퍼스트 러브
+  ut_jb10708530:
+  - 아름다운 세계
+  - 뷰티풀 월드
+  ut_sa17092501:
+  - 당신
+  - 아나타
+  - You
+  - Anata
+  ut_ma21031018:
+  - 마지막 키스
+  - 원 라스트 키스
+  ut_ja00007546:
+  - 오토매틱
+  ut_na16091401:
+  - 길
+  - 미치
+  - Road
+  - Michi
+  ut_mi21081607:
+  - 신데렐라 소년
+  - 신데렐라 보이
+  - Cinderella Boy
+  - Shinderera Bōi
+  ut_iz17082370:
+  - 언젠가
+  - 이츠카
+  - Someday
+  - Itsuka
+  ut_ma20090265:
+  - 이제 와서 내가 말할까
+  - 이마사라닷테 보쿠와 이우카나
+  - Would I Say It Now?
+  - Imasara datte boku wa iu kana
+  ut_mi23062039:
+  - 마법이 풀리면
+  - 마호가 토케타라
+  - When the Magic Wears Off
+  - Mahō ga toketara
+  ut_mi21081609:
+  - 리스폰
+  - Respawn
+  - Risupōn
+  ut_ma22032212:
+  - 마법에 걸려서
+  - 마호오니 카케라레테
+  - Under a Spell
+  - Mahō ni kakerarete
+  ut_jb51404071:
+  - 광선
+  - 레이
+  ut_ja00009597:
+  - 천체 관측
+  - 텐타이칸소쿠
+  - Astronomical Observation
+  - Stargazing
+  - Tentai Kansoku
+  ut_sa15093022:
+  - 세 아저씨
+  - 산닌노 오지상
+  - Three Old Men
+  - Sannin no Ojisan
+  ut_qk20104010:
+  - 아카시아
+  - Acacia
+  - Akashia
+  ut_ma22041213:
+  - 크로노스타시스
+  - 시간 정지 착각
+  - Chronostasis
+  - Kuronosutashisu
+  ut_ks25092901:
+  - 아이
+  ut_tt24120401:
+  - 괴수
+  - 카이주
+  - Kaiju
+  - Kaijū
+  ut_jb71208168:
+  - 밤의 무희
+  - 요루노 오도리코
+  - Dancer of the Night
+  - Yoru no Odoriko
+  ut_sa15091433:
+  - 신보물섬
+  - 신 타카라지마
+  - New Treasure Island
+  - Shin Takarajima
+  ut_mi19061204:
+  - 나방
+  - 모스
+  - Moth
+  - Mosu
+  ut_mi19061201:
+  - 잊을 수 없어
+  - 와스레라레나이노
+  - I Can't Forget
+  - Wasurerarenai no
+  ut_jb50903116:
+  - 토착 무용수
+  - 네이티브 댄서
+  - Native Dancer
+  - Neitibu Dansā
+  ut_to16065418:
+  - 진홍빛 사랑 노래
+  - 스칼렛 러브 송
+  ut_jb20811197:
+  - 미스캐스트
+  - 잘못된 배역
+  ut_jb20811196:
+  - 푸른 피
+  - 블루 블러드
+  - Burū Buraddo
+  ut_yj15082506:
+  - 절박한 천사
+  - 데스퍼릿 엔젤
+  ut_jb20811198:
+  - 축하
+  - 셀러브레이션
+  ut_jb51002413:
+  - 삶의 예술
+  - 아트 오브 라이프
+  ut_mz26071509:
+  - 화창한
+  - 써니
+  ut_hw23100301:
+  - 언제든 어디서든
+  - 애니타임 애니웨어
+  ut_sz26011639:
+  - 우리의 이야기
+  - 더 스토리 오브 어스
+  ut_qa40533025:
+  - 꽃다발
+  - 하나타바
+  - Bouquet
+  ut_mi19031401:
+  - 네 안에서
+  - 인사이드 유
+  ut_hw21061806:
+  - 평범한 날들
+  - 오디너리 데이즈
+  ut_ma21063004:
+  - 좋아하니까.
+  - 스키다카라
+  - Because I Like You
+  - Sukidakara
+  ut_hw22032910:
+  - 저격수
+  - 스나이퍼
+  - Sniper
+  - Sunaipā
+  ut_hw22032908:
+  - 사랑 도둑
+  - 코이도로보
+  - Love Thief
+  - Koi Dorobō
+  ut_mi22111142:
+  - 한결같은 여자아이
+  - 이치즈나 온나노코
+  - A Devoted Girl
+  - Ichizu na Onna no Ko
+  ut_mi22090309:
+  - 17살의 노래
+  - 주나나사이노우타
+  - Song of a 17-Year-Old
+  - Jūnanasai no uta
+  ut_mi23112112:
+  - 운명의 사람
+  - 운메이노 히토
+  - The One
+  - Fated Person
+  - Unmei no Hito
+  ut_or16100101:
+  - 사랑
+  - 코이
+  - Love
+  - Koi
+  ut_hw22040836:
+  - 희극
+  - 키게키
+  - Comedy
+  - Kigeki
+  ut_sa18011701:
+  - 도라에몽
+  - Doraemon
+  ut_sa18042401:
+  - 아이디어
+  - Idea
+  - Aidea
+  ut_mi26072317:
+  - 좋아해
+  - 스키
+  - Like
+  - Suki
+  ut_ya15052790:
+  - 태양
+  - 썬
+  ut_mi22092649:
+  - 귀여워서 미안해
+  - 카와이쿠테 고멘
+  - I'm Sorry for Being Cute
+  - Kawaikute Gomen
+  ut_hw25090503:
+  - 지금, 사랑이 시작돼라!
+  - 이마, 코이가 하지마레
+  - Let Love Begin Now!
+  - Ima, Koi ga Hajimare.
+  ut_rq20032520:
+  - 굿바이
+  - 안녕
+  - 잘 가
+  ut_tt21033007:
+  - 긍지 높은 아이돌
+  - 호코리 타카키 아이도루
+  - Proud Idol
+  - Hokori takaki aidoru
+  ut_mi23091320:
+  - 좋아해!
+  - 스킷츄노!
+  - I Like You!
+  - Sukicchū no!
+  ut_iz16100640:
+  - 귀여워지고 싶어
+  - 카와이쿠 나리타이
+  - I Want to Be Cute
+  - Kawaiku Naritai
