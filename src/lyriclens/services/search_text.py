@@ -13,6 +13,7 @@ _BASE = dict(zip(
     "ba bi bu be bo pa pi pu pe po a i u e o ya yu yo wa vu".split(), strict=True,
 ))
 _YOON = {"ゃ": "a", "ゅ": "u", "ょ": "o"}
+_SMALL_VOWEL = {"ぁ": "a", "ぃ": "i", "ぇ": "e", "ぉ": "o"}  # ふぁ→fa, てぃ→ti
 
 
 def _to_hiragana(text: str) -> str:
@@ -35,8 +36,11 @@ def kana_to_romaji(kana: str) -> str:
             continue
         if c in _YOON and out and len(out[-1]) >= 2 and out[-1].endswith("i"):
             prev = out.pop()
-            out.append((prev[:-1] if prev[:-1] in ("sh", "ch", "j") else prev[:-1] + "y")
-                       + _YOON[c])
+            stem = prev[:-1]  # 촉음이 붙은 'tchi'·'sshi' 도 'tch'·'ssh' 로 끝난다
+            out.append((stem if stem.endswith(("sh", "ch", "j")) else stem + "y") + _YOON[c])
+            continue
+        if c in _SMALL_VOWEL and out and len(out[-1]) >= 2 and out[-1][-1] in "aiueo":
+            out[-1] = out[-1][:-1] + _SMALL_VOWEL[c]
             continue
         roma = _BASE.get(c, c)
         if double and roma and roma[0].isalpha():

@@ -41,6 +41,8 @@ python scripts/prefetch_wiki.py
 streamlit run src/lyriclens/ui/app.py
 ```
 
+> **통합 곡 검색을 쓰려면 2026-10-21 이후 한 번 다시 색인하세요** (`python scripts/index_songs.py`). 곡 정보에 제목 읽기(`title_kana`)가 추가되었고, 재색인하지 않으면 가나·로마자 제목 검색이 빠집니다.
+>
 > **모델을 바꾸면 다시 색인해야 합니다.** 임베딩 모델(`config/settings.yaml` 의 `llm.embedding_model`)이 바뀌면 벡터 차원이 달라져 기존 색인을 쓸 수 없습니다. `data/chroma` 와 `data/cache/collected.json` 을 지우거나 옮긴 뒤 4)부터 다시 실행하세요.
 
 테스트:
