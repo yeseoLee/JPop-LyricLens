@@ -90,8 +90,9 @@ def test_e2e_4_condition(page):
     _tab(page, "조건으로 찾기")
     page.get_by_label(re.compile("어떤 곡을 찾나요")).fill("2020년 이후 애니메이션 주제가")
     page.get_by_role("button", name="찾기").first.click()
-    _wait_idle(page)
     buttons = page.get_by_role("button", name="이 곡으로 대화하기")
+    buttons.or_(page.get_by_text("조건에 맞는 곡을 찾지 못했습니다")).first.wait_for()
+    _wait_idle(page)
     assert buttons.count() >= 1
     shot(page, "04_condition.png")
     buttons.first.click()
@@ -107,6 +108,7 @@ def test_e2e_5_interpret(page):
     page.get_by_label(re.compile("연 선택")).click()
     page.get_by_role("option").first.click()
     page.get_by_role("button", name="해석하기").click()
+    page.get_by_text("참고용 번역").or_(page.get_by_text("찾지 못했습니다")).first.wait_for()
     _wait_idle(page)
     body = page.inner_text("body")
     assert "참고용 번역" in body and "곡 배경과의 연결" in body
@@ -119,10 +121,12 @@ def test_e2e_6_phrase_search(page):
     _tab(page, "구절로 곡 찾기")
     page.get_by_label(re.compile("기억나는 가사")).fill("꿈이라면 얼마나 좋았을까")
     page.get_by_role("button", name="찾기").last.click()
+    page.get_by_role("button", name="이 곡으로 대화하기").or_(
+        page.get_by_text("일치하는 가사를 찾지 못했습니다")).first.wait_for()
     _wait_idle(page)
     panel = page.get_by_role("tabpanel").filter(has_text="기억나는 가사")
-    first_card = panel.locator('[data-testid="stVerticalBlockBorderWrapper"]').first
-    assert "Lemon" in first_card.inner_text()
+    cards = [ln for ln in panel.inner_text().splitlines() if " — " in ln and "UtaTen" in ln]
+    assert cards and cards[0].startswith("Lemon"), cards[:3]
     _no_internal_error(page)
     shot(page, "06_phrase.png")
 

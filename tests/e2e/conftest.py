@@ -97,3 +97,13 @@ def shot(page, name: str) -> Path:
     path = SHOTS / name
     page.screenshot(path=str(path), full_page=True)
     return path
+
+
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    """실패한 시나리오는 화면을 docs/e2e/failed_<이름>.png 로 남긴다."""
+    outcome = yield
+    report = outcome.get_result()
+    page = item.funcargs.get("page")
+    if report.when == "call" and report.failed and page is not None:
+        shot(page, f"failed_{item.name}.png")
