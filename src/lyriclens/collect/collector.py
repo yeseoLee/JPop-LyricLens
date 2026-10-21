@@ -4,27 +4,79 @@ from __future__ import annotations
 
 from lyriclens.collect.cache import CollectCache
 from lyriclens.collect.candidate_selector import select_candidates
-from lyriclens.collect.models import CollectedDoc, CollectResult, SongInfo, WikiCandidate
+from lyriclens.collect.models import (
+    CollectedDoc,
+    CollectResult,
+    SongInfo,
+    WikiCandidate,
+    WikiPage,
+)
 from lyriclens.collect.query_extractor import extract_queries
+
+SONG_WORDS = ("노래", "곡", "싱글")
 
 
 def _is_song_page(title: str, song_title: str) -> bool:
     return title == song_title or title.startswith(f"{song_title} (")
 
 
-def _primary_candidates(song: SongInfo, wiki, limit: int) -> list[tuple[WikiCandidate, str]]:
-    found: list[tuple[WikiCandidate, str]] = []
-    song_page = wiki.find_page(song.title)
-    if not (song_page and _is_song_page(song_page.title, song.title)):
-        song_page = next(
-            (c for c in wiki.search(song.title, limit) if _is_song_page(c.title, song.title)),
-            None,
-        )
+def _is_disambiguation(title: str) -> bool:
+    return "동음이의" in title
+
+
+def _matches_title_rule(title: str, song: SongInfo) -> bool:
+    """원제 규칙, 또는 '번역 제목 (아티스트의 노래)' 형태 (SPEC-013 §2-2)."""
+    if _is_song_page(title, song.title):
+        return True
+    _, paren, inside = title.partition("(")
+    artists = [a for a in (song.artist_ko, song.artist) if a]
+    return bool(paren) and any(a in inside for a in artists) and any(
+        w in inside for w in SONG_WORDS
+    )
+
+
+VERIFY_CHARS = 2000
+
+
+def _mentions_song(page: WikiPage, song: SongInfo) -> bool:
+    head = page.text[:VERIFY_CHARS]
+    artists = [a for a in (song.artist_ko, song.artist) if a]
+    return song.title in head and any(a in head for a in artists)
+
+
+def find_song_page(song: SongInfo, wiki, limit: int,
+                   verify_limit: int) -> tuple[WikiCandidate | None, WikiPage | None]:
+    """곡 문서와 (확인하느라 받은 경우) 본문을 돌려준다 (SPEC-013)."""
+    direct = wiki.find_page(song.title)
+    candidates: list[WikiCandidate] = [direct] if direct else []
+    queries = (song.title, f"{song.title} {song.artist_query}",
+               f"{song.artist_query} 노래 {song.title}")
+    for query in queries:
+        candidates += wiki.search(query, limit)
+    seen: set[int] = set()
+    unique = [
+        c for c in candidates
+        if not _is_disambiguation(c.title) and not (c.page_id in seen or seen.add(c.page_id))
+    ]
+    titled = next((c for c in unique if _matches_title_rule(c.title, song)), None)
+    if titled:
+        return titled, None
+    for cand in unique[:verify_limit]:
+        page = wiki.fetch(cand.page_id)
+        if _mentions_song(page, song):
+            return cand, page
+    return None, None
+
+
+def _primary_docs(song: SongInfo, wiki, cfg) -> list[tuple[WikiCandidate, str, WikiPage | None]]:
+    found: list[tuple[WikiCandidate, str, WikiPage | None]] = []
+    song_page, fetched = find_song_page(song, wiki, cfg["candidates_per_query"],
+                                        cfg.get("primary_verify_limit", 3))
     if song_page:
-        found.append((song_page, song.title))
+        found.append((song_page, song.title, fetched))
     artist_page = wiki.find_page(song.artist_query)
-    if artist_page and all(artist_page.page_id != c.page_id for c, _ in found):
-        found.append((artist_page, song.artist_query))
+    if artist_page and all(artist_page.page_id != c.page_id for c, _, _ in found):
+        found.append((artist_page, song.artist_query, None))
     return found
 
 
@@ -40,10 +92,10 @@ def collect_documents(song: SongInfo, question: str, chat, wiki, cache: CollectC
     known = cache.page_ids(song.song_id)
     seen: set[int] = set(known)
 
-    for cand, query in _primary_candidates(song, wiki, cfg["candidates_per_query"]):
+    for cand, query, page in _primary_docs(song, wiki, cfg):
         if cand.page_id not in seen:
             seen.add(cand.page_id)
-            result.indexed.append(CollectedDoc(wiki.fetch(cand.page_id), query, True))
+            result.indexed.append(CollectedDoc(page or wiki.fetch(cand.page_id), query, True))
 
     base = {song.title, song.artist_query}
     candidates: list[tuple[WikiCandidate, str]] = []
