@@ -84,11 +84,12 @@ class VectorStore:
         self, name: str, query: str, k: int, fetch_k: int = 20, lambda_mult: float = 0.5,
         where: dict | None = None,
     ) -> list[tuple[IndexDoc, float]]:
-        """MMR: 후보 fetch_k 개 중 관련성과 이미 고른 근거와의 차이를 함께 보고 k 개 (SPEC-017)."""
+        """MMR: 후보 fetch_k 개 중 관련성과 이미 고른 근거와의 차이를 함께 보고 k 개 (SPEC-017).
+        컬렉션이 cosine 공간이라 관련성(1-거리)과 중복도(단위벡터 내적)가 같은 척도다."""
         if self.count(name) == 0:
             return []
         res = self.collection(name)._collection.query(
-            query_embeddings=[self.embeddings.embed_query(query)], n_results=fetch_k,
+            query_embeddings=[self.embeddings.embed_query(query)], n_results=max(fetch_k, k),
             where=where, include=["documents", "metadatas", "distances", "embeddings"],
         )
         cands = [

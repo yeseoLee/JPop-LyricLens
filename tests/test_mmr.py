@@ -105,3 +105,27 @@ def test_diversity_summary():
     out = diversity_summary(ev, VecEmb())
     assert out["distinct_docs"] == 2
     assert 0 < out["mean_pairwise_sim"] < 1
+
+
+def test_mmr_respects_song_filter(tmp_path):
+    """T-F2014-3 MMR 에서도 다른 곡의 청크는 근거에 들어가지 않는다."""
+    store = _store(tmp_path)
+    store.upsert(
+        "wiki_docs",
+        [
+            IndexDoc(
+                "x:9:0",
+                "dup1",
+                {
+                    "song_id": "x",
+                    "doc_id": 9,
+                    "doc_title": "다른 곡",
+                    "url": "u",
+                    "source_type": "wikipedia",
+                },
+            )
+        ],
+    )
+    hits = store.search_mmr("wiki_docs", "q", 3, fetch_k=2, lambda_mult=0.5, where={"song_id": "s"})
+    assert len(hits) == 3  # fetch_k < k 여도 k 개
+    assert all(d.metadata["song_id"] == "s" for d, _ in hits)
