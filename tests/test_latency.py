@@ -84,3 +84,26 @@ def test_stream_without_evidence_no_llm():
     chat = FakeChatModel(["x"])
     items = list(generate_answer_stream("주제가?", [], chat, load_settings()))
     assert chat.calls == [] and items[-1].no_citation
+
+
+def test_aux_model(monkeypatch, tmp_path):
+    """T-NF2001-5 보조 작업은 aux 모델, 답변은 주 모델."""
+    from lyriclens.domain.indexing import index_songs
+    from lyriclens.llm import make_chat
+    from lyriclens.ui.service import LyricLensService
+    from tests.fakes import make_song
+
+    monkeypatch.setenv("GMS_KEY", "k" * 20)
+    aux = make_chat(load_settings(), aux=True)
+    assert aux.model_name == "gpt-5.4-nano" and aux.temperature == 0
+
+    store = VectorStore(tmp_path / "chroma", FakeEmbeddings())
+    index_songs([make_song("ut_aa0001")], store, item_text_max_chars=6000, lyrics_chunk_lines=8)
+    main_chat, aux_chat = FakeChatModel(["답 [근거 1]"]), FakeChatModel(["[]"])
+    svc = LyricLensService(load_settings(), store, main_chat, FakeWikiClient(PAGES),
+                           CollectCache(tmp_path / "c.json"), aux_chat=aux_chat)
+    svc.ask("ut_aa0001", "누구 노래?", [])
+    assert len(main_chat.calls) == 1 and len(aux_chat.calls) >= 1
+    svc.phrase_search("별의 거리")
+    svc.condition_search("밝은 노래")
+    assert len(main_chat.calls) == 1
