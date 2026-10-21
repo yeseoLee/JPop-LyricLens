@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: 의존성 설치
+        run: |
+          pip install -r requirements.txt -r requirements-dev.txt
+          pip install -e .
+      - name: 린트
+        run: ruff check .
+      - name: 테스트 (live 제외)
+        env:
+          GMS_KEY: ""
+          WIKI_CONTACT: ci@example.com
+        run: pytest -m "not live" --cov=lyriclens
