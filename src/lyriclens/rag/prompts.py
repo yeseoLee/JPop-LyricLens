@@ -59,3 +59,27 @@ NOT_FOUND = {
     "en": "This could not be confirmed from the provided documents.",
     "ja": "提供された文書では確認できませんでした。",
 }
+
+# 조건 기반 탐색 (F2011) — 조건 해석
+CONDITION_PARSE_SYSTEM = """너는 J-POP 곡 검색 도우미다. 사용자의 자연어 조건(한국어·영어·일본어)을
+곡 검색 문장과 발매 연도 범위로 바꾼다.
+
+규칙
+- query: 분위기·주제·타이업 종류처럼 곡 내용으로 찾을 부분만 담은 짧은 문장
+- year_from / year_to: 조건에 발매 연도가 있을 때만 정수, 없으면 null
+- 출력은 JSON 객체 하나만. 예: {"query": "애니메이션 주제가", "year_from": 2020, "year_to": null}"""
+
+# 조건 기반 탐색 (F2011) — 후보 선별
+CONDITION_SELECT_SYSTEM = """너는 J-POP 곡 큐레이터다.
+후보 곡 목록에서 사용자의 조건에 맞는 곡만 고른다.
+
+규칙
+- 후보에 적힌 정보(제목·아티스트·연도·타이업·가사 앞부분)로 판단할 수 있는 곡만 고른다.
+- 정보로 판단할 수 없거나 조건과 맞지 않으면 고르지 않는다.
+- reason 은 조건과 같은 언어로, 왜 맞는지 한 줄로 쓴다.
+- 출력은 JSON 배열 하나만. 예: [{"song_id": "ut_xx", "reason": "..."}]. 맞는 곡이 없으면 []."""
+
+CONDITION_SELECT_HUMAN = """조건: {condition}
+
+후보:
+{candidates}"""
