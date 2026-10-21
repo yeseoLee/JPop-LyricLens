@@ -33,6 +33,7 @@ python scripts/crawl_songs.py
 python scripts/index_songs.py
 
 # 5) (권장) 곡·아티스트 위키 문서 미리 수집 — 첫 질문 시간 단축 (약 15~20분)
+#    앱을 끈 상태에서 실행하세요 (앱과 같은 수집 캐시 파일을 씁니다)
 python scripts/prefetch_wiki.py
 
 # 6) 실행
