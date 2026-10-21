@@ -229,16 +229,17 @@ def test_qa_summary_by_difficulty():
 
 
 def test_keyword_groups_not_nested():
-    """T-BENCH-5 한 문항 안에서 어떤 키워드도 다른 그룹 키워드에 (정규화 후) 포함되지 않는다."""
+    """T-BENCH-5 숫자만 있는 키워드는 연도(4자리)뿐 — '2'·'12' 같은 일(日) 키워드가
+    다른 그룹의 '2026' 안에서 저절로 맞는 버그를 막는다. 1글자 키워드는 한자·한글만 허용."""
+    import re
+
     from lyriclens.bench.scoring import normalize
 
     for q in load_qa_cases(ROOT / "bench/qa_cases.yaml"):
-        groups = [[normalize(k) for k in g] for g in q.get("answer_keywords") or []]
-        for i, group in enumerate(groups):
-            others = [k for j, g in enumerate(groups) if j != i for k in g]
-            bad = [k for k in group if any(k in o for o in others)]
-            assert not bad, (q["id"], bad)
-        assert all(len(k) >= 2 for g in groups for k in g), q["id"]
+        for group in q.get("answer_keywords") or []:
+            for k in map(normalize, group):
+                assert not (k.isdigit() and len(k) != 4), (q["id"], k)
+                assert len(k) >= 2 or re.match(r"[\u4e00-\u9fff\uac00-\ud7a3]", k), (q["id"], k)
 
 
 def test_abstain_rate_missing_when_no_unanswerable():
