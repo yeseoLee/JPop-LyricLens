@@ -14,9 +14,10 @@ def truncate(text: str, limit: int = ANSWER_CHARS) -> str:
 
 
 def _consistent(row: dict) -> bool:
-    """키워드 채점과 LLM 판정이 일치하는 문항만 대표로 쓴다."""
+    """키워드 채점과 LLM 판정이 일치하는 문항만 대표로 쓴다.
+    답할 수 없는 문항은 키워드 채점이 없으므로(LLM 판정만 있음) 늘 대상이다."""
     if row["type"] == "unanswerable":
-        return row["verdict"] in ("abstain", "incorrect", "correct")
+        return True
     return row["kw_correct"] == (row["verdict"] == "correct")
 
 
