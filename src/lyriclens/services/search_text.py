@@ -80,7 +80,9 @@ def similarity(query: str, name: str) -> float:
         return 0.0
     if query == name:
         return 1.0
-    if len(name) >= 3 and name in query or len(query) >= 3 and query in name:
+    shorter, longer = sorted((query, name), key=len)
+    # 부분 일치: 짧은 쪽이 4글자 이상이고 긴 쪽의 절반 이상일 때만 (SPEC-016 §2.4.1)
+    if shorter in longer and len(shorter) >= 4 and len(shorter) * 2 >= len(longer):
         return 0.9
     a, b = _bigrams(query), _bigrams(name)
     dice = 2 * len(a & b) / (len(a) + len(b))

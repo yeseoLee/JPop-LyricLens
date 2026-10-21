@@ -36,12 +36,21 @@ def rrf_fuse(rankings: dict[str, list[str]], weights: dict[str, float], k: int =
     return pinned + [sid for sid in order if sid not in pinned]
 
 
-def _per_song(hits) -> list[str]:
+def _per_song(hits) -> dict[str, float]:
     best: dict[str, float] = {}
     for doc, score in hits:
         sid = doc.metadata["song_id"]
         best[sid] = max(best.get(sid, -1.0), score)
-    return sorted(best, key=lambda sid: -best[sid])
+    return dict(sorted(best.items(), key=lambda kv: -kv[1]))
+
+
+def route_kind(lexical_best: float, lyrics_top: float, meta_top: float, margin: float) -> str:
+    """LLM 없이 질의 유형을 정한다 (SPEC-016 §2.4.1)."""
+    if lexical_best >= 0.85:
+        return "name"
+    if lyrics_top >= meta_top + margin:
+        return "lyrics"
+    return "description"
 
 
 def _llm_guess(query: str, chat) -> dict:
@@ -71,6 +80,7 @@ def unified_search(query: str, catalog: Catalog, store, chat, settings) -> list[
         note("lexical", m.song_id, m.reasons[0])
 
     queries = [query]
+    guess: dict = {}
     if cfg.get("use_llm", True):
         guess = _llm_guess(query, chat)
         ja = guess.get("ja_query")
@@ -91,8 +101,18 @@ def unified_search(query: str, catalog: Catalog, store, chat, settings) -> list[
     for q in queries:
         meta += store.search(SONG_META, q, VECTOR_K)
         lyrics += store.search(SONG_LYRICS, q, VECTOR_K)
-    rankings["meta_vector"] = _per_song(meta)
-    rankings["lyrics_vector"] = _per_song(lyrics)
+    meta_scores, lyrics_scores = _per_song(meta), _per_song(lyrics)
+    depth = cfg.get("vector_depth", 10)
+    rankings["meta_vector"] = list(meta_scores)[:depth]
+    rankings["lyrics_vector"] = list(lyrics_scores)[:depth]
+
+    # 질의 유형은 규칙으로 정한다. LLM 의 kind 는 일본어 가사를 제목·설명으로 잘못 보는
+    # 일이 잦아 쓰지 않는다 (dev 측정, SPEC-016 §2.4.1). LLM 은 곡·아티스트 추정에만 쓴다.
+    kind = route_kind(max((m.score for m in lexical), default=0.0),
+                      next(iter(lyrics_scores.values()), 0.0),
+                      next(iter(meta_scores.values()), 0.0),
+                      cfg.get("lyrics_margin", 0.05))
+    weights = (cfg.get("route_weights") or {}).get(kind) or cfg.get("weights", {})
     for sid in rankings["meta_vector"][:3]:
         note("meta_vector", sid, "곡 정보 의미 검색")
     for sid in rankings["lyrics_vector"][:3]:
@@ -101,7 +121,7 @@ def unified_search(query: str, catalog: Catalog, store, chat, settings) -> list[
         for sid in rankings[channel]:
             note(channel, sid)
 
-    order = rrf_fuse(rankings, cfg.get("weights", {}), cfg.get("rrf_k", 60), pinned)
+    order = rrf_fuse(rankings, weights, cfg.get("rrf_k", 60), pinned)
     hits = []
     for sid in order[: cfg.get("top_k", 10)]:
         meta_info = catalog.metas.get(sid, {})
