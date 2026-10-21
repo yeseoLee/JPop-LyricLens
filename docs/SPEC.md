@@ -207,6 +207,7 @@ collect:
   max_queries: 4          # 프롬프트1이 뽑을 최대 검색어 수
   candidates_per_query: 5
   min_doc_chars: 200      # 너무 짧은 문서 제외 (곡 자체 문서는 예외)
+  primary_verify_limit: 3 # 번역 제목 곡 문서 확인 후보 수 (SPEC-013)
   request_interval_sec: 1.0 # 위키백과 호출 간격
   max_retries: 3
 crawl:
