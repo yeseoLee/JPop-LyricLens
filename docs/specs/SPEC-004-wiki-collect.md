@@ -10,7 +10,7 @@
 선택한 곡과 질문에 맞는 한국어 위키백과 문서를 골라 본문과 원문 URL을 수집한다. 색인은 SPEC-005에서 한다.
 
 ## 2. 범위
-- 포함: `collect/wikipedia.py`(API 클라이언트, 오프라인 묶음 클라이언트), `collect/query_extractor.py`(프롬프트 1), `collect/candidate_selector.py`(프롬프트 2), `collect/cache.py`, `collect/collector.py`(수집 흐름), `rag/prompts.py`(프롬프트 1·2), `jsonparse.py`
+- 포함: `collect/models.py`(데이터 형식), `http.py`(호출 간격·재시도 공통 규칙), `collect/wikipedia.py`(API 클라이언트, 오프라인 묶음 클라이언트), `collect/query_extractor.py`(프롬프트 1), `collect/candidate_selector.py`(프롬프트 2), `collect/cache.py`, `collect/collector.py`(수집 흐름), `rag/prompts.py`(프롬프트 1·2), `jsonparse.py`
 - 제외: 청킹·색인(SPEC-005), UI 진행 표시(SPEC-010)
 
 ## 3. 상세 설계
