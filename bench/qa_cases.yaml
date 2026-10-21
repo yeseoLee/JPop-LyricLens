@@ -1,5 +1,6 @@
 # 답변 품질 벤치마크 케이스 (SPEC-015 §4). answer_keywords: 그룹마다 하나 이상 포함되면 정답.
 # unanswerable 은 근거로 답할 수 없는 질문 — 모른다고 답해야 정답.
+# hard: true 는 2025~2026년 곡·덜 알려진 아티스트의 세부 사실 (SPEC-015 §4.1)
 - id: Q-credit-01
   type: credit
   lang: ko
@@ -689,4 +690,489 @@
     title: 天体観測
     artist: BUMP OF CHICKEN
   question: この曲のギターソロで使われた弦のゲージは？
+  split: test
+- id: Q-credit-11
+  type: credit
+  lang: ko
+  song:
+    title: 共犯
+    artist: Mrs. GREEN APPLE
+  question: 이 곡의 편곡에 참여한 사람은 누구인가요?
+  answer_keywords:
+  - - 花井諒
+    - 하나이
+    - Hanai
+  hard: true
+  split: dev
+- id: Q-credit-12
+  type: credit
+  lang: en
+  song:
+    title: ア・ポステリオリ
+    artist: Mrs. GREEN APPLE
+  question: Who co-arranged this song with Motoki Ohmori?
+  answer_keywords:
+  - - 兼松衆
+    - 가네마츠
+    - Kanematsu
+  hard: true
+  split: test
+- id: Q-credit-13
+  type: credit
+  lang: ja
+  song:
+    title: 瞞し
+    artist: Mrs. GREEN APPLE
+  question: この曲の編曲に参加したのは大森元貴と誰ですか？
+  answer_keywords:
+  - - 伊藤賢
+    - 이토
+    - Ito
+  hard: true
+  split: dev
+- id: Q-credit-14
+  type: credit
+  lang: ko
+  song:
+    title: ミスター・ムーンライト
+    artist: imase
+  question: 이 곡의 편곡자는 누구인가요?
+  answer_keywords:
+  - - 久保田真悟
+    - 쿠보타
+    - Kubota
+    - Jazzin'park
+  hard: true
+  split: test
+- id: Q-credit-15
+  type: credit
+  lang: en
+  song:
+    title: ソフィリア
+    artist: LiSA
+  question: Who arranged this song?
+  answer_keywords:
+  - - 出羽良彰
+    - 데와
+    - Dewa
+  hard: true
+  split: dev
+- id: Q-credit-16
+  type: credit
+  lang: ko
+  song:
+    title: ブルーアンバー
+    artist: back number
+  question: 이 곡의 편곡에 참여한 외부 프로듀서는 누구인가요?
+  answer_keywords:
+  - - 蔦谷好位置
+    - 츠타야
+    - Tsutaya
+  hard: true
+  split: test
+- id: Q-credit-17
+  type: credit
+  lang: ja
+  song:
+    title: あかねさす頃
+    artist: ずっと真夜中でいいのに。
+  question: この曲の編曲者は誰ですか？
+  answer_keywords:
+  - - 100回嘔吐
+    - 100회구토
+    - Hyakkai
+  hard: true
+  split: dev
+- id: Q-credit-18
+  type: credit
+  lang: ko
+  song:
+    title: dream catcher
+    artist: 冨岡愛
+  question: 이 곡의 편곡자는 누구인가요?
+  answer_keywords:
+  - - knoak
+    - 노악
+  hard: true
+  split: test
+- id: Q-credit-19
+  type: credit
+  lang: en
+  song:
+    title: アイコトバ
+    artist: DISH//
+  question: Who arranged this song?
+  answer_keywords:
+  - - 花井諒
+    - Hanai
+    - 하나이
+  hard: true
+  split: dev
+- id: Q-credit-20
+  type: credit
+  lang: ko
+  song:
+    title: The Story of Us
+    artist: milet
+  question: 이 곡의 편곡자는 누구인가요?
+  answer_keywords:
+  - - Evan Call
+    - 에반 콜
+    - エバン・コール
+  hard: true
+  split: test
+- id: Q-credit-21
+  type: credit
+  lang: ko
+  song:
+    title: 飛ぼうよ
+    artist: yama
+  question: 이 곡의 작곡가는 누구인가요?
+  answer_keywords:
+  - - Vaundy
+    - 바운디
+  hard: true
+  split: dev
+- id: Q-credit-22
+  type: credit
+  lang: en
+  song:
+    title: ホウキボシ
+    artist: ロクデナシ
+  question: Who composed this song?
+  answer_keywords:
+  - - Eve
+    - 이브
+  hard: true
+  split: test
+- id: Q-credit-23
+  type: credit
+  lang: ja
+  song:
+    title: 星を巡る
+    artist: ロクデナシ
+  question: この曲の作曲者は誰ですか？
+  answer_keywords:
+  - - Aqu3ra
+    - 아쿠아
+  hard: true
+  split: dev
+- id: Q-credit-24
+  type: credit
+  lang: ko
+  song:
+    title: マジカルシンドローム
+    artist: yama
+  question: 이 곡의 작곡가는 누구인가요?
+  answer_keywords:
+  - - OHTORA
+    - New K
+    - 오토라
+  hard: true
+  split: test
+- id: Q-release-09
+  type: release
+  lang: ko
+  song:
+    title: 咲き誇れ
+    artist: YOASOBI
+  question: 이 곡의 정확한 발매일(연·월·일)은 언제인가요?
+  answer_keywords:
+  - - '2026'
+  - - 10월
+    - 10月
+    - -10-
+    - /10/
+    - .10.
+    - 2026-10
+    - October
+  - - 14일
+    - 14日
+    - '-14'
+    - /14
+    - '.14'
+    - ' 14,'
+    - ' 14 '
+  hard: true
+  split: dev
+- id: Q-release-10
+  type: release
+  lang: en
+  song:
+    title: 夕星-ゆうづつ-
+    artist: RADWIMPS
+  question: What is the exact release date (year, month, day) of this song?
+  answer_keywords:
+  - - '2026'
+  - - 10월
+    - 10月
+    - -10-
+    - /10/
+    - .10.
+    - 2026-10
+    - October
+  - - 2일
+    - 2日
+    - '-02'
+    - /02
+    - '.02'
+    - ' 2,'
+    - ' 2 '
+  hard: true
+  split: test
+- id: Q-release-11
+  type: release
+  lang: ja
+  song:
+    title: あぶく
+    artist: ヨルシカ
+  question: この曲の正確なリリース日（年月日）はいつですか？
+  answer_keywords:
+  - - '2026'
+  - - 4월
+    - 4月
+    - -04-
+    - /04/
+    - .04.
+    - 2026-04
+    - April
+  - - 22일
+    - 22日
+    - '-22'
+    - /22
+    - '.22'
+    - ' 22,'
+    - ' 22 '
+  hard: true
+  split: dev
+- id: Q-release-12
+  type: release
+  lang: ko
+  song:
+    title: バブル
+    artist: tuki.
+  question: 이 곡의 정확한 발매일(연·월·일)은 언제인가요?
+  answer_keywords:
+  - - '2026'
+  - - 8월
+    - 8月
+    - -08-
+    - /08/
+    - .08.
+    - 2026-08
+    - August
+  - - 23일
+    - 23日
+    - '-23'
+    - /23
+    - '.23'
+    - ' 23,'
+    - ' 23 '
+  hard: true
+  split: test
+- id: Q-release-13
+  type: release
+  lang: en
+  song:
+    title: Puppet
+    artist: なとり
+  question: What is the exact release date (year, month, day) of this song?
+  answer_keywords:
+  - - '2026'
+  - - 6월
+    - 6月
+    - -06-
+    - /06/
+    - .06.
+    - 2026-06
+    - June
+  - - 12일
+    - 12日
+    - '-12'
+    - /12
+    - '.12'
+    - ' 12,'
+    - ' 12 '
+  hard: true
+  split: dev
+- id: Q-release-14
+  type: release
+  lang: ko
+  song:
+    title: イチジク煙
+    artist: ずっと真夜中でいいのに。
+  question: 이 곡의 정확한 발매일(연·월·일)은 언제인가요?
+  answer_keywords:
+  - - '2026'
+  - - 7월
+    - 7月
+    - -07-
+    - /07/
+    - .07.
+    - 2026-07
+    - July
+  - - 6일
+    - 6日
+    - '-06'
+    - /06
+    - '.06'
+    - ' 6,'
+    - ' 6 '
+  hard: true
+  split: test
+- id: Q-release-15
+  type: release
+  lang: ja
+  song:
+    title: Sunny
+    artist: milet
+  question: この曲の正確なリリース日（年月日）はいつですか？
+  answer_keywords:
+  - - '2026'
+  - - 7월
+    - 7月
+    - -07-
+    - /07/
+    - .07.
+    - 2026-07
+    - July
+  - - 12일
+    - 12日
+    - '-12'
+    - /12
+    - '.12'
+    - ' 12,'
+    - ' 12 '
+  hard: true
+  split: dev
+- id: Q-release-16
+  type: release
+  lang: ko
+  song:
+    title: GO GHOST
+    artist: King Gnu
+  question: 이 곡의 정확한 발매일(연·월·일)은 언제인가요?
+  answer_keywords:
+  - - '2026'
+  - - 7월
+    - 7月
+    - -07-
+    - /07/
+    - .07.
+    - 2026-07
+    - July
+  - - 29일
+    - 29日
+    - '-29'
+    - /29
+    - '.29'
+    - ' 29,'
+    - ' 29 '
+  hard: true
+  split: test
+- id: Q-tieup-11
+  type: tieup
+  lang: ko
+  song:
+    title: 咲き誇れ
+    artist: YOASOBI
+  question: 이 곡은 어떤 드라마의 주제가인가요?
+  answer_keywords:
+  - - ブラッサム
+    - 블러섬
+    - Blossom
+  hard: true
+  split: dev
+- id: Q-tieup-12
+  type: tieup
+  lang: en
+  song:
+    title: 夕星-ゆうづつ-
+    artist: RADWIMPS
+  question: Which film is this song the theme song for?
+  answer_keywords:
+  - - 汝、星のごとく
+    - 汝星のごとく
+    - Like a Star
+    - 너는 별처럼
+  hard: true
+  split: test
+- id: Q-tieup-13
+  type: tieup
+  lang: ko
+  song:
+    title: あぶく
+    artist: ヨルシカ
+  question: 이 곡은 어떤 애니메이션의 오프닝인가요?
+  answer_keywords:
+  - - LIAR GAME
+    - 라이어 게임
+    - ライアーゲーム
+  hard: true
+  split: dev
+- id: Q-tieup-14
+  type: tieup
+  lang: ja
+  song:
+    title: pupa
+    artist: なとり
+  question: この曲は何のドラマの主題歌ですか？
+  answer_keywords:
+  - - VIVANT
+    - 비반트
+    - チンギス
+  hard: true
+  split: test
+- id: Q-tieup-15
+  type: tieup
+  lang: en
+  song:
+    title: GO GHOST
+    artist: King Gnu
+  question: Which anime is this song the opening for?
+  answer_keywords:
+  - - 攻殻機動隊
+    - 공각기동대
+    - Ghost in the Shell
+    - GHOST IN THE SHELL
+  hard: true
+  split: dev
+- id: Q-tieup-16
+  type: tieup
+  lang: ko
+  song:
+    title: 星を巡る
+    artist: ロクデナシ
+  question: 이 곡은 어떤 애니메이션의 엔딩인가요?
+  answer_keywords:
+  - - 世界最強の魔女
+    - 세계 최강의 마녀
+    - 魔女
+  hard: true
+  split: test
+- id: Q-tieup-17
+  type: tieup
+  lang: ko
+  song:
+    title: Brand New
+    artist: Mrs. GREEN APPLE
+  question: 이 곡은 어떤 영화의 일본판 주제가인가요?
+  answer_keywords:
+  - - スパイダーマン
+    - 스파이더맨
+    - Spider-Man
+    - Spider Man
+  hard: true
+  split: dev
+- id: Q-tieup-18
+  type: tieup
+  lang: en
+  song:
+    title: dream catcher
+    artist: 冨岡愛
+  question: Which anime uses this song as its ending theme?
+  answer_keywords:
+  - - dreamland
+    - 드림랜드
+  hard: true
   split: test

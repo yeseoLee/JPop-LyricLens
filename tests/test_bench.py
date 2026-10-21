@@ -209,3 +209,20 @@ def test_judge_prompt_and_norag_prompt():
     norag_answer({"question": "작곡가?", "song_title": "Lemon", "song_artist": "米津玄師"}, chat)
     system = chat.calls[0][0].content
     assert "모르" in system and "Lemon" in chat.calls[0][-1].content
+
+
+def test_qa_summary_by_difficulty():
+    """T-BENCH-11 hard 여부로 나눈 요약."""
+    from lyriclens.bench.qa import run_qa
+    from tests.fakes import FakeChatModel
+
+    cases = [
+        {"id": "a", "type": "credit", "lang": "ko", "split": "dev", "question": "q",
+         "song_id": "s", "answer_keywords": [["x"]]},
+        {"id": "b", "type": "credit", "lang": "ko", "split": "dev", "question": "q",
+         "song_id": "s", "answer_keywords": [["x"]], "hard": True},
+    ]
+    report = run_qa(cases, {"m": lambda c: "x" if c["id"] == "a" else "y"},
+                    FakeChatModel(['{"verdict": "correct"}']))
+    by = report["summary"]["m"]["by_difficulty"]
+    assert by["normal"]["kw_acc"] == 1.0 and by["hard"]["kw_acc"] == 0.0
