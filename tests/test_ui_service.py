@@ -17,7 +17,8 @@ def _service(tmp_path, chat, wiki):
 
 def test_ask_progress_order(tmp_path):
     """T-F2012-3 진행 단계 순서와 결과."""
-    chat = FakeChatModel(["[]", "[]", "테스트 가수의 곡입니다 [근거 1]."])
+    # 검색어 추출 → (위키 후보가 없어 선별은 호출 안 됨) → 답변
+    chat = FakeChatModel(["[]", "테스트 가수의 곡입니다 [근거 1]."])
     steps = []
     res = _service(tmp_path, chat, FakeWikiClient(PAGES)).ask(
         "ut_aa0001", "누구 노래?", [], on_step=lambda step, detail: steps.append(step)
