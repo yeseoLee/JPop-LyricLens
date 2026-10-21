@@ -21,10 +21,15 @@ def retrieve(store, song_id: str, question: str, settings) -> list[Evidence]:
     cfg = settings.retrieval
     where = {"song_id": song_id}
     rows: list[tuple[IndexDoc, str]] = [(d, "song_meta") for d in store.get(SONG_META, [song_id])]
-    rows += [(d, "lyrics") for d, _ in
-             store.search(SONG_LYRICS, question, cfg["lyrics_top_k"], where)]
-    rows += [(d, "wikipedia") for d, _ in
-             store.search(WIKI_DOCS, question, cfg["wiki_top_k"], where)]
+    if cfg.get("search_type") == "mmr":  # F2014: 내용이 겹치는 청크가 몰리지 않게
+        def search(name, k):
+            return store.search_mmr(name, question, k, cfg.get("mmr_fetch_k", 20),
+                                    cfg.get("mmr_lambda", 0.5), where)
+    else:
+        def search(name, k):
+            return store.search(name, question, k, where)
+    rows += [(d, "lyrics") for d, _ in search(SONG_LYRICS, cfg["lyrics_top_k"])]
+    rows += [(d, "wikipedia") for d, _ in search(WIKI_DOCS, cfg["wiki_top_k"])]
 
     evidence: list[Evidence] = []
     seen_ids: set[str] = set()
