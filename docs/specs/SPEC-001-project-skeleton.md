@@ -29,14 +29,15 @@ def load_settings(path: str | Path | None = None, overrides: dict | None = None)
 def missing_env(settings: Settings) -> list[str]   # 비어 있는 필수 환경변수 이름 목록
 def load_artists(path=None) -> list[dict]          # [{name, name_ko, utaten_artist_id}]
 ```
-- 경로 우선순위: 인자 `path` → 환경변수 `LYRICLENS_SETTINGS` → `config/settings.yaml`
+- 경로 우선순위: 인자 `path` → 환경변수 `LYRICLENS_SETTINGS` → `config/settings.yaml`. 상대 경로는 프로젝트 루트 기준.
+- `overrides` 에 없는 섹션 이름이 오면 `ValueError`.
 - `.env` 는 `python-dotenv` 로 읽되 이미 있는 환경변수를 덮어쓰지 않는다.
 - `overrides` 는 섹션 단위 얕은 병합(`{"chunking": {"chunk_size": 500}}`). 테스트·비교 실험에서 값만 바꿀 때 쓴다.
 - `Settings.path(name)` 은 `paths` 값을 `root` 기준 절대 경로로 돌려준다.
 - `repr(Settings)` 에 키 값이 나오지 않는다 (`gms_key` 는 `repr=False`).
 
 ### 3.2 보안·구조 검사
-- `tests/test_security.py`: git이 추적하는 파일에서 `sk-[A-Za-z0-9]{20,}` 패턴과 `GMS_KEY=<값>` 형태를 찾는다(`.env.example` 의 빈 값은 허용). `git ls-files` 결과에 `.env`, `data/` 가 없어야 한다.
+- `tests/test_security.py`: git이 추적하는 파일에서 `sk-[A-Za-z0-9]{20,}` 패턴과 `GMS_KEY=` 뒤에 16자 이상 영숫자 값이 오는 형태를 찾는다(빈 값·문서 예시는 허용). `git ls-files` 결과에 `.env`, `data/` 가 없어야 한다.
 - `tests/test_architecture.py`: `src/lyriclens` 의 `collect, index, rag, services` 패키지 파일을 AST로 읽어 `lyriclens.domain.utaten_*` import가 없음을 확인한다.
 
 ## 4. 수용 기준 (AC)

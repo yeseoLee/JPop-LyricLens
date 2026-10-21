@@ -51,3 +51,11 @@ def test_load_artists():
     assert len(artists) == 40
     assert all(a["name"] and a["name_ko"] for a in artists)
     assert len({a["name"] for a in artists}) == 40
+
+
+def test_unknown_override_section_rejected():
+    """T-CFG-2 알 수 없는 섹션 overrides는 ValueError."""
+    import pytest
+
+    with pytest.raises(ValueError):
+        load_settings(overrides={"chunkin": {"chunk_size": 1}})

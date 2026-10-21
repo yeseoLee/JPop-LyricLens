@@ -36,9 +36,13 @@ class Settings:
 def load_settings(path: str | Path | None = None, overrides: dict | None = None) -> Settings:
     load_dotenv(ROOT / ".env", override=False)
     path = Path(path or os.environ.get("LYRICLENS_SETTINGS") or DEFAULT_SETTINGS)
+    if not path.is_absolute():
+        path = ROOT / path
     data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
     sections = {name: dict(data.get(name) or {}) for name in SECTIONS}
     for name, values in (overrides or {}).items():
+        if name not in SECTIONS:
+            raise ValueError(f"알 수 없는 설정 섹션: {name}")
         sections[name] = {**sections.get(name, {}), **values}
     return Settings(
         **sections,
