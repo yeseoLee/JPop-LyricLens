@@ -73,8 +73,26 @@ def _select_song(song_id: str, title: str) -> None:
     st.session_state["switched"] = title
 
 
+def _search_box(service) -> None:
+    """통합 곡 검색 (SPEC-016 §2.6): 결과에서 고르면 선택 곡이 바뀐다."""
+    query = st.text_input(msg.SEARCH_LABEL, placeholder=msg.SEARCH_PLACEHOLDER,
+                          key="unified_query")
+    if not query:
+        return
+    if st.session_state.get("unified_last") != query:
+        st.session_state["unified_hits"] = _safe(service.unified_search, query) or []
+        st.session_state["unified_last"] = query
+    hits = st.session_state.get("unified_hits", [])
+    if not hits:
+        st.caption(msg.SEARCH_EMPTY)
+    for h in hits[:5]:
+        st.button(f"{h.title} — {h.artist}", key=f"pick_{h.song_id}", help=" · ".join(h.reasons),
+                  on_click=_select_song, args=(h.song_id, h.title), use_container_width=True)
+
+
 def _sidebar(service, settings, options) -> str | None:
     with st.sidebar:
+        _search_box(service)
         st.header(msg.SIDEBAR_SELECT)
         labels = {sid: label for label, sid in options}
         ids = [sid for _, sid in options]

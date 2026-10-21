@@ -75,8 +75,9 @@ def main() -> int:
 
     if args.kind == "search":
         cases = search_cases(settings, songs, args.split)
-        report = run_search(cases, build_search_systems(store, aux, settings, args.systems),
-                            on_case=progress)
+        catalog = LyricLensService(settings, store, aux, None, None).catalog()
+        report = run_search(cases, build_search_systems(store, aux, settings, args.systems,
+                                                        catalog=catalog), on_case=progress)
         md = summary_markdown(report)
     else:
         by_key = {(s["title"], s["artist"]): s for s in songs}

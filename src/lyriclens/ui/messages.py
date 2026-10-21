@@ -64,3 +64,8 @@ INTERPRET_BACKGROUND = "곡 배경과의 연결"
 PHRASE_INPUT = "기억나는 가사를 아무 언어로 입력하세요"
 PHRASE_EMPTY = "일치하는 가사를 찾지 못했습니다."
 SEARCH_BUTTON = "찾기"
+
+SEARCH_LABEL = "곡 검색"
+SEARCH_PLACEHOLDER = "제목·아티스트·가사·별명 무엇이든 (한/영/일)"
+SEARCH_EMPTY = "검색 결과가 없습니다."
+SEARCH_PICK = "이 곡 선택"
