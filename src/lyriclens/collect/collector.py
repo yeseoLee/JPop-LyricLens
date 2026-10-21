@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from concurrent.futures import ThreadPoolExecutor
+
 from lyriclens.collect.cache import CollectCache
 from lyriclens.collect.candidate_selector import select_candidates
 from lyriclens.collect.models import (
@@ -70,7 +72,7 @@ def find_song_page(song: SongInfo, wiki, limit: int,
     return None, None
 
 
-def _primary_docs(song: SongInfo, wiki, cfg) -> list[tuple[WikiCandidate, str, WikiPage | None]]:
+def primary_docs(song: SongInfo, wiki, cfg) -> list[tuple[WikiCandidate, str, WikiPage | None]]:
     found: list[tuple[WikiCandidate, str, WikiPage | None]] = []
     song_page, fetched = find_song_page(song, wiki, cfg["candidates_per_query"],
                                         cfg.get("primary_verify_limit", 3))
@@ -85,19 +87,27 @@ def _primary_docs(song: SongInfo, wiki, cfg) -> list[tuple[WikiCandidate, str, W
 def collect_documents(song: SongInfo, question: str, chat, wiki, cache: CollectCache,
                       settings) -> CollectResult:
     cfg = settings.collect
-    result = CollectResult(queries=extract_queries(song, question, chat, cfg["max_queries"]))
+    skip_primary = cache.primary_done(song.song_id)
+    # 검색어 추출(LLM)과 1차 문서 찾기(위키)는 서로 기다릴 필요가 없다 (SPEC-014 §2-1)
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        queries_future = pool.submit(extract_queries, song, question, chat, cfg["max_queries"])
+        primary_future = None if skip_primary else pool.submit(primary_docs, song, wiki, cfg)
+        result = CollectResult(queries=queries_future.result())
+        primary = primary_future.result() if primary_future else []
     result.cached_queries = [q for q in result.queries if cache.has_query(song.song_id, q)]
     pending = [q for q in result.queries if q not in result.cached_queries]
-    if not pending:
-        return result
 
     known = cache.page_ids(song.song_id)
     seen: set[int] = set(known)
 
-    for cand, query, page in _primary_docs(song, wiki, cfg):
+    for cand, query, page in primary:
         if cand.page_id not in seen:
             seen.add(cand.page_id)
             result.indexed.append(CollectedDoc(page or wiki.fetch(cand.page_id), query, True))
+    if not pending:
+        cache.add(song.song_id, [], [d.page.page_id for d in result.indexed])
+        cache.mark_primary_done(song.song_id)
+        return result
 
     base = {song.title, song.artist_query}
     candidates: list[tuple[WikiCandidate, str]] = []
@@ -121,4 +131,5 @@ def collect_documents(song: SongInfo, question: str, chat, wiki, cache: CollectC
             result.discarded.append(cand)
 
     cache.add(song.song_id, pending, [d.page.page_id for d in result.indexed])
+    cache.mark_primary_done(song.song_id)
     return result

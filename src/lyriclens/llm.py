@@ -26,12 +26,14 @@ def make_embeddings(settings: Settings) -> OpenAIEmbeddings:
     )
 
 
-def make_chat(settings: Settings, **kw) -> ChatOpenAI:
-    temperature = settings.llm.get("temperature")
+def make_chat(settings: Settings, aux: bool = False, **kw) -> ChatOpenAI:
+    """aux=True 면 보조 작업용 빠른 모델 (D-11)."""
+    model = settings.llm["aux_model"] if aux else settings.llm["chat_model"]
+    temperature = settings.llm.get("aux_temperature" if aux else "temperature")
     if temperature is not None:  # 기본값만 허용하는 모델이 있어 null이면 보내지 않는다
         kw.setdefault("temperature", temperature)
     return ChatOpenAI(
-        model=settings.llm["chat_model"],
+        model=model,
         api_key=_key(settings),
         base_url=settings.llm["base_url"],
         **kw,

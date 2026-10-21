@@ -1,7 +1,9 @@
 # 검색·답변 품질에 영향을 주는 값은 여기서만 바꾼다 (docs/SPEC.md §4)
 llm:
   base_url: https://gms.ssafy.io/gmsapi/api.openai.com/v1/
-  chat_model: gpt-6-luna
+  chat_model: gpt-6-luna      # 최종 답변·구절 해석
+  aux_model: gpt-5.4-nano     # 보조 작업: 검색어 추출·후보 선별·조건 탐색·일본어 변환 (D-11)
+  aux_temperature: 0
   embedding_model: text-embedding-3-large
   temperature: null  # null이면 모델 기본값 (gpt-6-luna는 0 미지원)
 chunking:

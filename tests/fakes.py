@@ -116,10 +116,21 @@ class FakeChatModel:
         self.responses = list(responses or ["[]"])
         self.calls: list = []
 
+    delay = 0.0
+
     def invoke(self, messages, **kw):
+        import time
+
         self.calls.append(messages)
+        if self.delay:
+            time.sleep(self.delay)
         content = self.responses.pop(0) if len(self.responses) > 1 else self.responses[0]
         return FakeMessage(content)
+
+    def stream(self, messages, **kw):
+        text = self.invoke(messages, **kw).content
+        for i in range(0, len(text), 5):
+            yield FakeMessage(text[i : i + 5])
 
 
 class FakeWikiClient:
