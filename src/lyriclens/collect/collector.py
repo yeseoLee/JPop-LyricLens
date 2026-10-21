@@ -48,6 +48,8 @@ def find_song_page(song: SongInfo, wiki, limit: int,
                    verify_limit: int) -> tuple[WikiCandidate | None, WikiPage | None]:
     """곡 문서와 (확인하느라 받은 경우) 본문을 돌려준다 (SPEC-013)."""
     direct = wiki.find_page(song.title)
+    if direct and _is_song_page(direct.title, song.title):  # 흔한 경우: 검색 없이 끝
+        return direct, None
     candidates: list[WikiCandidate] = [direct] if direct else []
     queries = (song.title, f"{song.title} {song.artist_query}",
                f"{song.artist_query} 노래 {song.title}")

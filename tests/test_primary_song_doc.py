@@ -97,3 +97,13 @@ def test_disambiguation_skipped_and_paren_rule(tmp_path):
     primary = {d.page.page_id for d in result.indexed if d.is_primary}
     assert primary == {31, 32}
     assert 30 not in [p for k, p in wiki.calls if k == "fetch"]
+
+
+def test_direct_title_match_skips_search(tmp_path):
+    """T-F2004-11 바로 찾은 문서가 원제 규칙에 맞으면 검색하지 않는다."""
+    pages = [
+        {"page_id": 40, "title": "夜に駆ける", "url": "u40", "text": LONG},
+        {"page_id": 41, "title": "요아소비", "url": "u41", "text": LONG},
+    ]
+    _, wiki = _run(pages, {}, tmp_path)
+    assert wiki.count("search") == 0
