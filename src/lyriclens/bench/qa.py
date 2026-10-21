@@ -74,6 +74,7 @@ def run_qa(cases: list[dict], modes: dict[str, Callable[[dict], str]], judge_cha
             groups = case.get("answer_keywords") or []
             row = {"id": case["id"], "type": case["type"], "lang": case["lang"],
                    "split": case["split"], "question": case["question"], "answer": answer,
+                   "difficulty": "hard" if case.get("hard") else "normal",
                    "error": error, "sec": sec,
                    "kw_correct": bool(groups) and keyword_correct(answer, groups),
                    "verdict": judge_answer(case, answer, judge_chat) if answer else "unknown",
@@ -83,7 +84,8 @@ def run_qa(cases: list[dict], modes: dict[str, Callable[[dict], str]], judge_cha
         report["rows"][mode] = rows
         report["summary"][mode] = {"all": _aggregate(rows), "by_type": _group(rows, "type"),
                                    "by_lang": _group(rows, "lang"),
-                                   "by_split": _group(rows, "split")}
+                                   "by_split": _group(rows, "split"),
+                                   "by_difficulty": _group(rows, "difficulty")}
     return report
 
 
@@ -104,4 +106,8 @@ def qa_markdown(report: dict) -> str:
         [m, *[(s["by_type"][t]["abstain_rate"] if t == "unanswerable"
                else s["by_type"][t]["llm_acc"]) if t in s["by_type"] else "-" for t in types]]
         for m, s in summary.items()])]
+    levels = sorted({d for s in summary.values() for d in s.get("by_difficulty", {})})
+    parts += ["### 난이도별", table(["모드", "난이도", *QA_METRICS[:-1], "n"], [
+        [m, d, *[s["by_difficulty"][d][k] for k in QA_METRICS[:-1]], s["by_difficulty"][d]["n"]]
+        for m, s in summary.items() for d in levels if d in s.get("by_difficulty", {})])]
     return "\n\n".join(parts)
