@@ -20,6 +20,7 @@ collect:
   max_queries: 4
   candidates_per_query: 5
   min_doc_chars: 200
+  primary_verify_limit: 3   # 번역 제목 곡 문서 확인 시 본문을 볼 후보 수 (SPEC-013)
   request_interval_sec: 1.0  # 위키백과 호출 간격
   max_retries: 3
 crawl:
