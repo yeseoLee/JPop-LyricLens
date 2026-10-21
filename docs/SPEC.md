@@ -23,6 +23,7 @@
 | D-08 | 리뷰 방식 | CI 통과 후 **로컬 Claude Code 리뷰 서브에이전트**(`.claude/agents/reviewer.md`)가 PR에 리뷰 코멘트 작성 | 추가 시크릿 불필요 |
 | D-09 | 크롤링 허용 | utaten `robots.txt`(`/manage`, `/outsourcing` 외 허용)와 별도 안내로 크롤링 가능함을 사용자가 확인함 (2026-10-21) | NF2007 |
 | D-10 | LLM / 임베딩 | SSAFY GMS(OpenAI 호환) — 채팅 `gpt-6-luna`, 임베딩 `text-embedding-3-large`(3072차원). 설정으로 변경 가능 | 2026-10-21 사용자 결정으로 `gpt-5.4-nano`/`text-embedding-3-small` 에서 변경 (#24). `gpt-6-luna` 는 temperature 기본값만 허용 → `temperature: null` |
+| D-11 | 보조 작업 모델 | 검색어 추출·후보 선별·조건 해석/선별·일본어 표현 변환은 `gpt-5.4-nano`(`llm.aux_model`), 최종 답변·구절 해석은 `gpt-6-luna` | 2026-10-21 사용자 결정 (#31). gpt-6-luna 호출당 2~8초로 첫 질문 중앙값 22초 → 보조 호출을 빠른 모델로 |
 
 ---
 
@@ -188,7 +189,9 @@ PRD 1.2-5)의 고정 버전을 그대로 쓴다 (`requirements.txt`). PRD 목록
 ```yaml
 llm:
   base_url: https://gms.ssafy.io/gmsapi/api.openai.com/v1/
-  chat_model: gpt-6-luna
+  chat_model: gpt-6-luna          # 최종 답변·구절 해석
+  aux_model: gpt-5.4-nano         # 보조 작업 (D-11)
+  aux_temperature: 0
   embedding_model: text-embedding-3-large
   temperature: null      # null이면 모델 기본값 (gpt-6-luna는 0 미지원)
 chunking:
