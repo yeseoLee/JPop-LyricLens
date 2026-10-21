@@ -6,7 +6,7 @@ from tests.fakes import FakeEmbeddings
 Q = "언내추럴 드라마 주제가"
 
 
-def _store(tmp_path, wiki_n=8):
+def _store(tmp_path, wiki_n=8, with_duplicate=True):
     store = VectorStore(tmp_path, FakeEmbeddings())
     store.upsert(
         "song_meta",
@@ -76,19 +76,20 @@ def _store(tmp_path, wiki_n=8):
         )
         for i in range(wiki_n)
     ]
-    wiki.append(
-        IndexDoc(
-            "ut_a:9:0",
-            "언내추럴 문단 0 내용",
-            {  # ut_a:7:0 과 같은 본문, 다른 문서
-                "song_id": "ut_a",
-                "doc_title": "다른 문서",
-                "doc_id": 9,
-                "url": "w9",
-                "source_type": "wikipedia",
-            },
+    if with_duplicate:  # ut_a:7:0 과 같은 본문, 다른 문서
+        wiki.append(
+            IndexDoc(
+                "ut_a:9:0",
+                "언내추럴 문단 0 내용",
+                {  # ut_a:7:0 과 같은 본문, 다른 문서
+                    "song_id": "ut_a",
+                    "doc_title": "다른 문서",
+                    "doc_id": 9,
+                    "url": "w9",
+                    "source_type": "wikipedia",
+                },
+            )
         )
-    )
     wiki.append(
         IndexDoc(
             "ut_b:7:0",
@@ -131,7 +132,7 @@ def test_duplicate_text_removed(tmp_path):
 
 def test_top_k_from_settings(tmp_path):
     """T-F2006-4 wiki_top_k 설정이 위키 근거 수를 정한다."""
-    store = _store(tmp_path)
+    store = _store(tmp_path, with_duplicate=False)  # 중복 제거가 개수에 끼어들지 않게
     n3 = sum(e.source_type == "wikipedia" for e in retrieve(store, "ut_a", Q, _settings(3)))
     n6 = sum(e.source_type == "wikipedia" for e in retrieve(store, "ut_a", Q, _settings(6)))
     assert (n3, n6) == (3, 6)
