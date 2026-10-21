@@ -48,3 +48,9 @@ search:                    # 통합 곡 검색 (SPEC-016)
   rrf_k: 60
   lexical_threshold: 0.75
   weights: {lexical: 1.0, llm_guess: 0.8, meta_vector: 0.6, lyrics_vector: 0.6}
+  route_weights:           # 질의 유형별 가중치 (SPEC-016 §2.4.1, dev 만 보고 조정)
+    name: {lexical: 1.0, llm_guess: 0.8, meta_vector: 0.4, lyrics_vector: 0.2}
+    lyrics: {lexical: 0.3, llm_guess: 0.3, meta_vector: 0.2, lyrics_vector: 1.0}
+    description: {lexical: 0.3, llm_guess: 1.0, meta_vector: 0.8, lyrics_vector: 0.2}
+  lyrics_margin: 0.05
+  vector_depth: 10
