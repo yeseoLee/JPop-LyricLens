@@ -34,7 +34,7 @@ def _year_filter(parsed: dict) -> dict | None:
     clauses = []
     for key, op in (("year_from", "$gte"), ("year_to", "$lte")):
         value = parsed.get(key)
-        if isinstance(value, int):
+        if isinstance(value, int) and not isinstance(value, bool):
             clauses.append({"release_year": {op: value}})
     if not clauses:
         return None
@@ -43,7 +43,8 @@ def _year_filter(parsed: dict) -> dict | None:
 
 def _lyrics_head(text: str) -> str:
     _, _, lyrics = text.partition("가사:\n")
-    return " / ".join(lyrics.splitlines()[:LYRICS_PREVIEW_LINES])
+    lines = [line for line in lyrics.splitlines() if line.strip()]
+    return " / ".join(lines[:LYRICS_PREVIEW_LINES])
 
 
 def _describe(doc) -> str:

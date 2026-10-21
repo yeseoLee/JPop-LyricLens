@@ -71,3 +71,9 @@ def test_select_prompt_contents(tmp_path):
         "2020년 이후 애니 주제가",
     ]:
         assert part in listing
+
+
+def test_bool_year_ignored(tmp_path):
+    """T-F2011-3 연도 자리에 bool이 오면 필터를 걸지 않는다."""
+    res, _ = _run(tmp_path, ['{"query": "q", "year_from": true, "year_to": null}', "[]"])
+    assert res.year_filter is None
