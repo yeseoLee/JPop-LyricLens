@@ -25,7 +25,7 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
 # 2) 환경변수 — .env.example 을 복사해 값을 채운다 (.env 는 커밋하지 않음)
-cp .env.example .env        # GMS_KEY, WIKI_CONTACT(연락처 이메일)
+cp .env.example .env        # GMS_KEY, GMS_BASE_URL(API 주소), WIKI_CONTACT(연락처 이메일)
 
 # 3) 곡 수집 (UtaTen, 3초 간격 · 약 15분, 원본 HTML은 data/raw 에 캐시)
 python scripts/crawl_songs.py

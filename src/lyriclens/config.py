@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_SETTINGS = ROOT / "config" / "settings.yaml"
-REQUIRED_ENV = ("GMS_KEY", "WIKI_CONTACT")
+REQUIRED_ENV = ("GMS_KEY", "GMS_BASE_URL", "WIKI_CONTACT")
 SECTIONS = ("llm", "chunking", "retrieval", "collect", "crawl", "display", "paths", "bench")
 
 
@@ -27,6 +27,7 @@ class Settings:
     root: Path
     bench: dict = field(default_factory=dict)
     gms_key: str | None = field(default=None, repr=False)
+    gms_base_url: str | None = None
     wiki_contact: str | None = field(default=None, repr=False)
 
     def path(self, name: str) -> Path:
@@ -49,12 +50,14 @@ def load_settings(path: str | Path | None = None, overrides: dict | None = None)
         **sections,
         root=ROOT,
         gms_key=os.environ.get("GMS_KEY") or None,
+        gms_base_url=os.environ.get("GMS_BASE_URL") or None,
         wiki_contact=os.environ.get("WIKI_CONTACT") or None,
     )
 
 
 def missing_env(settings: Settings) -> list[str]:
-    values = {"GMS_KEY": settings.gms_key, "WIKI_CONTACT": settings.wiki_contact}
+    values = {"GMS_KEY": settings.gms_key, "GMS_BASE_URL": settings.gms_base_url,
+              "WIKI_CONTACT": settings.wiki_contact}
     return [name for name in REQUIRED_ENV if not values[name]]
 
 

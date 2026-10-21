@@ -23,5 +23,6 @@ jobs:
       - name: 테스트 (live 제외)
         env:
           GMS_KEY: ""
+          GMS_BASE_URL: ""
           WIKI_CONTACT: ci@example.com
         run: pytest -m "not live and not e2e" --cov=lyriclens

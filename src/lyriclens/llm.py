@@ -17,11 +17,17 @@ def _key(settings: Settings) -> str:
     return settings.gms_key
 
 
+def _base_url(settings: Settings) -> str:
+    if not settings.gms_base_url:
+        raise MissingKeyError("GMS_BASE_URL이 설정되지 않았습니다.")
+    return settings.gms_base_url
+
+
 def make_embeddings(settings: Settings) -> OpenAIEmbeddings:
     return OpenAIEmbeddings(
         model=settings.llm["embedding_model"],
         api_key=_key(settings),
-        base_url=settings.llm["base_url"],
+        base_url=_base_url(settings),
         check_embedding_ctx_length=False,
     )
 
@@ -35,6 +41,6 @@ def make_chat(settings: Settings, aux: bool = False, **kw) -> ChatOpenAI:
     return ChatOpenAI(
         model=model,
         api_key=_key(settings),
-        base_url=settings.llm["base_url"],
+        base_url=_base_url(settings),
         **kw,
     )

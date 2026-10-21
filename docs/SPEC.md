@@ -190,7 +190,6 @@ PRD 1.2-5)의 고정 버전을 그대로 쓴다 (`requirements.txt`). PRD 목록
 
 ```yaml
 llm:
-  base_url: https://gms.ssafy.io/gmsapi/api.openai.com/v1/
   chat_model: gpt-6-luna          # 최종 답변·구절 해석
   aux_model: gpt-5.4-nano         # 보조 작업 (D-11)
   aux_temperature: 0
@@ -230,7 +229,7 @@ paths:
   artists: config/artists.yaml
 ```
 
-환경변수(`.env`, NF2003): `GMS_KEY`(필수), `WIKI_CONTACT`(필수), `LYRICLENS_SETTINGS`(선택, 다른 설정 파일 경로). 키는 코드·로그·화면에 출력하지 않는다.
+환경변수(`.env`, NF2003): `GMS_KEY`(필수), `GMS_BASE_URL`(필수, GMS API 주소), `WIKI_CONTACT`(필수), `LYRICLENS_SETTINGS`(선택, 다른 설정 파일 경로). 키는 코드·로그·화면에 출력하지 않는다.
 
 ---
 

@@ -4,7 +4,7 @@ APP_TITLE = "JPop LyricLens"
 APP_CAPTION = "일본어 가사를 한국어·English·日本語로 검색하고, 근거와 함께 해석합니다."
 
 MISSING_KEY = """GMS_KEY가 설정되지 않았습니다.
-프로젝트 폴더의 .env 파일에 GMS_KEY=발급받은_키 를 넣고 앱을 다시 실행하세요."""
+프로젝트 폴더의 .env 파일에 GMS_KEY=발급받은_키 와 GMS_BASE_URL 을 넣고 앱을 다시 실행하세요."""
 NO_INDEX = """곡 색인이 비어 있습니다. 아래 명령을 차례로 실행하세요.
 python scripts/crawl_songs.py
 python scripts/index_songs.py"""
