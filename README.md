@@ -11,7 +11,8 @@
 | [`docs/SPEC.md`](docs/SPEC.md) | 요구사항 정의서 (도메인 확정 근거, PRD 요구사항별 기능 SPEC, 의사결정 기록) |
 | [`docs/rag_pipeline.md`](docs/rag_pipeline.md) | RAG 파이프라인 설계문서 |
 | [`docs/verification.md`](docs/verification.md) | 검증 결과 (요구사항 대조표, 실행 결과, 체크리스트) |
-| [`docs/benchmark.md`](docs/benchmark.md) | 검색·답변 벤치마크 (케이스 281개, 기준선) |
+| [`docs/benchmark.md`](docs/benchmark.md) | 검색·답변 벤치마크 (케이스 281개, 기준선·통합 검색·MMR) |
+| [`docs/rag_comparison.md`](docs/rag_comparison.md) | RAG 사용 전후 품질 비교 (F2015) |
 | [`docs/specs/`](docs/specs) | 이슈별 상세 SPEC |
 | [`AGENTS.md`](AGENTS.md) | 개발 흐름 (SPEC → 테스트 → 구현 → PR → CI → 리뷰 → 머지) |
 
@@ -77,8 +78,8 @@ ruff check .
 
 | 번호 | 상태 |
 |------|------|
-| F2014 MMR 검색 | 계획 (`docs/SPEC.md` §9 X-01) |
-| F2015 RAG 전후 품질 비교 | 계획 (X-02) |
+| F2014 MMR 검색 | 완료 — `retrieval.search_type: mmr` 로 켬, 비교는 `scripts/compare_retrieval.py` (기본값은 similarity, `docs/benchmark.md` §4) |
+| F2015 RAG 전후 품질 비교 | 완료 — `docs/rag_comparison.md` |
 | F2013 HTML/JS 프론트엔드, F2016 여러 출처 결합 | 보류 |
 
 ## 데이터 준비와 색인 절차

@@ -435,7 +435,7 @@ paths:
 | ID | 기능 | 요약 | 상태 |
 |----|------|------|------|
 | X-01 | F2014 MMR 검색 | `search_type: mmr`, `mmr_fetch_k=20`, `mmr_lambda=0.5`. 비교 스크립트 `scripts/compare_retrieval.py`. 다양성은 높아지나 답변 품질이 낮아 기본값은 similarity (SPEC-017) | 완료 |
-| X-02 | F2015 RAG 전후 비교 | 대표 질문 5개 이상을 RAG 없이/있이 답하게 하고 사실 정확성·근거 제시·모름 인정 세 기준으로 `docs/rag_comparison.md` 작성 | 계획 |
+| X-02 | F2015 RAG 전후 비교 | 벤치마크 90문항(대표 8개)을 RAG 없이/있이 비교, `docs/rag_comparison.md` (SPEC-018) | 완료 |
 | X-03 | F2013 프론트엔드 | FastAPI(`/api/songs`, `/api/chat`, `/api/search`) + HTML/CSS/JS | 보류 |
 | X-04 | F2016 여러 출처 결합 | 가사 해설 블로그·PDF 등 추가 출처 | 보류 |
 | X-05 | UI 다국어 | 화면 문구 ko/en/ja 전환 (`messages.py` 다국어화) | 아이디어 |
