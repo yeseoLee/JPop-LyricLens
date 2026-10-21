@@ -434,7 +434,7 @@ paths:
 
 | ID | 기능 | 요약 | 상태 |
 |----|------|------|------|
-| X-01 | F2014 MMR 검색 | `search_type: mmr`, `mmr_fetch_k=20` 에서 `wiki_top_k` 선별. 같은 질문의 유사도/MMR 근거 목록 비교 스크립트 `scripts/compare_retrieval.py` | 계획 |
+| X-01 | F2014 MMR 검색 | `search_type: mmr`, `mmr_fetch_k=20`, `mmr_lambda=0.5`. 비교 스크립트 `scripts/compare_retrieval.py`. 다양성은 높아지나 답변 품질이 낮아 기본값은 similarity (SPEC-017) | 완료 |
 | X-02 | F2015 RAG 전후 비교 | 대표 질문 5개 이상을 RAG 없이/있이 답하게 하고 사실 정확성·근거 제시·모름 인정 세 기준으로 `docs/rag_comparison.md` 작성 | 계획 |
 | X-03 | F2013 프론트엔드 | FastAPI(`/api/songs`, `/api/chat`, `/api/search`) + HTML/CSS/JS | 보류 |
 | X-04 | F2016 여러 출처 결합 | 가사 해설 블로그·PDF 등 추가 출처 | 보류 |
