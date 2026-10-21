@@ -226,3 +226,27 @@ def test_qa_summary_by_difficulty():
                     FakeChatModel(['{"verdict": "correct"}']))
     by = report["summary"]["m"]["by_difficulty"]
     assert by["normal"]["kw_acc"] == 1.0 and by["hard"]["kw_acc"] == 0.0
+
+
+def test_keyword_groups_not_nested():
+    """T-BENCH-5 한 문항 안에서 어떤 키워드도 다른 그룹 키워드에 (정규화 후) 포함되지 않는다."""
+    from lyriclens.bench.scoring import normalize
+
+    for q in load_qa_cases(ROOT / "bench/qa_cases.yaml"):
+        groups = [[normalize(k) for k in g] for g in q.get("answer_keywords") or []]
+        for i, group in enumerate(groups):
+            others = [k for j, g in enumerate(groups) if j != i for k in g]
+            bad = [k for k in group if any(k in o for o in others)]
+            assert not bad, (q["id"], bad)
+        assert all(len(k) >= 2 for g in groups for k in g), q["id"]
+
+
+def test_abstain_rate_missing_when_no_unanswerable():
+    """T-BENCH-9 답할 수 없는 문항이 없는 그룹의 모름 인정률은 None."""
+    from lyriclens.bench.qa import run_qa
+    from tests.fakes import FakeChatModel
+
+    case = {"id": "a", "type": "credit", "lang": "ko", "split": "dev", "question": "q",
+            "song_id": "s", "answer_keywords": [["xx"]]}
+    report = run_qa([case], {"m": lambda c: "xx"}, FakeChatModel(['{"verdict": "correct"}']))
+    assert report["summary"]["m"]["all"]["abstain_rate"] is None
