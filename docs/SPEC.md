@@ -195,6 +195,7 @@ chunking:
   chunk_size: 1000        # 위키 청크 크기(자)
   chunk_overlap: 200
   lyrics_chunk_lines: 8   # 가사 연 청크 최대 줄 수
+  item_text_max_chars: 6000
 retrieval:
   wiki_top_k: 5           # 외부 문서 청크 수
   lyrics_top_k: 3         # 질문과 관련된 가사 연 청크 수
@@ -206,6 +207,8 @@ collect:
   max_queries: 4          # 프롬프트1이 뽑을 최대 검색어 수
   candidates_per_query: 5
   min_doc_chars: 200      # 너무 짧은 문서 제외 (곡 자체 문서는 예외)
+  request_interval_sec: 1.0 # 위키백과 호출 간격
+  max_retries: 3
 crawl:
   request_interval_sec: 3.0
   max_retries: 3
@@ -217,6 +220,8 @@ paths:
   raw_html: data/raw
   chroma: data/chroma
   collect_cache: data/cache/collected.json
+  docs_bundle: data/docs_bundle
+  artists: config/artists.yaml
 ```
 
 환경변수(`.env`, NF2003): `GMS_KEY`(필수), `WIKI_CONTACT`(필수), `LYRICLENS_SETTINGS`(선택, 다른 설정 파일 경로). 키는 코드·로그·화면에 출력하지 않는다.

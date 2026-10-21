@@ -1,0 +1,37 @@
+# 검색·답변 품질에 영향을 주는 값은 여기서만 바꾼다 (docs/SPEC.md §4)
+llm:
+  base_url: https://gms.ssafy.io/gmsapi/api.openai.com/v1/
+  chat_model: gpt-5.4-nano
+  embedding_model: text-embedding-3-small
+  temperature: 0
+chunking:
+  chunk_size: 1000        # 위키 청크 크기(자)
+  chunk_overlap: 200
+  lyrics_chunk_lines: 8   # 가사 연 청크 최대 줄 수
+  item_text_max_chars: 6000
+retrieval:
+  wiki_top_k: 5
+  lyrics_top_k: 3
+  search_type: similarity # similarity | mmr
+  mmr_fetch_k: 20
+  condition_candidates: 20
+  phrase_search_top_k: 10
+collect:
+  max_queries: 4
+  candidates_per_query: 5
+  min_doc_chars: 200
+  request_interval_sec: 1.0  # 위키백과 호출 간격
+  max_retries: 3
+crawl:
+  request_interval_sec: 3.0  # utaten 호출 간격
+  max_retries: 3
+  songs_per_artist: 6
+display:
+  lyrics_quote_max_lines: 4
+paths:
+  songs: data/songs.jsonl
+  raw_html: data/raw
+  chroma: data/chroma
+  collect_cache: data/cache/collected.json
+  docs_bundle: data/docs_bundle
+  artists: config/artists.yaml
