@@ -33,7 +33,7 @@ def test_crawl_dedupes_song_ids():
     ]
     result = crawl_artists(artists, FakeUtatenClient(_pages()), songs_per_artist=3)
     ids = [s.song_id for s in result.songs]
-    assert len(ids) == len(set(ids)) == 3
+    assert len(ids) == len(set(ids)) == 4  # 목록의 고유 곡 4개뿐
 
 
 def test_crawl_records_errors_and_skips():
@@ -46,7 +46,8 @@ def test_crawl_records_errors_and_skips():
     client = FakeUtatenClient(pages)
     client.pages["/search"] = fixture_text("utaten_search.html")
     result = crawl_artists(artists, client, songs_per_artist=2)
-    assert [s.song_id for s in result.songs] == ["ut_bb0002"]
+    # 실패 곡은 건너뛰고 N곡을 채운다
+    assert [s.song_id for s in result.songs] == ["ut_bb0002", "ut_cc0003"]
     assert any("aa0001" in e for e in result.errors)
     assert result.skipped == ["없는가수"]
 
@@ -61,3 +62,15 @@ def test_write_songs_reports_and_warns(tmp_path, capsys):
     assert len(lines) == 2 and json.loads(lines[0])["song_id"] == "ut_aa0001"
     printed = capsys.readouterr().out
     assert "2곡" in printed and "경고" in printed
+
+
+def test_duplicates_do_not_reduce_per_artist_count():
+    """T-F2001-5 다른 아티스트와 겹친 곡은 건너뛰고 N곡을 채운다."""
+    artists = [
+        {"name": "A", "name_ko": "에이", "utaten_artist_id": "111"},
+        {"name": "B", "name_ko": "비", "utaten_artist_id": "111"},
+    ]
+    result = crawl_artists(artists, FakeUtatenClient(_pages()), songs_per_artist=2)
+    assert [s.song_id for s in result.songs] == [
+        "ut_aa0001", "ut_bb0002", "ut_cc0003", "ut_dd0004"
+    ]

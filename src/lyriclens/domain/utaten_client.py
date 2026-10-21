@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import logging
 import time
 from pathlib import Path
 
@@ -10,6 +11,7 @@ import requests
 
 BASE_URL = "https://utaten.com"
 RETRY_STATUS = {429, 500, 502, 503, 504}
+log = logging.getLogger(__name__)
 
 
 class FetchError(RuntimeError):
@@ -30,6 +32,8 @@ class UtatenClient:
     ):
         self.interval_sec = interval_sec
         self.max_retries = max_retries
+        if not contact:
+            log.warning("연락처(WIKI_CONTACT)가 없어 User-Agent에 연락처를 넣지 못했습니다.")
         self.user_agent = f"JPopLyricLens/0.1 (+mailto:{contact or 'unknown'})"
         self.cache_dir = Path(cache_dir) if cache_dir else None
         self.session = session or requests.Session()

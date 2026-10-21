@@ -60,7 +60,10 @@ def crawl_artists(artists: list[dict], client, songs_per_artist: int) -> CrawlRe
         except FetchError as exc:
             result.errors.append(f"{name}: {exc}")
             continue
-        for lyric_id in lyric_ids[:songs_per_artist]:
+        collected = 0
+        for lyric_id in lyric_ids:
+            if collected >= songs_per_artist:
+                break
             if f"ut_{lyric_id}" in seen:
                 continue
             url = f"https://utaten.com/lyric/{lyric_id}/"
@@ -73,6 +76,7 @@ def crawl_artists(artists: list[dict], client, songs_per_artist: int) -> CrawlRe
             song.crawled_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
             seen.add(song.song_id)
             result.songs.append(song)
+            collected += 1
     return result
 
 

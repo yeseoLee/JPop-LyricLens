@@ -47,7 +47,8 @@ UtatenClient(interval_sec=3.0, max_retries=3, user_agent=..., cache_dir=None,
 
 ### 3.4 수집 (`crawl.crawl_artists(artists, client, songs_per_artist) -> CrawlResult`)
 - `utaten_artist_id` 가 없으면 검색 페이지에서 이름이 정확히 일치(공백·대소문자 무시)하는 첫 결과로 정함. 못 찾으면 건너뛰고 `skipped` 에 기록
-- 곡 목록 상위 `songs_per_artist`곡을 파싱. 실패한 곡은 `errors` 에 기록하고 계속
+- 곡 목록을 인기순으로 훑으며 아티스트당 `songs_per_artist`곡을 채운다. 이미 수집한 곡(중복)과 실패한 곡은 개수에 넣지 않고 건너뛴다. 실패는 `errors` 에 기록
+- 연락처(`WIKI_CONTACT`)가 없으면 경고 로그를 남긴다
 - `artist_ko` 는 artists.yaml 값을 넣음
 - `song_id` 중복은 한 번만 (F2001 T-F2001-5)
 - 스크립트: `python scripts/crawl_songs.py [--limit-artists N] [--write-artist-ids]` → `songs.jsonl` 저장, 곡 수 출력, 100건 미만이면 경고. `--write-artist-ids` 는 찾은 ID를 artists.yaml 에 기록
