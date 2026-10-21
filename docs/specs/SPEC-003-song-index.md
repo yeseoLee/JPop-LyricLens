@@ -44,7 +44,7 @@ class VectorStore:
 - 컬렉션 거리 함수는 cosine (`collection_metadata={"hnsw:space": "cosine"}`), `search` 점수는 `1 - distance`.
 
 ### 3.4 모델 생성 (`llm.py`)
-- `make_embeddings(settings)`, `make_chat(settings)`: GMS base_url·모델명은 설정에서, 키는 `settings.gms_key`. 키가 없으면 `MissingKeyError`.
+- `make_embeddings(settings)`, `make_chat(settings)`: 모델명은 설정에서, 키와 API 주소는 환경변수(`GMS_KEY`, `GMS_BASE_URL`)에서 읽는다. 키가 없으면 `MissingKeyError`.
 
 ### 3.5 스크립트
 `python scripts/index_songs.py` → `songs.jsonl` 을 읽어 두 컬렉션에 upsert, `song_meta N건 / song_lyrics M건` 출력. 곡이 0건이면 수집 스크립트 실행 안내 후 종료 코드 1.
