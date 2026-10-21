@@ -14,8 +14,19 @@ from lyriclens.rag.retrieve import SONG_LYRICS, SONG_META, retrieve
 from lyriclens.services.condition_search import search_by_condition
 from lyriclens.services.phrase_interpret import interpret_phrase
 from lyriclens.services.phrase_search import search_phrase
+from lyriclens.services.search_catalog import Catalog
+from lyriclens.services.unified_search import unified_search
 
 log = logging.getLogger(__name__)
+
+
+def _load_aliases(path) -> dict[str, list[str]]:
+    import yaml
+
+    if not path.exists():
+        return {}
+    data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    return data.get("aliases") or {}
 
 
 @dataclass
@@ -84,6 +95,19 @@ class LyricLensService:
     def interpret(self, song_id: str, phrase: str, target_lang: str):
         return interpret_phrase(song_id, phrase, target_lang, self.store, self.chat,
                                 self.settings)
+
+    def catalog(self):
+        """통합 검색 카탈로그 (곡 목록·별칭 사전으로 한 번 만든다)."""
+        if getattr(self, "_catalog", None) is None:
+            self._catalog = Catalog.build(
+                self.song_metas(),
+                _load_aliases(self.settings.path("artist_aliases")),
+                _load_aliases(self.settings.path("title_aliases")),
+            )
+        return self._catalog
+
+    def unified_search(self, query: str):
+        return unified_search(query, self.catalog(), self.store, self.aux_chat, self.settings)
 
     def phrase_search(self, text: str):
         return search_phrase(text, self.store, self.aux_chat, self.settings)

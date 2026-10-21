@@ -139,3 +139,18 @@ def test_e2e_7_switch_song(page):
     assert "이 곡은 어떤 드라마의 주제가인가요?" not in page.inner_text("body")
     _no_internal_error(page)
     shot(page, "07_switch.png")
+
+
+def test_e2e_8_unified_search(page):
+    """T-E2E-8 사이드바 통합 검색: 줄임말 '히게단' → 결과 선택 시 곡이 바뀐다 (SPEC-016 §2.6)."""
+    box = page.locator(f"{SIDEBAR}").get_by_label("곡 검색")
+    box.fill("히게단")
+    box.press("Enter")
+    first = page.locator(SIDEBAR).get_by_role("button").filter(has_text="Official髭男dism").first
+    first.wait_for()
+    title = first.inner_text().split(" — ")[0]
+    first.click()
+    _wait_idle(page)
+    assert page.get_by_text(f"'{title}'을(를) 선택했습니다").is_visible()
+    _no_internal_error(page)
+    shot(page, "08_unified_search.png")

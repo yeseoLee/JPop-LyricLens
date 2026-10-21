@@ -12,7 +12,9 @@ from dotenv import load_dotenv
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_SETTINGS = ROOT / "config" / "settings.yaml"
 REQUIRED_ENV = ("GMS_KEY", "GMS_BASE_URL", "WIKI_CONTACT")
-SECTIONS = ("llm", "chunking", "retrieval", "collect", "crawl", "display", "paths", "bench")
+SECTIONS = (
+    "llm", "chunking", "retrieval", "collect", "crawl", "display", "paths", "bench", "search",
+)
 
 
 @dataclass(frozen=True)
@@ -26,6 +28,7 @@ class Settings:
     paths: dict
     root: Path
     bench: dict = field(default_factory=dict)
+    search: dict = field(default_factory=dict)
     gms_key: str | None = field(default=None, repr=False)
     gms_base_url: str | None = None
     wiki_contact: str | None = field(default=None, repr=False)

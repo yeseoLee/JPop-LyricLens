@@ -16,6 +16,7 @@ def song_meta_doc(song: Song, max_chars: int) -> IndexDoc:
     metadata = {
         "song_id": song.song_id,
         "title": song.title,
+        "title_kana": song.title_kana,
         "artist": song.artist,
         "artist_ko": song.artist_ko,
         "lyricist": song.lyricist,
