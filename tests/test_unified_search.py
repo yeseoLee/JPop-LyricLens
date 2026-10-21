@@ -143,3 +143,44 @@ def test_service_unified_search(tmp_path):
     )
     hits = svc.unified_search("星の街")
     assert hits and hits[0].song_id == "ut_aa0001" and hits[0].reasons
+
+
+class ScoredStore:
+    """채널별로 정해진 (song_id, 점수) 를 돌려주는 저장소 대역."""
+
+    def __init__(self, meta, lyrics):
+        self.data = {"song_meta": meta, "song_lyrics": lyrics}
+
+    def search(self, name, query, k, where=None):
+        from lyriclens.index.store import IndexDoc
+
+        return [(IndexDoc(sid, "", {"song_id": sid}), score) for sid, score in self.data[name]][:k]
+
+
+def test_route_without_llm():
+    """T-SEARCH-11 LLM 없이 질의 유형을 정하고 유형별 가중치를 쓴다."""
+    from lyriclens.services.unified_search import route_kind
+
+    assert route_kind(lexical_best=1.0, lyrics_top=0.9, meta_top=0.3, margin=0.05) == "name"
+    assert route_kind(lexical_best=0.0, lyrics_top=0.62, meta_top=0.40, margin=0.05) == "lyrics"
+    assert (
+        route_kind(lexical_best=0.0, lyrics_top=0.42, meta_top=0.40, margin=0.05) == "description"
+    )
+
+    # 가사 질의: 가사 1위가 곡 정보 쪽 여러 곡보다 앞선다
+    store = ScoredStore(
+        meta=[("k1", 0.40), ("h1", 0.39), ("y2", 0.38)],
+        lyrics=[("l1", 0.70), ("k1", 0.35), ("h1", 0.34)],
+    )
+    settings = load_settings(overrides={"search": {**load_settings().search, "use_llm": False}})
+    hits = unified_search("夜の街で君を待つ", _catalog(), store, FakeChatModel(), settings)
+    assert hits[0].song_id == "l1"
+
+
+def test_short_name_containment():
+    """T-SEARCH-12 짧은 이름은 긴 질의 안에 있다는 이유만으로 걸리지 않는다."""
+    from lyriclens.services.search_text import similarity
+
+    assert similarity("songforadetectivekidmovie", "movie") < 0.75
+    assert similarity("songforadetectivekidmovie", "rad") < 0.75
+    assert similarity("요아소비아이돌", "요아소비") == 0.9  # 질의의 절반 이상이면 부분 일치
