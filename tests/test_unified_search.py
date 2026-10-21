@@ -63,6 +63,9 @@ def test_kana_to_romaji():
     assert kana_to_romaji("ぐれんげ") == "gurenge"
     assert kana_to_romaji("しゅくめい") == "shukumei"
     assert kana_to_romaji("がっこう") == "gakkou"
+    assert kana_to_romaji("まっちゃ") == "matcha"  # 촉음 + 요음
+    assert kana_to_romaji("いらっしゃい") == "irasshai"
+    assert kana_to_romaji("ふぁん") == "fan"
 
 
 def test_nickname_to_artist_songs():
