@@ -57,6 +57,15 @@ class VectorStore:
         }
         return [by_id[i] for i in ids if i in by_id]
 
+    def get_where(self, name: str, where: dict) -> list[IndexDoc]:
+        if self.count(name) == 0:
+            return []
+        res = self.collection(name)._collection.get(where=where)
+        return [
+            IndexDoc(i, doc, md or {})
+            for i, doc, md in zip(res["ids"], res["documents"], res["metadatas"], strict=True)
+        ]
+
     def search(
         self, name: str, query: str, k: int, where: dict | None = None
     ) -> list[tuple[IndexDoc, float]]:
