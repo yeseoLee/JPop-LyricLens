@@ -59,7 +59,7 @@
 ### 3.3 저작권 처리
 - 가사 원문은 저장소에 넣지 않는다.
 - `bench/lyric_refs.yaml` 에는 `{title, artist, stanza, line}` 만 둔다. 실행 때 `data/songs.jsonl` 에서 해당 줄을 꺼내 질의로 쓴다.
-- `lyrics_ko`·`lyrics_en` 질의는 `scripts/bench_build.py` 가 보조 모델로 해당 줄을 번역해 `data/bench/lyric_queries.json`(gitignore)에 한 번 만들고 고정한다. 다시 실행해도 기존 파일이 있으면 바꾸지 않는다.
+- `lyrics_ko`·`lyrics_en` 질의는 `scripts/bench_build.py` 가 보조 모델로 해당 줄을 번역해 `data/bench/lyric_queries.json`(gitignore)에 한 번 만들고 고정한다. 다시 실행해도 기존 파일이 있으면 바꾸지 않는다. 생성 결과에 가나(ko·en) 또는 한글(en)이 남아 있으면 섞인 번역으로 보고 주 모델로 다시 만든다 (실제로 nano가 「꿈だったら…」처럼 섞어 냄).
 - `typo` 질의는 무작위 규칙 대신 실제로 자주 나는 오류를 손으로 적는다: 일본어 IME 변환 오류(同音異字), 장음·촉음·작은 글자 누락, 한글 철자 오류, 영문 오타·누락. 원래 제목·아티스트 표기와 같으면 안 된다.
 
 ### 3.4 누수 방지
