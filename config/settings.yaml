@@ -37,6 +37,14 @@ paths:
   collect_cache: data/cache/collected.json
   docs_bundle: data/docs_bundle
   artists: config/artists.yaml
+  artist_aliases: config/artist_aliases.yaml
+  title_aliases: config/title_aliases.yaml
 
 bench:
   judge_model: gpt-6-luna   # 답변 품질 LLM 판정 모델 (SPEC-015 §4.2)
+search:                    # 통합 곡 검색 (SPEC-016)
+  top_k: 10
+  use_llm: true            # false 면 llm_guess 채널을 끈다
+  rrf_k: 60
+  lexical_threshold: 0.75
+  weights: {lexical: 1.0, llm_guess: 0.8, meta_vector: 0.6, lyrics_vector: 0.6}
