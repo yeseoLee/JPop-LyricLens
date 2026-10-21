@@ -65,3 +65,40 @@ class FakeUtatenClient:
             if path.startswith(key):
                 return html
         raise FetchError(f"404 {path}")
+
+
+class FakeEmbeddings:
+    """문자 bi-gram 해시 기반 결정적 임베딩. 겹치는 글자가 많을수록 가깝다."""
+
+    dim = 64
+
+    def _vec(self, text: str) -> list[float]:
+        import hashlib
+        import math
+
+        v = [0.0] * self.dim
+        grams = [text[i : i + 2] for i in range(max(len(text) - 1, 1))]
+        for g in grams:
+            v[int(hashlib.md5(g.encode()).hexdigest(), 16) % self.dim] += 1.0
+        norm = math.sqrt(sum(x * x for x in v)) or 1.0
+        return [x / norm for x in v]
+
+    def embed_documents(self, texts: list[str]) -> list[list[float]]:
+        return [self._vec(t) for t in texts]
+
+    def embed_query(self, text: str) -> list[float]:
+        return self._vec(text)
+
+
+def make_song(song_id="ut_aa0001", **kw):
+    from lyriclens.domain.models import Song
+
+    data = dict(
+        song_id=song_id, title="星の街", title_kana="ほしのまち", artist="テスト歌手",
+        artist_ko="테스트 가수", lyricist="作詞者A", composer="作曲者B", arranger=None,
+        release_date="2021-04-05", tieup="TVアニメ「テスト」主題歌",
+        lyrics="夜の窓に灯がともる\nねむれない僕の声\n\n星の街で待ってる\n君の名前を呼んだ",
+        url=f"https://utaten.com/lyric/{song_id[3:]}/",
+    )
+    data.update(kw)
+    return Song(**data)
