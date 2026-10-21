@@ -251,3 +251,14 @@ def test_abstain_rate_missing_when_no_unanswerable():
             "song_id": "s", "answer_keywords": [["xx"]]}
     report = run_qa([case], {"m": lambda c: "xx"}, FakeChatModel(['{"verdict": "correct"}']))
     assert report["summary"]["m"]["all"]["abstain_rate"] is None
+
+
+def test_keyword_digit_boundary():
+    """T-BENCH-5 숫자로 끝나는 키워드는 뒤에 숫자가 붙으면 맞지 않는다 (리뷰 반례)."""
+    groups = [["2026"], ["10월 2일", "October 2", "2 October", "2026/10/2", "2026-10-02"]]
+    assert not keyword_correct("October 21, 2026", groups)
+    assert not keyword_correct("2026/10/25", groups)
+    assert not keyword_correct("12 October 2026", groups)
+    assert keyword_correct("Released on October 2, 2026.", groups)
+    assert keyword_correct("2026년 10월 2일에 발매", groups)
+    assert keyword_correct("2026-10-02", groups)
