@@ -28,3 +28,10 @@ def test_no_internal_info_exposed(repo_root: Path):
     app = (repo_root / "src/lyriclens/ui/app.py").read_text(encoding="utf-8")
     assert "st.exception" not in app and "traceback" not in app
     assert "SYSTEM" not in app  # 프롬프트 전문을 화면에 쓰지 않는다
+
+
+def test_missing_base_url_is_missing_key(monkeypatch):
+    """GMS_KEY 가 있어도 GMS_BASE_URL 이 없으면 설정 안내 상태다."""
+    monkeypatch.setenv("GMS_KEY", "k" * 20)
+    monkeypatch.setenv("GMS_BASE_URL", "")
+    assert check_environment(load_settings(), 240).status == "missing_key"

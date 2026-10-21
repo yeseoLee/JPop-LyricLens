@@ -25,8 +25,8 @@ def main() -> int:
         return 1
     try:
         embeddings = make_embeddings(settings)
-    except MissingKeyError:
-        print("GMS_KEY가 없습니다. .env 에 GMS_KEY 를 설정하세요.")
+    except MissingKeyError as exc:
+        print(f"{exc} .env 를 확인하세요.")
         return 1
     store = VectorStore(settings.path("chroma"), embeddings)
     index_songs(

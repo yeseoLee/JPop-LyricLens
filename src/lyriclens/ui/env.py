@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
-from lyriclens.config import Settings
+from lyriclens.config import Settings, missing_env
 
 
 @dataclass
@@ -14,8 +14,9 @@ class EnvStatus:
 
 
 def check_environment(settings: Settings, meta_count: int) -> EnvStatus:
-    warnings = [] if settings.wiki_contact else ["missing_contact"]
-    if not settings.gms_key:
+    missing = missing_env(settings)
+    warnings = ["missing_contact"] if "WIKI_CONTACT" in missing else []
+    if "GMS_KEY" in missing or "GMS_BASE_URL" in missing:
         return EnvStatus("missing_key", warnings)
     if meta_count == 0:
         return EnvStatus("no_index", warnings)
