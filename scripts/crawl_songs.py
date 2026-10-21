@@ -9,13 +9,25 @@ import argparse
 import sys
 from pathlib import Path
 
-import yaml
-
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from lyriclens.config import load_artists, load_settings  # noqa: E402
 from lyriclens.domain.crawl import crawl_artists, write_songs  # noqa: E402
 from lyriclens.domain.utaten_client import UtatenClient  # noqa: E402
+
+
+def format_artists(artists: list[dict]) -> str:
+    """artists.yaml 의 기존 형식(따옴표 문자열, 2칸 들여쓰기)을 유지해 diff를 ID 변경으로 한정한다."""
+    lines = ["artists:"]
+    for a in artists:
+        artist_id = a.get("utaten_artist_id")
+        quoted = f'"{artist_id}"' if artist_id else "null"
+        lines += [
+            f'  - name: "{a["name"]}"',
+            f'    name_ko: "{a["name_ko"]}"',
+            f"    utaten_artist_id: {quoted}",
+        ]
+    return "\n".join(lines) + "\n"
 
 
 def main() -> None:
@@ -43,8 +55,7 @@ def main() -> None:
     if args.write_artist_ids:
         path = settings.path("artists")
         header = path.read_text(encoding="utf-8").splitlines()[0]
-        body = yaml.safe_dump({"artists": artists}, allow_unicode=True, sort_keys=False)
-        path.write_text(header + "\n" + body, encoding="utf-8")
+        path.write_text(header + "\n" + format_artists(artists), encoding="utf-8")
         print(f"아티스트 ID 기록: {path}")
 
 
