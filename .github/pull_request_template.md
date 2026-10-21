@@ -14,6 +14,6 @@ Closes #
 
 ## 확인
 - [ ] 커밋 순서: SPEC → 테스트 → 구현
-- [ ] `ruff check .` / `pytest -m "not live"` 로컬 통과
+- [ ] `ruff check .` / `pytest -m "not live and not e2e"` 로컬 통과
 - [ ] `.env`, `data/`, 실제 가사가 포함되지 않음
 - [ ] 설정값·프롬프트·화면 문구를 정해진 모듈에 둠

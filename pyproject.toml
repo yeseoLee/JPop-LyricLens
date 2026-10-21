@@ -14,7 +14,10 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src", "."]
-markers = ["live: 실제 네트워크·LLM을 호출하는 테스트 (CI 제외)"]
+markers = [
+    "live: 실제 네트워크·LLM을 호출하는 테스트 (CI 제외)",
+    "e2e: 실제 브라우저로 앱을 조작하는 테스트 (CI 제외, 키·색인 필요)",
+]
 
 [tool.ruff]
 line-length = 100

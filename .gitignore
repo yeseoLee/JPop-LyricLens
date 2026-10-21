@@ -15,3 +15,6 @@ data/
 
 # 대외비 원문 명세 (공개 저장소에 올리지 않음)
 prd.pdf
+
+# E2E 실패 화면 (커밋하지 않음)
+docs/e2e/failed_*.png

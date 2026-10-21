@@ -24,4 +24,4 @@ jobs:
         env:
           GMS_KEY: ""
           WIKI_CONTACT: ci@example.com
-        run: pytest -m "not live" --cov=lyriclens
+        run: pytest -m "not live and not e2e" --cov=lyriclens
