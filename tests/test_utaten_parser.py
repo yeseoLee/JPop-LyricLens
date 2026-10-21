@@ -58,3 +58,26 @@ def test_search_artists():
     """T-F2001-7 검색 결과에서 아티스트 이름과 ID를 읽는다."""
     found = parse_search_artists(fixture_text("utaten_search.html"))
     assert ("テスト歌手", "111") in found
+
+
+def _variant(**replace):
+    html = fixture_text("utaten_song.html")
+    for old, new in replace.items():
+        html = html.replace(old, new)
+    return html
+
+
+def test_unpadded_release_date():
+    """T-F2001-9 월·일에 0이 없는 날짜도 정규화한다."""
+    song = parse_song(_variant(**{"2021.04.05": "2025.9.4"}), URL)
+    assert song.release_date == "2025-09-04"
+
+
+def test_subtitle_is_tieup():
+    """T-F2001-10 부제목은 제목에서 빠지고 tieup 이 된다."""
+    sub = '<span class="newLyricTitle__subTitle">TVアニメ「テスト」主題歌</span>'
+    html = _variant(**{"</span>\n  </h2>": "</span>" + sub + "\n  </h2>"})
+    assert sub in html
+    song = parse_song(html, URL)
+    assert song.title == "星の街"
+    assert song.tieup == "TVアニメ「テスト」主題歌"
