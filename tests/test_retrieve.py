@@ -40,7 +40,7 @@ def _store(tmp_path, wiki_n=8):
         [
             IndexDoc(
                 "ut_a:L0",
-                "夢ならばどれほどよかったでしょう",
+                "夜の窓に灯がともる",
                 {
                     "song_id": "ut_a",
                     "title": "Lemon",
