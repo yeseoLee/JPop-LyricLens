@@ -885,12 +885,11 @@
     artist: YOASOBI
   question: 이 곡의 정확한 발매일(연·월·일)은 언제인가요?
   answer_keywords:
+  - - '2026'
   - - 10월 14일
     - 10월14일
     - 10月14日
     - '2026-10-14'
-    - 2026/10/14
-    - 2026.10.14
     - 2026/10/14
     - 2026.10.14
     - October 14
@@ -905,6 +904,7 @@
     artist: RADWIMPS
   question: What is the exact release date (year, month, day) of this song?
   answer_keywords:
+  - - '2026'
   - - 10월 2일
     - 10월2일
     - 10月2日
@@ -925,6 +925,7 @@
     artist: ヨルシカ
   question: この曲の正確なリリース日（年月日）はいつですか？
   answer_keywords:
+  - - '2026'
   - - 4월 22일
     - 4월22일
     - 4月22日
@@ -945,6 +946,7 @@
     artist: tuki.
   question: 이 곡의 정확한 발매일(연·월·일)은 언제인가요?
   answer_keywords:
+  - - '2026'
   - - 8월 23일
     - 8월23일
     - 8月23日
@@ -965,6 +967,7 @@
     artist: なとり
   question: What is the exact release date (year, month, day) of this song?
   answer_keywords:
+  - - '2026'
   - - 6월 12일
     - 6월12일
     - 6月12日
@@ -985,6 +988,7 @@
     artist: ずっと真夜中でいいのに。
   question: 이 곡의 정확한 발매일(연·월·일)은 언제인가요?
   answer_keywords:
+  - - '2026'
   - - 7월 6일
     - 7월6일
     - 7月6日
@@ -1005,6 +1009,7 @@
     artist: milet
   question: この曲の正確なリリース日（年月日）はいつですか？
   answer_keywords:
+  - - '2026'
   - - 7월 12일
     - 7월12일
     - 7月12日
@@ -1025,6 +1030,7 @@
     artist: King Gnu
   question: 이 곡의 정확한 발매일(연·월·일)은 언제인가요?
   answer_keywords:
+  - - '2026'
   - - 7월 29일
     - 7월29일
     - 7月29日
