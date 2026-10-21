@@ -1,0 +1,122 @@
+# 수집 대상 아티스트 (docs/SPEC.md 부록 A). utaten_artist_id 는 SPEC-002에서 채운다.
+artists:
+  - name: "米津玄師"
+    name_ko: "요네즈 켄시"
+    utaten_artist_id: null
+  - name: "YOASOBI"
+    name_ko: "요아소비"
+    utaten_artist_id: null
+  - name: "Ado"
+    name_ko: "아도"
+    utaten_artist_id: null
+  - name: "Official髭男dism"
+    name_ko: "오피셜히게단디즘"
+    utaten_artist_id: null
+  - name: "Mrs. GREEN APPLE"
+    name_ko: "미세스 그린 애플"
+    utaten_artist_id: null
+  - name: "King Gnu"
+    name_ko: "킹 누"
+    utaten_artist_id: null
+  - name: "優里"
+    name_ko: "유우리"
+    utaten_artist_id: null
+  - name: "imase"
+    name_ko: "이마세"
+    utaten_artist_id: null
+  - name: "RADWIMPS"
+    name_ko: "래드윔프스"
+    utaten_artist_id: null
+  - name: "Creepy Nuts"
+    name_ko: "크리피 넛츠"
+    utaten_artist_id: null
+  - name: "あいみょん"
+    name_ko: "아이묭"
+    utaten_artist_id: null
+  - name: "back number"
+    name_ko: "백 넘버"
+    utaten_artist_id: null
+  - name: "藤井風"
+    name_ko: "후지이 카제"
+    utaten_artist_id: null
+  - name: "Vaundy"
+    name_ko: "바운디"
+    utaten_artist_id: null
+  - name: "ヨルシカ"
+    name_ko: "요루시카"
+    utaten_artist_id: null
+  - name: "LiSA"
+    name_ko: "리사"
+    utaten_artist_id: null
+  - name: "Eve"
+    name_ko: "이브"
+    utaten_artist_id: null
+  - name: "Aimer"
+    name_ko: "에메"
+    utaten_artist_id: null
+  - name: "tuki."
+    name_ko: "츠키"
+    utaten_artist_id: null
+  - name: "なとり"
+    name_ko: "나토리"
+    utaten_artist_id: null
+  - name: "SEKAI NO OWARI"
+    name_ko: "세카이노 오와리"
+    utaten_artist_id: null
+  - name: "ONE OK ROCK"
+    name_ko: "원 오크 록"
+    utaten_artist_id: null
+  - name: "KANA-BOON"
+    name_ko: "카나분"
+    utaten_artist_id: null
+  - name: "yama"
+    name_ko: "야마"
+    utaten_artist_id: null
+  - name: "ずっと真夜中でいいのに。"
+    name_ko: "계속 한밤중이면 좋을 텐데."
+    utaten_artist_id: null
+  - name: "ロクデナシ"
+    name_ko: "로쿠데나시"
+    utaten_artist_id: null
+  - name: "美波"
+    name_ko: "미나미"
+    utaten_artist_id: null
+  - name: "冨岡愛"
+    name_ko: "도미오카 아이"
+    utaten_artist_id: null
+  - name: "DISH//"
+    name_ko: "디쉬"
+    utaten_artist_id: null
+  - name: "Tani Yuuki"
+    name_ko: "타니 유우키"
+    utaten_artist_id: null
+  - name: "SPYAIR"
+    name_ko: "스파이에어"
+    utaten_artist_id: null
+  - name: "宇多田ヒカル"
+    name_ko: "우타다 히카루"
+    utaten_artist_id: null
+  - name: "Saucy Dog"
+    name_ko: "사우시 독"
+    utaten_artist_id: null
+  - name: "BUMP OF CHICKEN"
+    name_ko: "범프 오브 치킨"
+    utaten_artist_id: null
+  - name: "サカナクション"
+    name_ko: "사카낙션"
+    utaten_artist_id: null
+  - name: "X JAPAN"
+    name_ko: "엑스 재팬"
+    utaten_artist_id: null
+  - name: "milet"
+    name_ko: "미레이"
+    utaten_artist_id: null
+  - name: "『ユイカ』"
+    name_ko: "유이카"
+    utaten_artist_id: null
+  - name: "星野源"
+    name_ko: "호시노 겐"
+    utaten_artist_id: null
+  - name: "HoneyWorks"
+    name_ko: "허니웍스"
+    utaten_artist_id: null
