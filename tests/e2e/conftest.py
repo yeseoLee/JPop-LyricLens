@@ -23,7 +23,6 @@ def _free_port() -> int:
 
 
 def _preconditions() -> str | None:
-    sys.path.insert(0, str(ROOT / "src"))
     from lyriclens.config import load_settings, missing_env
 
     settings = load_settings()
@@ -56,6 +55,8 @@ def app_url():
     url = f"http://127.0.0.1:{port}"
     try:
         for _ in range(120):
+            if proc.poll() is not None:
+                pytest.fail("앱 서버가 시작 중에 종료되었습니다")
             try:
                 if requests.get(f"{url}/_stcore/health", timeout=1).text == "ok":
                     break
@@ -67,7 +68,10 @@ def app_url():
         yield url
     finally:
         proc.terminate()
-        proc.wait(timeout=10)
+        try:
+            proc.wait(timeout=10)
+        except subprocess.TimeoutExpired:
+            proc.kill()
 
 
 @pytest.fixture(scope="session")

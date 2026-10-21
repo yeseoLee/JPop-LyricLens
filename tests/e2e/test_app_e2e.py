@@ -66,6 +66,7 @@ def test_e2e_2_chat_korean(page):
     _select_song(page, "Lemon")
     _tab(page, "질문하기")
     answer = _ask(page, "이 곡은 어떤 드라마의 주제가인가요?")
+    assert page.locator('[data-testid="stExpander"]').filter(has_text="완료").count() >= 1
     assert "언내추럴" in answer or "アンナチュラル" in answer or "Unnatural" in answer
     expander = page.locator('[data-testid="stExpander"]').filter(has_text="답변에 사용한 근거").last
     expander.click()
