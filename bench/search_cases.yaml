@@ -1,0 +1,1127 @@
+# 곡 찾기 벤치마크 케이스 (SPEC-015 §3). 정답은 제목·아티스트로 적고 실행 때 song_id 로 바꾼다.
+- id: S-title_ja-01
+  category: title_ja
+  lang: ja
+  query: 夜に駆ける
+  relevant:
+  - title: 夜に駆ける
+    artist: YOASOBI
+  split: dev
+- id: S-title_ja-02
+  category: title_ja
+  lang: ja
+  query: Lemon
+  relevant:
+  - title: Lemon
+    artist: 米津玄師
+  split: test
+- id: S-title_ja-03
+  category: title_ja
+  lang: ja
+  query: 白日
+  relevant:
+  - title: 白日
+    artist: King Gnu
+  split: dev
+- id: S-title_ja-04
+  category: title_ja
+  lang: ja
+  query: 紅蓮華
+  relevant:
+  - title: 紅蓮華
+    artist: LiSA
+  split: test
+- id: S-title_ja-05
+  category: title_ja
+  lang: ja
+  query: 前前前世
+  relevant:
+  - title: 前前前世 (movie ver.)
+    artist: RADWIMPS
+  split: dev
+- id: S-title_ja-06
+  category: title_ja
+  lang: ja
+  query: マリーゴールド
+  relevant:
+  - title: マリーゴールド
+    artist: あいみょん
+  split: test
+- id: S-title_ja-07
+  category: title_ja
+  lang: ja
+  query: 怪獣の花唄
+  relevant:
+  - title: 怪獣の花唄
+    artist: Vaundy
+  split: dev
+- id: S-title_ja-08
+  category: title_ja
+  lang: ja
+  query: ドライフラワー
+  relevant:
+  - title: ドライフラワー
+    artist: 優里
+  split: test
+- id: S-title_ja-09
+  category: title_ja
+  lang: ja
+  query: 天体観測
+  relevant:
+  - title: 天体観測
+    artist: BUMP OF CHICKEN
+  split: dev
+- id: S-title_ja-10
+  category: title_ja
+  lang: ja
+  query: 新宝島
+  relevant:
+  - title: 新宝島
+    artist: サカナクション
+  split: test
+- id: S-title_ja-11
+  category: title_ja
+  lang: ja
+  query: 残響散歌
+  relevant:
+  - title: 残響散歌
+    artist: Aimer
+  split: dev
+- id: S-title_ja-12
+  category: title_ja
+  lang: ja
+  query: 高嶺の花子さん
+  relevant:
+  - title: 高嶺の花子さん
+    artist: back number
+  split: test
+- id: S-title_ja-13
+  category: title_ja
+  lang: ja
+  query: うっせぇわ
+  relevant:
+  - title: うっせぇわ
+    artist: Ado
+  split: dev
+- id: S-title_ja-14
+  category: title_ja
+  lang: ja
+  query: 晩餐歌
+  relevant:
+  - title: 晩餐歌
+    artist: tuki.
+  split: test
+- id: S-title_ja-15
+  category: title_ja
+  lang: ja
+  query: 秒針を噛む
+  relevant:
+  - title: 秒針を噛む
+    artist: ずっと真夜中でいいのに。
+  split: dev
+- id: S-title_ko-01
+  category: title_ko
+  lang: ko
+  query: 밤을 달리다
+  relevant:
+  - title: 夜に駆ける
+    artist: YOASOBI
+  split: dev
+- id: S-title_ko-02
+  category: title_ko
+  lang: ko
+  query: 레몬
+  relevant:
+  - title: Lemon
+    artist: 米津玄師
+  split: test
+- id: S-title_ko-03
+  category: title_ko
+  lang: ko
+  query: 아이돌 요아소비 노래
+  relevant:
+  - title: アイドル
+    artist: YOASOBI
+  split: dev
+- id: S-title_ko-04
+  category: title_ko
+  lang: ko
+  query: 홍련화
+  relevant:
+  - title: 紅蓮華
+    artist: LiSA
+  split: test
+- id: S-title_ko-05
+  category: title_ko
+  lang: ko
+  query: 전전전세
+  relevant:
+  - title: 前前前世 (movie ver.)
+    artist: RADWIMPS
+  split: dev
+- id: S-title_ko-06
+  category: title_ko
+  lang: ko
+  query: 메리골드
+  relevant:
+  - title: マリーゴールド
+    artist: あいみょん
+  split: test
+- id: S-title_ko-07
+  category: title_ko
+  lang: ko
+  query: 천체관측
+  relevant:
+  - title: 天体観測
+    artist: BUMP OF CHICKEN
+  split: dev
+- id: S-title_ko-08
+  category: title_ko
+  lang: ko
+  query: 신보물섬
+  relevant:
+  - title: 新宝島
+    artist: サカナクション
+  split: test
+- id: S-title_ko-09
+  category: title_ko
+  lang: ko
+  query: 괴수의 꽃노래
+  relevant:
+  - title: 怪獣の花唄
+    artist: Vaundy
+  split: dev
+- id: S-title_ko-10
+  category: title_ko
+  lang: ko
+  query: 드라이 플라워 유우리
+  relevant:
+  - title: ドライフラワー
+    artist: 優里
+  split: test
+- id: S-title_ko-11
+  category: title_ko
+  lang: ko
+  query: 백일
+  relevant:
+  - title: 白日
+    artist: King Gnu
+  split: dev
+- id: S-title_ko-12
+  category: title_ko
+  lang: ko
+  query: 웃세와
+  relevant:
+  - title: うっせぇわ
+    artist: Ado
+  split: test
+- id: S-title_en-01
+  category: title_en
+  lang: en
+  query: Yoru ni Kakeru
+  relevant:
+  - title: 夜に駆ける
+    artist: YOASOBI
+  split: dev
+- id: S-title_en-02
+  category: title_en
+  lang: en
+  query: Racing into the Night
+  relevant:
+  - title: 夜に駆ける
+    artist: YOASOBI
+  split: test
+- id: S-title_en-03
+  category: title_en
+  lang: en
+  query: Idol YOASOBI
+  relevant:
+  - title: アイドル
+    artist: YOASOBI
+  split: dev
+- id: S-title_en-04
+  category: title_en
+  lang: en
+  query: Gurenge
+  relevant:
+  - title: 紅蓮華
+    artist: LiSA
+  split: test
+- id: S-title_en-05
+  category: title_en
+  lang: en
+  query: Zenzenzense
+  relevant:
+  - title: 前前前世 (movie ver.)
+    artist: RADWIMPS
+  split: dev
+- id: S-title_en-06
+  category: title_en
+  lang: en
+  query: Marigold aimyon
+  relevant:
+  - title: マリーゴールド
+    artist: あいみょん
+  split: test
+- id: S-title_en-07
+  category: title_en
+  lang: en
+  query: Tentai Kansoku
+  relevant:
+  - title: 天体観測
+    artist: BUMP OF CHICKEN
+  split: dev
+- id: S-title_en-08
+  category: title_en
+  lang: en
+  query: Shin Takarajima
+  relevant:
+  - title: 新宝島
+    artist: サカナクション
+  split: test
+- id: S-title_en-09
+  category: title_en
+  lang: en
+  query: Kaiju no Hanauta
+  relevant:
+  - title: 怪獣の花唄
+    artist: Vaundy
+  split: dev
+- id: S-title_en-10
+  category: title_en
+  lang: en
+  query: Dry Flower Yuuri
+  relevant:
+  - title: ドライフラワー
+    artist: 優里
+  split: test
+- id: S-title_en-11
+  category: title_en
+  lang: en
+  query: Hakujitsu
+  relevant:
+  - title: 白日
+    artist: King Gnu
+  split: dev
+- id: S-title_en-12
+  category: title_en
+  lang: en
+  query: Usseewa
+  relevant:
+  - title: うっせぇわ
+    artist: Ado
+  split: test
+- id: S-artist_ja-01
+  category: artist_ja
+  lang: ja
+  query: 米津玄師
+  relevant_artist: 米津玄師
+  split: dev
+- id: S-artist_ja-02
+  category: artist_ja
+  lang: en
+  query: YOASOBI
+  relevant_artist: YOASOBI
+  split: test
+- id: S-artist_ja-03
+  category: artist_ja
+  lang: en
+  query: King Gnu
+  relevant_artist: King Gnu
+  split: dev
+- id: S-artist_ja-04
+  category: artist_ja
+  lang: ja
+  query: あいみょん
+  relevant_artist: あいみょん
+  split: test
+- id: S-artist_ja-05
+  category: artist_ja
+  lang: ja
+  query: ヨルシカ
+  relevant_artist: ヨルシカ
+  split: dev
+- id: S-artist_ja-06
+  category: artist_ja
+  lang: ja
+  query: 藤井風
+  relevant_artist: 藤井 風
+  split: test
+- id: S-artist_ja-07
+  category: artist_ja
+  lang: ja
+  query: 宇多田ヒカル
+  relevant_artist: 宇多田ヒカル
+  split: dev
+- id: S-artist_ja-08
+  category: artist_ja
+  lang: ja
+  query: サカナクション
+  relevant_artist: サカナクション
+  split: test
+- id: S-artist_ja-09
+  category: artist_ja
+  lang: en
+  query: back number
+  relevant_artist: back number
+  split: dev
+- id: S-artist_ja-10
+  category: artist_ja
+  lang: ja
+  query: ずっと真夜中でいいのに。
+  relevant_artist: ずっと真夜中でいいのに。
+  split: test
+- id: S-artist_ko-01
+  category: artist_ko
+  lang: ko
+  query: 요네즈 켄시
+  relevant_artist: 米津玄師
+  split: dev
+- id: S-artist_ko-02
+  category: artist_ko
+  lang: ko
+  query: 요아소비
+  relevant_artist: YOASOBI
+  split: test
+- id: S-artist_ko-03
+  category: artist_ko
+  lang: ko
+  query: 킹누
+  relevant_artist: King Gnu
+  split: dev
+- id: S-artist_ko-04
+  category: artist_ko
+  lang: ko
+  query: 아이묭
+  relevant_artist: あいみょん
+  split: test
+- id: S-artist_ko-05
+  category: artist_ko
+  lang: ko
+  query: 요루시카
+  relevant_artist: ヨルシカ
+  split: dev
+- id: S-artist_ko-06
+  category: artist_ko
+  lang: ko
+  query: 후지이 카제
+  relevant_artist: 藤井 風
+  split: test
+- id: S-artist_ko-07
+  category: artist_ko
+  lang: ko
+  query: 우타다 히카루
+  relevant_artist: 宇多田ヒカル
+  split: dev
+- id: S-artist_ko-08
+  category: artist_ko
+  lang: ko
+  query: 사카낙션
+  relevant_artist: サカナクション
+  split: test
+- id: S-artist_ko-09
+  category: artist_ko
+  lang: ko
+  query: 백넘버
+  relevant_artist: back number
+  split: dev
+- id: S-artist_ko-10
+  category: artist_ko
+  lang: ko
+  query: 오피셜히게단디즘
+  relevant_artist: Official髭男dism
+  split: test
+- id: S-artist_en-01
+  category: artist_en
+  lang: en
+  query: Yonezu Kenshi
+  relevant_artist: 米津玄師
+  split: dev
+- id: S-artist_en-02
+  category: artist_en
+  lang: en
+  query: Kenshi Yonezu
+  relevant_artist: 米津玄師
+  split: test
+- id: S-artist_en-03
+  category: artist_en
+  lang: en
+  query: Yorushika
+  relevant_artist: ヨルシカ
+  split: dev
+- id: S-artist_en-04
+  category: artist_en
+  lang: en
+  query: Fujii Kaze
+  relevant_artist: 藤井 風
+  split: test
+- id: S-artist_en-05
+  category: artist_en
+  lang: en
+  query: Utada Hikaru
+  relevant_artist: 宇多田ヒカル
+  split: dev
+- id: S-artist_en-06
+  category: artist_en
+  lang: en
+  query: Sakanaction
+  relevant_artist: サカナクション
+  split: test
+- id: S-artist_en-07
+  category: artist_en
+  lang: en
+  query: Aimyon
+  relevant_artist: あいみょん
+  split: dev
+- id: S-artist_en-08
+  category: artist_en
+  lang: en
+  query: Official Hige Dandism
+  relevant_artist: Official髭男dism
+  split: test
+- id: S-nickname-01
+  category: nickname
+  lang: ko
+  query: 요네즈
+  relevant_artist: 米津玄師
+  split: dev
+- id: S-nickname-02
+  category: nickname
+  lang: ko
+  query: 켄시
+  relevant_artist: 米津玄師
+  split: test
+- id: S-nickname-03
+  category: nickname
+  lang: ja
+  query: ハチ
+  relevant_artist: 米津玄師
+  split: dev
+- id: S-nickname-04
+  category: nickname
+  lang: ja
+  query: 米津
+  relevant_artist: 米津玄師
+  split: test
+- id: S-nickname-05
+  category: nickname
+  lang: ko
+  query: 히키
+  relevant_artist: 宇多田ヒカル
+  split: dev
+- id: S-nickname-06
+  category: nickname
+  lang: ja
+  query: ヒッキー
+  relevant_artist: 宇多田ヒカル
+  split: test
+- id: S-nickname-07
+  category: nickname
+  lang: ko
+  query: 우타다
+  relevant_artist: 宇多田ヒカル
+  split: dev
+- id: S-nickname-08
+  category: nickname
+  lang: en
+  query: Kaze
+  relevant_artist: 藤井 風
+  split: test
+- id: S-nickname-09
+  category: nickname
+  lang: ko
+  query: 카제
+  relevant_artist: 藤井 風
+  split: dev
+- id: S-nickname-10
+  category: nickname
+  lang: ko
+  query: 범프
+  relevant_artist: BUMP OF CHICKEN
+  split: test
+- id: S-nickname-11
+  category: nickname
+  lang: en
+  query: Hikki
+  relevant_artist: 宇多田ヒカル
+  split: dev
+- id: S-nickname-12
+  category: nickname
+  lang: ko
+  query: 요루
+  relevant_artist: ヨルシカ
+  split: test
+- id: S-abbrev-01
+  category: abbrev
+  lang: ko
+  query: 오피히게
+  relevant_artist: Official髭男dism
+  split: dev
+- id: S-abbrev-02
+  category: abbrev
+  lang: ja
+  query: ヒゲダン
+  relevant_artist: Official髭男dism
+  split: test
+- id: S-abbrev-03
+  category: abbrev
+  lang: ko
+  query: 히게단
+  relevant_artist: Official髭男dism
+  split: dev
+- id: S-abbrev-04
+  category: abbrev
+  lang: ja
+  query: ずとまよ
+  relevant_artist: ずっと真夜中でいいのに。
+  split: test
+- id: S-abbrev-05
+  category: abbrev
+  lang: ko
+  query: 즈토마요
+  relevant_artist: ずっと真夜中でいいのに。
+  split: dev
+- id: S-abbrev-06
+  category: abbrev
+  lang: ja
+  query: ミセス
+  relevant_artist: Mrs. GREEN APPLE
+  split: test
+- id: S-abbrev-07
+  category: abbrev
+  lang: ko
+  query: 미세스
+  relevant_artist: Mrs. GREEN APPLE
+  split: dev
+- id: S-abbrev-08
+  category: abbrev
+  lang: ko
+  query: 원오크
+  relevant_artist: ONE OK ROCK
+  split: test
+- id: S-abbrev-09
+  category: abbrev
+  lang: ja
+  query: ワンオク
+  relevant_artist: ONE OK ROCK
+  split: dev
+- id: S-abbrev-10
+  category: abbrev
+  lang: ja
+  query: セカオワ
+  relevant_artist: SEKAI NO OWARI
+  split: test
+- id: S-typo-01
+  category: typo
+  lang: ja
+  query: 夜に掛ける
+  relevant:
+  - title: 夜に駆ける
+    artist: YOASOBI
+  split: dev
+- id: S-typo-02
+  category: typo
+  lang: ja
+  query: マリーゴルド
+  relevant:
+  - title: マリーゴールド
+    artist: あいみょん
+  split: test
+- id: S-typo-03
+  category: typo
+  lang: ja
+  query: ドライフラワ
+  relevant:
+  - title: ドライフラワー
+    artist: 優里
+  split: dev
+- id: S-typo-04
+  category: typo
+  lang: ja
+  query: うっせえわ
+  relevant:
+  - title: うっせぇわ
+    artist: Ado
+  split: test
+- id: S-typo-05
+  category: typo
+  lang: ja
+  query: 紅連華
+  relevant:
+  - title: 紅蓮華
+    artist: LiSA
+  split: dev
+- id: S-typo-06
+  category: typo
+  lang: ja
+  query: 怪獣の花歌
+  relevant:
+  - title: 怪獣の花唄
+    artist: Vaundy
+  split: test
+- id: S-typo-07
+  category: typo
+  lang: ja
+  query: 天体観側
+  relevant:
+  - title: 天体観測
+    artist: BUMP OF CHICKEN
+  split: dev
+- id: S-typo-08
+  category: typo
+  lang: en
+  query: Lemmon
+  relevant:
+  - title: Lemon
+    artist: 米津玄師
+  split: test
+- id: S-typo-09
+  category: typo
+  lang: en
+  query: Pretendr
+  relevant:
+  - title: Pretender
+    artist: Official髭男dism
+  split: dev
+- id: S-typo-10
+  category: typo
+  lang: en
+  query: SPECIALS king gnu
+  relevant:
+  - title: SPECIALZ
+    artist: King Gnu
+  split: test
+- id: S-typo-11
+  category: typo
+  lang: en
+  query: Yorushka
+  relevant_artist: ヨルシカ
+  split: dev
+- id: S-typo-12
+  category: typo
+  lang: en
+  query: YOASOVI
+  relevant_artist: YOASOBI
+  split: test
+- id: S-typo-13
+  category: typo
+  lang: en
+  query: King Gun
+  relevant_artist: King Gnu
+  split: dev
+- id: S-typo-14
+  category: typo
+  lang: en
+  query: Fuji Kaze
+  relevant_artist: 藤井 風
+  split: test
+- id: S-typo-15
+  category: typo
+  lang: ko
+  query: 요아쏘비
+  relevant_artist: YOASOBI
+  split: dev
+- id: S-typo-16
+  category: typo
+  lang: ko
+  query: 요네즈 캔시
+  relevant_artist: 米津玄師
+  split: test
+- id: S-typo-17
+  category: typo
+  lang: ko
+  query: 아이뮹
+  relevant_artist: あいみょん
+  split: dev
+- id: S-typo-18
+  category: typo
+  lang: ko
+  query: 사카낙숀
+  relevant_artist: サカナクション
+  split: test
+- id: S-typo-19
+  category: typo
+  lang: ko
+  query: 레멍
+  relevant:
+  - title: Lemon
+    artist: 米津玄師
+  split: dev
+- id: S-typo-20
+  category: typo
+  lang: ko
+  query: 밤을 달라다
+  relevant:
+  - title: 夜に駆ける
+    artist: YOASOBI
+  split: test
+- id: S-semantic-01
+  category: semantic
+  lang: ko
+  query: 법의학 드라마 주제가
+  relevant:
+  - title: Lemon
+    artist: 米津玄師
+  split: dev
+- id: S-semantic-02
+  category: semantic
+  lang: ko
+  query: 전기톱 악마가 나오는 애니메이션 노래
+  relevant:
+  - title: IRIS OUT
+    artist: 米津玄師
+  - title: ファイトソング
+    artist: Eve
+  split: test
+- id: S-semantic-03
+  category: semantic
+  lang: ko
+  query: 도깨비를 베는 검사 애니메이션 주제가
+  relevant:
+  - title: 紅蓮華
+    artist: LiSA
+  - title: 残響散歌
+    artist: Aimer
+  - title: 炎
+    artist: LiSA
+  - title: 残酷な夜に輝け
+    artist: LiSA
+  split: dev
+- id: S-semantic-04
+  category: semantic
+  lang: ko
+  query: 배구부 고등학생 애니메이션 노래
+  relevant:
+  - title: オレンジ
+    artist: SPYAIR
+  - title: イマジネーション
+    artist: SPYAIR
+  - title: アイム・ア・ビリーバー
+    artist: SPYAIR
+  split: test
+- id: S-semantic-05
+  category: semantic
+  lang: ko
+  query: 스파이 아빠와 초능력자 딸 애니메이션
+  relevant:
+  - title: ミックスナッツ
+    artist: Official髭男dism
+  - title: 喜劇
+    artist: 星野源
+  - title: 色彩
+    artist: yama
+  split: dev
+- id: S-semantic-06
+  category: semantic
+  lang: en
+  query: anime about an elf mage traveling after the hero's death
+  relevant:
+  - title: 勇者
+    artist: YOASOBI
+  - title: 晴る
+    artist: ヨルシカ
+  - title: Anytime Anywhere
+    artist: milet
+  split: test
+- id: S-semantic-07
+  category: semantic
+  lang: en
+  query: song from the movie where a boy and girl swap bodies
+  relevant:
+  - title: スパークル(movie ver.)
+    artist: RADWIMPS
+  - title: 前前前世 (movie ver.)
+    artist: RADWIMPS
+  - title: なんでもないや(movie ver.)
+    artist: RADWIMPS
+  split: dev
+- id: S-semantic-08
+  category: semantic
+  lang: ja
+  query: 海賊のアニメ映画の歌
+  relevant:
+  - title: ウタカタララバイ (ウタ from ONE PIECE FILM RED)
+    artist: Ado
+  - title: Tot Musica (ウタ from ONE PIECE FILM RED)
+    artist: Ado
+  - title: 逆光 (ウタ from ONE PIECE FILM RED)
+    artist: Ado
+  - title: 最高到達点
+    artist: SEKAI NO OWARI
+  split: test
+- id: S-semantic-09
+  category: semantic
+  lang: ko
+  query: 저주를 퇴치하는 주술사 애니메이션 노래
+  relevant:
+  - title: SPECIALZ
+    artist: King Gnu
+  - title: AIZO
+    artist: King Gnu
+  - title: 逆夢
+    artist: King Gnu
+  - title: 廻廻奇譚
+    artist: Eve
+  split: dev
+- id: S-semantic-10
+  category: semantic
+  lang: ko
+  query: NHK 아침 드라마 주제가
+  relevant:
+  - title: さよーならまたいつか！
+    artist: 米津玄師
+  - title: 咲き誇れ
+    artist: YOASOBI
+  - title: 愛の花
+    artist: あいみょん
+  - title: アイデア
+    artist: 星野源
+  split: test
+- id: S-semantic-11
+  category: semantic
+  lang: en
+  query: song for a detective kid movie
+  relevant:
+  - title: クロノスタシス
+    artist: BUMP OF CHICKEN
+  split: dev
+- id: S-semantic-12
+  category: semantic
+  lang: ko
+  query: 고양이형 로봇 만화 주제가
+  relevant:
+  - title: ドラえもん
+    artist: 星野源
+  - title: もしものがたり
+    artist: Tani Yuuki
+  split: test
+- id: S-semantic-13
+  category: semantic
+  lang: ja
+  query: 巨大ロボットに乗る少年のアニメ映画の主題歌
+  relevant:
+  - title: Beautiful World
+    artist: 宇多田ヒカル
+  split: dev
+- id: S-semantic-14
+  category: semantic
+  lang: ko
+  query: 떠돌이 검객 실사 영화 주제가
+  relevant:
+  - title: The Beginning
+    artist: ONE OK ROCK
+  split: test
+- id: S-semantic-15
+  category: semantic
+  lang: ko
+  query: 궁중에서 사건을 해결하는 약사 소녀 애니메이션
+  relevant:
+  - title: 雲を抜け風下へ私だけ
+    artist: ヨルシカ
+  - title: AIYOU
+    artist: Eve
+  split: dev
+- id: S-tieup-01
+  category: tieup
+  lang: ko
+  query: 주술회전 오프닝
+  relevant:
+  - title: SPECIALZ
+    artist: King Gnu
+  - title: AIZO
+    artist: King Gnu
+  - title: 廻廻奇譚
+    artist: Eve
+  split: dev
+- id: S-tieup-02
+  category: tieup
+  lang: ja
+  query: 鬼滅の刃 オープニング
+  relevant:
+  - title: 紅蓮華
+    artist: LiSA
+  - title: 残響散歌
+    artist: Aimer
+  split: test
+- id: S-tieup-03
+  category: tieup
+  lang: en
+  query: Frieren opening
+  relevant:
+  - title: 勇者
+    artist: YOASOBI
+  - title: 晴る
+    artist: ヨルシカ
+  split: dev
+- id: S-tieup-04
+  category: tieup
+  lang: ko
+  query: 최애의 아이 오프닝
+  relevant:
+  - title: アイドル
+    artist: YOASOBI
+  split: test
+- id: S-tieup-05
+  category: tieup
+  lang: ja
+  query: ダンダダン
+  relevant:
+  - title: オトノケ
+    artist: Creepy Nuts
+  - title: TAIDADA
+    artist: ずっと真夜中でいいのに。
+  split: dev
+- id: S-tieup-06
+  category: tieup
+  lang: en
+  query: SPY×FAMILY ending
+  relevant:
+  - title: 喜劇
+    artist: 星野源
+  - title: 色彩
+    artist: yama
+  split: test
+- id: S-tieup-07
+  category: tieup
+  lang: ko
+  query: 너의 이름은 주제가
+  relevant:
+  - title: 前前前世 (movie ver.)
+    artist: RADWIMPS
+  - title: スパークル(movie ver.)
+    artist: RADWIMPS
+  split: dev
+- id: S-tieup-08
+  category: tieup
+  lang: en
+  query: ONE PIECE FILM RED
+  relevant:
+  - title: ウタカタララバイ (ウタ from ONE PIECE FILM RED)
+    artist: Ado
+  - title: Tot Musica (ウタ from ONE PIECE FILM RED)
+    artist: Ado
+  - title: 逆光 (ウタ from ONE PIECE FILM RED)
+    artist: Ado
+  split: test
+- id: S-tieup-09
+  category: tieup
+  lang: ko
+  query: 하이큐 노래
+  relevant:
+  - title: オレンジ
+    artist: SPYAIR
+  - title: イマジネーション
+    artist: SPYAIR
+  - title: アイム・ア・ビリーバー
+    artist: SPYAIR
+  split: dev
+- id: S-tieup-10
+  category: tieup
+  lang: ja
+  query: 僕のヒーローアカデミア
+  relevant:
+  - title: スターマーカー
+    artist: KANA-BOON
+  - title: No.1
+    artist: DISH//
+  - title: I
+    artist: BUMP OF CHICKEN
+  split: test
+- id: S-tieup-11
+  category: tieup
+  lang: ko
+  query: 체인소 맨
+  relevant:
+  - title: IRIS OUT
+    artist: 米津玄師
+  - title: ファイトソング
+    artist: Eve
+  split: dev
+- id: S-tieup-12
+  category: tieup
+  lang: en
+  query: BEASTARS opening
+  relevant:
+  - title: 怪物
+    artist: YOASOBI
+  split: test
+- id: S-mixed-01
+  category: mixed
+  lang: ko
+  query: 요아소비 아이돌
+  relevant:
+  - title: アイドル
+    artist: YOASOBI
+  split: dev
+- id: S-mixed-02
+  category: mixed
+  lang: en
+  query: yonezu lemon
+  relevant:
+  - title: Lemon
+    artist: 米津玄師
+  split: test
+- id: S-mixed-03
+  category: mixed
+  lang: ja
+  query: King Gnu 白日
+  relevant:
+  - title: 白日
+    artist: King Gnu
+  split: dev
+- id: S-mixed-04
+  category: mixed
+  lang: ko
+  query: 아이묭 마리골드
+  relevant:
+  - title: マリーゴールド
+    artist: あいみょん
+  split: test
+- id: S-mixed-05
+  category: mixed
+  lang: en
+  query: LiSA gurenge
+  relevant:
+  - title: 紅蓮華
+    artist: LiSA
+  split: dev
+- id: S-mixed-06
+  category: mixed
+  lang: ko
+  query: 바운디 괴수의 꽃노래
+  relevant:
+  - title: 怪獣の花唄
+    artist: Vaundy
+  split: test
+- id: S-mixed-07
+  category: mixed
+  lang: ja
+  query: Yorushika 晴る
+  relevant:
+  - title: 晴る
+    artist: ヨルシカ
+  split: dev
+- id: S-mixed-08
+  category: mixed
+  lang: ko
+  query: 히게단 Pretender
+  relevant:
+  - title: Pretender
+    artist: Official髭男dism
+  split: test
+- id: S-mixed-09
+  category: mixed
+  lang: ja
+  query: Ado 唱
+  relevant:
+  - title: 唱
+    artist: Ado
+  split: dev
+- id: S-mixed-10
+  category: mixed
+  lang: ko
+  query: RADWIMPS 전전전세
+  relevant:
+  - title: 前前前世 (movie ver.)
+    artist: RADWIMPS
+  split: test

@@ -1,0 +1,407 @@
+# 가사 구절 케이스 참조 (SPEC-015 §3.3). 가사 원문은 저장소에 넣지 않는다.
+# stanza/line 은 0부터 센 연·줄 번호 (song_lyrics 와 같은 연 분할). 질의는 실행 때 data/ 에서 만든다.
+- id: S-lyrics_ja-01
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: 夜に駆ける
+    artist: YOASOBI
+  stanza: 1
+  line: 0
+  split: dev
+- id: S-lyrics_ko-01
+  category: lyrics_ko
+  lang: ko
+  song:
+    title: 夜に駆ける
+    artist: YOASOBI
+  stanza: 0
+  line: 0
+  split: dev
+- id: S-lyrics_en-01
+  category: lyrics_en
+  lang: en
+  song:
+    title: 夜に駆ける
+    artist: YOASOBI
+  stanza: 0
+  line: 1
+  split: dev
+- id: S-lyrics_ja-02
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: Lemon
+    artist: 米津玄師
+  stanza: 1
+  line: 0
+  split: test
+- id: S-lyrics_ko-02
+  category: lyrics_ko
+  lang: ko
+  song:
+    title: Lemon
+    artist: 米津玄師
+  stanza: 0
+  line: 0
+  split: test
+- id: S-lyrics_en-02
+  category: lyrics_en
+  lang: en
+  song:
+    title: Lemon
+    artist: 米津玄師
+  stanza: 0
+  line: 1
+  split: test
+- id: S-lyrics_ja-03
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: 白日
+    artist: King Gnu
+  stanza: 1
+  line: 0
+  split: dev
+- id: S-lyrics_ko-03
+  category: lyrics_ko
+  lang: ko
+  song:
+    title: 白日
+    artist: King Gnu
+  stanza: 0
+  line: 0
+  split: dev
+- id: S-lyrics_en-03
+  category: lyrics_en
+  lang: en
+  song:
+    title: 白日
+    artist: King Gnu
+  stanza: 0
+  line: 1
+  split: dev
+- id: S-lyrics_ja-04
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: 紅蓮華
+    artist: LiSA
+  stanza: 1
+  line: 0
+  split: test
+- id: S-lyrics_ko-04
+  category: lyrics_ko
+  lang: ko
+  song:
+    title: 紅蓮華
+    artist: LiSA
+  stanza: 0
+  line: 0
+  split: test
+- id: S-lyrics_en-04
+  category: lyrics_en
+  lang: en
+  song:
+    title: 紅蓮華
+    artist: LiSA
+  stanza: 1
+  line: 0
+  split: test
+- id: S-lyrics_ja-05
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: マリーゴールド
+    artist: あいみょん
+  stanza: 1
+  line: 0
+  split: dev
+- id: S-lyrics_ko-05
+  category: lyrics_ko
+  lang: ko
+  song:
+    title: マリーゴールド
+    artist: あいみょん
+  stanza: 0
+  line: 0
+  split: dev
+- id: S-lyrics_en-05
+  category: lyrics_en
+  lang: en
+  song:
+    title: マリーゴールド
+    artist: あいみょん
+  stanza: 0
+  line: 1
+  split: dev
+- id: S-lyrics_ja-06
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: 怪獣の花唄
+    artist: Vaundy
+  stanza: 1
+  line: 0
+  split: test
+- id: S-lyrics_ko-06
+  category: lyrics_ko
+  lang: ko
+  song:
+    title: 怪獣の花唄
+    artist: Vaundy
+  stanza: 0
+  line: 0
+  split: test
+- id: S-lyrics_en-06
+  category: lyrics_en
+  lang: en
+  song:
+    title: 怪獣の花唄
+    artist: Vaundy
+  stanza: 0
+  line: 1
+  split: test
+- id: S-lyrics_ja-07
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: ドライフラワー
+    artist: 優里
+  stanza: 1
+  line: 0
+  split: dev
+- id: S-lyrics_ko-07
+  category: lyrics_ko
+  lang: ko
+  song:
+    title: ドライフラワー
+    artist: 優里
+  stanza: 0
+  line: 0
+  split: dev
+- id: S-lyrics_en-07
+  category: lyrics_en
+  lang: en
+  song:
+    title: ドライフラワー
+    artist: 優里
+  stanza: 0
+  line: 1
+  split: dev
+- id: S-lyrics_ja-08
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: 天体観測
+    artist: BUMP OF CHICKEN
+  stanza: 1
+  line: 0
+  split: test
+- id: S-lyrics_ko-08
+  category: lyrics_ko
+  lang: ko
+  song:
+    title: 天体観測
+    artist: BUMP OF CHICKEN
+  stanza: 0
+  line: 0
+  split: test
+- id: S-lyrics_en-08
+  category: lyrics_en
+  lang: en
+  song:
+    title: 天体観測
+    artist: BUMP OF CHICKEN
+  stanza: 0
+  line: 1
+  split: test
+- id: S-lyrics_ja-09
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: 新宝島
+    artist: サカナクション
+  stanza: 1
+  line: 0
+  split: dev
+- id: S-lyrics_ko-09
+  category: lyrics_ko
+  lang: ko
+  song:
+    title: 新宝島
+    artist: サカナクション
+  stanza: 0
+  line: 0
+  split: dev
+- id: S-lyrics_en-09
+  category: lyrics_en
+  lang: en
+  song:
+    title: 新宝島
+    artist: サカナクション
+  stanza: 0
+  line: 1
+  split: dev
+- id: S-lyrics_ja-10
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: 残響散歌
+    artist: Aimer
+  stanza: 1
+  line: 0
+  split: test
+- id: S-lyrics_ko-10
+  category: lyrics_ko
+  lang: ko
+  song:
+    title: 残響散歌
+    artist: Aimer
+  stanza: 0
+  line: 0
+  split: test
+- id: S-lyrics_en-10
+  category: lyrics_en
+  lang: en
+  song:
+    title: 残響散歌
+    artist: Aimer
+  stanza: 0
+  line: 1
+  split: test
+- id: S-lyrics_ja-11
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: 高嶺の花子さん
+    artist: back number
+  stanza: 1
+  line: 0
+  split: dev
+- id: S-lyrics_ko-11
+  category: lyrics_ko
+  lang: ko
+  song:
+    title: 高嶺の花子さん
+    artist: back number
+  stanza: 0
+  line: 0
+  split: dev
+- id: S-lyrics_ja-12
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: うっせぇわ
+    artist: Ado
+  stanza: 1
+  line: 0
+  split: test
+- id: S-lyrics_ko-12
+  category: lyrics_ko
+  lang: ko
+  song:
+    title: うっせぇわ
+    artist: Ado
+  stanza: 0
+  line: 0
+  split: test
+- id: S-lyrics_ja-13
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: アイドル
+    artist: YOASOBI
+  stanza: 1
+  line: 0
+  split: dev
+- id: S-lyrics_ko-13
+  category: lyrics_ko
+  lang: ko
+  song:
+    title: アイドル
+    artist: YOASOBI
+  stanza: 0
+  line: 0
+  split: dev
+- id: S-lyrics_ja-14
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: Pretender
+    artist: Official髭男dism
+  stanza: 1
+  line: 0
+  split: test
+- id: S-lyrics_ko-14
+  category: lyrics_ko
+  lang: ko
+  song:
+    title: Pretender
+    artist: Official髭男dism
+  stanza: 0
+  line: 0
+  split: test
+- id: S-lyrics_ja-15
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: SPECIALZ
+    artist: King Gnu
+  stanza: 1
+  line: 0
+  split: dev
+- id: S-lyrics_ko-15
+  category: lyrics_ko
+  lang: ko
+  song:
+    title: SPECIALZ
+    artist: King Gnu
+  stanza: 0
+  line: 0
+  split: dev
+- id: S-lyrics_ja-16
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: 晴る
+    artist: ヨルシカ
+  stanza: 1
+  line: 0
+  split: test
+- id: S-lyrics_ja-17
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: きらり
+    artist: 藤井 風
+  stanza: 1
+  line: 0
+  split: dev
+- id: S-lyrics_ja-18
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: First Love
+    artist: 宇多田ヒカル
+  stanza: 1
+  line: 0
+  split: test
+- id: S-lyrics_ja-19
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: ライラック
+    artist: Mrs. GREEN APPLE
+  stanza: 1
+  line: 0
+  split: dev
+- id: S-lyrics_ja-20
+  category: lyrics_ja
+  lang: ja
+  song:
+    title: 勇者
+    artist: YOASOBI
+  stanza: 1
+  line: 0
+  split: test

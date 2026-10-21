@@ -1,0 +1,692 @@
+# 답변 품질 벤치마크 케이스 (SPEC-015 §4). answer_keywords: 그룹마다 하나 이상 포함되면 정답.
+# unanswerable 은 근거로 답할 수 없는 질문 — 모른다고 답해야 정답.
+- id: Q-credit-01
+  type: credit
+  lang: ko
+  song:
+    title: Lemon
+    artist: 米津玄師
+  question: 이 곡의 작곡가는 누구인가요?
+  answer_keywords:
+  - - 米津玄師
+    - 요네즈 켄시
+    - 요네즈
+    - Yonezu
+    - Kenshi
+  split: dev
+- id: Q-credit-02
+  type: credit
+  lang: en
+  song:
+    title: 夜に駆ける
+    artist: YOASOBI
+  question: Who wrote the lyrics of this song?
+  answer_keywords:
+  - - Ayase
+    - 아야세
+    - アヤセ
+  split: test
+- id: Q-credit-03
+  type: credit
+  lang: ja
+  song:
+    title: 白日
+    artist: King Gnu
+  question: この曲を作曲したのは誰ですか？
+  answer_keywords:
+  - &id002
+    - Tsuneta
+    - 常田
+    - 츠네타
+    - 쓰네타
+  split: dev
+- id: Q-credit-04
+  type: credit
+  lang: ko
+  song:
+    title: 紅蓮華
+    artist: LiSA
+  question: 이 곡의 작곡가는 누구인가요?
+  answer_keywords:
+  - - 草野華余子
+    - 쿠사노
+    - Kusano
+  split: test
+- id: Q-credit-05
+  type: credit
+  lang: en
+  song:
+    title: Pretender
+    artist: Official髭男dism
+  question: Who composed this song?
+  answer_keywords:
+  - &id001
+    - 藤原聡
+    - 후지와라
+    - Fujihara
+  split: dev
+- id: Q-credit-06
+  type: credit
+  lang: ko
+  song:
+    title: うっせぇわ
+    artist: Ado
+  question: 이 곡의 작사·작곡을 맡은 사람은?
+  answer_keywords:
+  - - syudou
+    - 슈도
+    - しゅどう
+  split: test
+- id: Q-credit-07
+  type: credit
+  lang: ja
+  song:
+    title: 前前前世 (movie ver.)
+    artist: RADWIMPS
+  question: この曲の作詞者は誰ですか？
+  answer_keywords:
+  - - 野田洋次郎
+    - 노다 요지로
+    - Noda
+    - 野田
+  split: dev
+- id: Q-credit-08
+  type: credit
+  lang: ko
+  song:
+    title: オトノケ
+    artist: Creepy Nuts
+  question: 이 곡의 작곡가는 누구인가요?
+  answer_keywords:
+  - - DJ松永
+    - DJ 마츠나가
+    - 마츠나가
+    - Matsunaga
+    - 松永
+  split: test
+- id: Q-credit-09
+  type: credit
+  lang: en
+  song:
+    title: 残響散歌
+    artist: Aimer
+  question: Who is the composer of this song?
+  answer_keywords:
+  - - Tobinai
+    - 飛内
+    - 토비나이
+  split: dev
+- id: Q-credit-10
+  type: credit
+  lang: ko
+  song:
+    title: 色彩
+    artist: yama
+  question: 이 곡의 작사가는 누구인가요?
+  answer_keywords:
+  - - くじら
+    - 쿠지라
+    - Kujira
+  split: test
+- id: Q-release-01
+  type: release
+  lang: ko
+  song:
+    title: Lemon
+    artist: 米津玄師
+  question: 이 곡은 몇 년에 발매되었나요?
+  answer_keywords:
+  - - '2018'
+  split: dev
+- id: Q-release-02
+  type: release
+  lang: en
+  song:
+    title: 夜に駆ける
+    artist: YOASOBI
+  question: What year was this song released?
+  answer_keywords:
+  - - '2019'
+  split: test
+- id: Q-release-03
+  type: release
+  lang: ja
+  song:
+    title: アイドル
+    artist: YOASOBI
+  question: この曲は何年にリリースされましたか？
+  answer_keywords:
+  - - '2023'
+  split: dev
+- id: Q-release-04
+  type: release
+  lang: ko
+  song:
+    title: 白日
+    artist: King Gnu
+  question: 이 곡의 발매 연도는?
+  answer_keywords:
+  - - '2019'
+  split: test
+- id: Q-release-05
+  type: release
+  lang: en
+  song:
+    title: First Love
+    artist: 宇多田ヒカル
+  question: When was this song released?
+  answer_keywords:
+  - - '1999'
+  split: dev
+- id: Q-release-06
+  type: release
+  lang: ko
+  song:
+    title: 天体観測
+    artist: BUMP OF CHICKEN
+  question: 이 곡은 언제 나왔나요?
+  answer_keywords:
+  - - '2001'
+  split: test
+- id: Q-release-07
+  type: release
+  lang: ja
+  song:
+    title: マリーゴールド
+    artist: あいみょん
+  question: この曲の発売年は？
+  answer_keywords:
+  - - '2018'
+  split: dev
+- id: Q-release-08
+  type: release
+  lang: ko
+  song:
+    title: 勇者
+    artist: YOASOBI
+  question: 이 곡은 몇 년에 발매됐나요?
+  answer_keywords:
+  - - '2023'
+  split: test
+- id: Q-tieup-01
+  type: tieup
+  lang: ko
+  song:
+    title: Lemon
+    artist: 米津玄師
+  question: 이 곡은 어떤 드라마의 주제가인가요?
+  answer_keywords:
+  - - アンナチュラル
+    - 언내추럴
+    - Unnatural
+  split: dev
+- id: Q-tieup-02
+  type: tieup
+  lang: en
+  song:
+    title: アイドル
+    artist: YOASOBI
+  question: Which anime is this song the opening for?
+  answer_keywords:
+  - - 推しの子
+    - 최애의 아이
+    - Oshi no Ko
+    - Oshi no ko
+  split: test
+- id: Q-tieup-03
+  type: tieup
+  lang: ko
+  song:
+    title: 勇者
+    artist: YOASOBI
+  question: 이 곡은 어떤 애니메이션의 오프닝인가요?
+  answer_keywords:
+  - - フリーレン
+    - 프리렌
+    - Frieren
+  split: dev
+- id: Q-tieup-04
+  type: tieup
+  lang: ja
+  song:
+    title: SPECIALZ
+    artist: King Gnu
+  question: この曲はどのアニメの主題歌ですか？
+  answer_keywords:
+  - - 呪術廻戦
+    - 주술회전
+    - Jujutsu
+  split: test
+- id: Q-tieup-05
+  type: tieup
+  lang: ko
+  song:
+    title: ミックスナッツ
+    artist: Official髭男dism
+  question: 이 곡은 어느 애니메이션에 쓰였나요?
+  answer_keywords:
+  - - SPY×FAMILY
+    - 스파이 패밀리
+    - SPY X FAMILY
+    - SPY FAMILY
+    - スパイファミリー
+  split: dev
+- id: Q-tieup-06
+  type: tieup
+  lang: en
+  song:
+    title: 紅蓮華
+    artist: LiSA
+  question: Which anime used this song as its opening theme?
+  answer_keywords:
+  - - 鬼滅の刃
+    - 귀멸의 칼날
+    - Demon Slayer
+    - Kimetsu
+  split: test
+- id: Q-tieup-07
+  type: tieup
+  lang: ko
+  song:
+    title: 前前前世 (movie ver.)
+    artist: RADWIMPS
+  question: 이 곡은 어떤 영화의 주제가인가요?
+  answer_keywords:
+  - - 君の名は
+    - 너의 이름은
+    - Your Name
+  split: dev
+- id: Q-tieup-08
+  type: tieup
+  lang: ja
+  song:
+    title: IRIS OUT
+    artist: 米津玄師
+  question: この曲は何の映画の主題歌ですか？
+  answer_keywords:
+  - - チェンソーマン
+    - 체인소 맨
+    - 체인소맨
+    - Chainsaw Man
+  split: test
+- id: Q-tieup-09
+  type: tieup
+  lang: ko
+  song:
+    title: Pretender
+    artist: Official髭男dism
+  question: 이 곡은 어떤 영화의 주제가인가요?
+  answer_keywords:
+  - - コンフィデンスマンJP
+    - 컨피던스맨
+    - Confidence Man
+  split: dev
+- id: Q-tieup-10
+  type: tieup
+  lang: en
+  song:
+    title: 新宝島
+    artist: サカナクション
+  question: Which film was this song the theme for?
+  answer_keywords:
+  - - バクマン
+    - 바쿠만
+    - Bakuman
+  split: test
+- id: Q-background-01
+  type: background
+  lang: ko
+  song:
+    title: 夜に駆ける
+    artist: YOASOBI
+  question: 이 곡의 원작 소설은 무엇인가요?
+  answer_keywords:
+  - - タナトスの誘惑
+    - 타나토스의 유혹
+    - Thanatos
+  split: dev
+- id: Q-background-02
+  type: background
+  lang: en
+  song:
+    title: 夜に駆ける
+    artist: YOASOBI
+  question: What kind of group is the artist of this song (how many members)?
+  answer_keywords:
+  - - '2'
+    - two
+    - duo
+    - 二人組
+    - 2인
+  split: test
+- id: Q-background-03
+  type: background
+  lang: ko
+  song:
+    title: Lemon
+    artist: 米津玄師
+  question: 이 곡이 주제가로 쓰인 드라마의 주연 배우는 누구인가요?
+  answer_keywords:
+  - - 石原さとみ
+    - 이시하라 사토미
+    - Ishihara
+  split: dev
+- id: Q-background-04
+  type: background
+  lang: ko
+  song:
+    title: アイドル
+    artist: YOASOBI
+  question: 이 곡이 오프닝인 애니메이션의 원작 만화 작가는 누구인가요?
+  answer_keywords:
+  - - 赤坂アカ
+    - 아카사카 아카
+    - Akasaka
+  split: test
+- id: Q-background-05
+  type: background
+  lang: en
+  song:
+    title: 前前前世 (movie ver.)
+    artist: RADWIMPS
+  question: Who directed the film that features this song?
+  answer_keywords:
+  - - 新海誠
+    - 신카이 마코토
+    - Shinkai
+  split: dev
+- id: Q-background-06
+  type: background
+  lang: ko
+  song:
+    title: うっせぇわ
+    artist: Ado
+  question: 이 곡을 부른 가수는 몇 년생인가요?
+  answer_keywords:
+  - - '2002'
+  split: test
+- id: Q-background-07
+  type: background
+  lang: ja
+  song:
+    title: Pretender
+    artist: Official髭男dism
+  question: この曲を歌うバンドのボーカルは誰ですか？
+  answer_keywords:
+  - *id001
+  split: dev
+- id: Q-background-08
+  type: background
+  lang: ko
+  song:
+    title: 紅蓮華
+    artist: LiSA
+  question: 이 곡이 오프닝인 애니메이션의 원작 만화 작가는?
+  answer_keywords:
+  - - 吾峠呼世晴
+    - 고토게 코요하루
+    - Gotouge
+  split: test
+- id: Q-background-09
+  type: background
+  lang: en
+  song:
+    title: SPECIALZ
+    artist: King Gnu
+  question: Which band member of the artist also leads the project 'millennium parade'?
+  answer_keywords:
+  - *id002
+  split: dev
+- id: Q-background-10
+  type: background
+  lang: ko
+  song:
+    title: 天体観測
+    artist: BUMP OF CHICKEN
+  question: 이 곡을 부른 밴드의 보컬은 누구인가요?
+  answer_keywords:
+  - - 藤原基央
+    - 후지와라 모토오
+    - Fujiwara
+  split: test
+- id: Q-meaning-01
+  type: meaning
+  lang: ko
+  song:
+    title: Lemon
+    artist: 米津玄師
+  question: 가사에 나오는 「苦いレモンの匂い」는 무슨 뜻인가요?
+  answer_keywords:
+  - - 쓴
+    - 씁쓸
+    - bitter
+    - 苦
+  - - 레몬
+    - lemon
+    - レモン
+  split: dev
+- id: Q-meaning-02
+  type: meaning
+  lang: en
+  song:
+    title: 夜に駆ける
+    artist: YOASOBI
+  question: What does the title 「夜に駆ける」 mean in English?
+  answer_keywords:
+  - - night
+  - - run
+    - racing
+    - race
+    - dash
+  split: test
+- id: Q-meaning-03
+  type: meaning
+  lang: ko
+  song:
+    title: うっせぇわ
+    artist: Ado
+  question: 제목 「うっせぇわ」는 어떤 뜻인가요?
+  answer_keywords:
+  - - 시끄러
+    - 닥쳐
+    - shut up
+    - noisy
+    - annoying
+    - 짜증
+  split: dev
+- id: Q-meaning-04
+  type: meaning
+  lang: en
+  song:
+    title: マリーゴールド
+    artist: あいみょん
+  question: What is the flower in the title of this song?
+  answer_keywords:
+  - - marigold
+    - 마리골드
+    - 메리골드
+    - マリーゴールド
+  split: test
+- id: Q-meaning-05
+  type: meaning
+  lang: ko
+  song:
+    title: 怪獣の花唄
+    artist: Vaundy
+  question: 제목 「怪獣の花唄」를 한국어로 옮기면?
+  answer_keywords:
+  - - 괴수
+    - 괴물
+  - - 노래
+    - 꽃
+  split: dev
+- id: Q-meaning-06
+  type: meaning
+  lang: en
+  song:
+    title: 天体観測
+    artist: BUMP OF CHICKEN
+  question: What does the title 「天体観測」 mean?
+  answer_keywords:
+  - - astronomical
+    - stargazing
+    - star
+    - celestial
+    - observation
+  split: test
+- id: Q-meaning-07
+  type: meaning
+  lang: ko
+  song:
+    title: 紅蓮華
+    artist: LiSA
+  question: 제목 「紅蓮華」는 무슨 뜻인가요?
+  answer_keywords:
+  - - 붉은
+    - red
+    - crimson
+    - 紅
+    - 홍련
+  - - 연꽃
+    - lotus
+    - 꽃
+    - 蓮
+  split: dev
+- id: Q-meaning-08
+  type: meaning
+  lang: en
+  song:
+    title: 白日
+    artist: King Gnu
+  question: What does the title 「白日」 mean?
+  answer_keywords:
+  - - day
+    - white
+    - daylight
+    - broad
+  split: test
+- id: Q-meaning-09
+  type: meaning
+  lang: ko
+  song:
+    title: ドライフラワー
+    artist: 優里
+  question: 제목 「ドライフラワー」는 무슨 뜻인가요?
+  answer_keywords:
+  - - 드라이
+    - dried
+    - dry
+    - 말린
+    - 마른
+  - - 꽃
+    - flower
+    - 플라워
+  split: dev
+- id: Q-meaning-10
+  type: meaning
+  lang: en
+  song:
+    title: 新宝島
+    artist: サカナクション
+  question: What does the title 「新宝島」 mean?
+  answer_keywords:
+  - - new
+  - - treasure
+  - - island
+  split: test
+- id: Q-unanswerable-01
+  type: unanswerable
+  lang: ko
+  song:
+    title: Lemon
+    artist: 米津玄師
+  question: 이 곡 녹음에 사용된 마이크 모델명은 무엇인가요?
+  split: dev
+- id: Q-unanswerable-02
+  type: unanswerable
+  lang: en
+  song:
+    title: 夜に駆ける
+    artist: YOASOBI
+  question: How many times did the vocalist retake the second verse during recording?
+  split: test
+- id: Q-unanswerable-03
+  type: unanswerable
+  lang: ja
+  song:
+    title: 白日
+    artist: King Gnu
+  question: この曲のレコーディング初日の天気は何でしたか？
+  split: dev
+- id: Q-unanswerable-04
+  type: unanswerable
+  lang: ko
+  song:
+    title: 紅蓮華
+    artist: LiSA
+  question: 이 곡의 작곡가가 어릴 때 처음 배운 악기는 무엇인가요?
+  split: test
+- id: Q-unanswerable-05
+  type: unanswerable
+  lang: en
+  song:
+    title: Pretender
+    artist: Official髭男dism
+  question: What was the exact budget of this song's music video in yen?
+  split: dev
+- id: Q-unanswerable-06
+  type: unanswerable
+  lang: ko
+  song:
+    title: アイドル
+    artist: YOASOBI
+  question: 이 곡의 2035년 리마스터 버전 발매일은 언제인가요?
+  split: test
+- id: Q-unanswerable-07
+  type: unanswerable
+  lang: ja
+  song:
+    title: うっせぇわ
+    artist: Ado
+  question: この曲のデモ版は何テイク録られましたか？
+  split: dev
+- id: Q-unanswerable-08
+  type: unanswerable
+  lang: ko
+  song:
+    title: 前前前世 (movie ver.)
+    artist: RADWIMPS
+  question: 이 곡 녹음 당시 드러머가 쓴 스네어 드럼 브랜드는?
+  split: test
+- id: Q-unanswerable-09
+  type: unanswerable
+  lang: en
+  song:
+    title: マリーゴールド
+    artist: あいみょん
+  question: What did the singer eat for breakfast on the day she wrote this song?
+  split: dev
+- id: Q-unanswerable-10
+  type: unanswerable
+  lang: ko
+  song:
+    title: 勇者
+    artist: YOASOBI
+  question: 이 곡의 데모 파일 이름은 무엇이었나요?
+  split: test
+- id: Q-unanswerable-11
+  type: unanswerable
+  lang: en
+  song:
+    title: SPECIALZ
+    artist: King Gnu
+  question: Which hotel did the band stay in during the music video shoot?
+  split: dev
+- id: Q-unanswerable-12
+  type: unanswerable
+  lang: ja
+  song:
+    title: 天体観測
+    artist: BUMP OF CHICKEN
+  question: この曲のギターソロで使われた弦のゲージは？
+  split: test
