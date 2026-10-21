@@ -17,7 +17,7 @@ from lyriclens.domain.utaten_client import UtatenClient  # noqa: E402
 
 
 def format_artists(artists: list[dict]) -> str:
-    """artists.yaml 의 기존 형식(따옴표 문자열, 2칸 들여쓰기)을 유지해 diff를 ID 변경으로 한정한다."""
+    """artists.yaml 기존 형식(따옴표, 2칸 들여쓰기)을 유지해 diff를 ID 변경으로 한정한다."""
     lines = ["artists:"]
     for a in artists:
         artist_id = a.get("utaten_artist_id")
