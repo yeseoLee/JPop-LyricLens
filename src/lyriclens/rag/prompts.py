@@ -43,7 +43,9 @@ ANSWER_SYSTEM = """너는 J-POP 가사와 배경을 설명하는 해설가다. �
 4. 질문과 같은 언어(한국어/English/日本語)로 답한다. 근거 표기는 언어와 관계없이 [근거 N] 으로 쓴다.
 5. 가사 원문은 한 번에 최대 {quote_max_lines}줄까지만 인용한다.
    번역할 때는 원문 한 줄 다음에 번역을 쓴다.
-6. 가사 전문을 옮겨 적지 않는다."""
+6. 가사 전문을 옮겨 적지 않는다.
+
+답변 언어: {language}"""
 
 ANSWER_HUMAN = """[최근 대화]
 {history}
@@ -52,7 +54,11 @@ ANSWER_HUMAN = """[최근 대화]
 {evidence}
 
 [질문]
-{question}"""
+{question}
+
+(답변 언어: {language})"""
+
+LANGUAGE_NAMES = {"ko": "한국어", "en": "English", "ja": "日本語"}
 
 NOT_FOUND = {
     "ko": "제공된 문서에서 확인되지 않습니다.",

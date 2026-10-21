@@ -32,13 +32,16 @@ def _format_history(history) -> str:
 
 def generate_answer(question: str, evidence: list[Evidence], chat, settings,
                     history=()) -> Answer:
+    lang = detect_language(question)
     if not evidence:
-        return Answer(prompts.NOT_FOUND[detect_language(question)])
+        return Answer(prompts.NOT_FOUND[lang])
+    language = prompts.LANGUAGE_NAMES[lang]
     system = prompts.ANSWER_SYSTEM.format(
-        quote_max_lines=settings.display["lyrics_quote_max_lines"]
+        quote_max_lines=settings.display["lyrics_quote_max_lines"], language=language
     )
     human = prompts.ANSWER_HUMAN.format(
-        history=_format_history(history), evidence=format_evidence(evidence), question=question
+        history=_format_history(history), evidence=format_evidence(evidence), question=question,
+        language=language,
     )
     text = chat.invoke([SystemMessage(system), HumanMessage(human)]).content
     cited = select_cited(evidence, text)

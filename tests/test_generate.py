@@ -42,3 +42,14 @@ def test_answer_without_markers_flags():
     """T-F2008-3 답변에 인용이 없으면 no_citation."""
     ans = generate_answer("q", EV, FakeChatModel(["그냥 답"]), load_settings())
     assert ans.no_citation and ans.cited == []
+
+
+def test_answer_language_explicit():
+    """T-F2007-7 질문 언어를 판별해 답변 언어를 프롬프트에 명시한다."""
+    for question, lang in [("Who composed this song?", "English"),
+                           ("この曲の作曲者は？", "日本語"), ("작곡가는 누구야?", "한국어")]:
+        chat = FakeChatModel(["답 [근거 1]"])
+        generate_answer(question, EV, chat, load_settings())
+        system, human = chat.calls[0][0].content, chat.calls[0][-1].content
+        assert f"답변 언어: {lang}" in system
+        assert human.rstrip().endswith(f"(답변 언어: {lang})")
