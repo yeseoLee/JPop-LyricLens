@@ -1,9 +1,9 @@
 # 검색·답변 품질에 영향을 주는 값은 여기서만 바꾼다 (docs/SPEC.md §4)
 llm:
   base_url: https://gms.ssafy.io/gmsapi/api.openai.com/v1/
-  chat_model: gpt-5.4-nano
-  embedding_model: text-embedding-3-small
-  temperature: 0
+  chat_model: gpt-6-luna
+  embedding_model: text-embedding-3-large
+  temperature: null  # null이면 모델 기본값 (gpt-6-luna는 0 미지원)
 chunking:
   chunk_size: 1000        # 위키 청크 크기(자)
   chunk_overlap: 200
