@@ -8,7 +8,7 @@ from lyriclens.rag.evidence import Evidence
 SONG_META, SONG_LYRICS, WIKI_DOCS = "song_meta", "song_lyrics", "wiki_docs"
 
 
-def _title(doc: IndexDoc, source_type: str) -> str:
+def evidence_title(doc: IndexDoc, source_type: str) -> str:
     md = doc.metadata
     if source_type == "song_meta":
         return f"{md.get('title', '')} — {md.get('artist', '')}"
@@ -37,7 +37,7 @@ def retrieve(store, song_id: str, question: str, settings) -> list[Evidence]:
         seen_text.add(key)
         evidence.append(Evidence(
             num=len(evidence) + 1, chunk_id=doc.id, source_type=source_type,
-            title=_title(doc, source_type), url=doc.metadata.get("url", ""),
+            title=evidence_title(doc, source_type), url=doc.metadata.get("url", ""),
             text=doc.text, metadata=doc.metadata,
         ))
     return evidence
