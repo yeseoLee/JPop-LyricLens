@@ -22,7 +22,7 @@
 | D-07 | 심화 기능 | **F2014 MMR**, **F2015 RAG 전후 비교** 를 확장 계획에 넣음 | F2013, F2016은 보류 |
 | D-08 | 리뷰 방식 | CI 통과 후 **로컬 Claude Code 리뷰 서브에이전트**(`.claude/agents/reviewer.md`)가 PR에 리뷰 코멘트 작성 | 추가 시크릿 불필요 |
 | D-09 | 크롤링 허용 | utaten `robots.txt`(`/manage`, `/outsourcing` 외 허용)와 별도 안내로 크롤링 가능함을 사용자가 확인함 (2026-10-21) | NF2007 |
-| D-10 | LLM / 임베딩 | SSAFY GMS(OpenAI 호환) — 채팅 `gpt-5.4-nano`, 임베딩 `text-embedding-3-small` (설정으로 변경 가능) | 실습 환경과 동일. 임베딩은 다국어 지원 |
+| D-10 | LLM / 임베딩 | SSAFY GMS(OpenAI 호환) — 채팅 `gpt-6-luna`, 임베딩 `text-embedding-3-large`(3072차원). 설정으로 변경 가능 | 2026-10-21 사용자 결정으로 `gpt-5.4-nano`/`text-embedding-3-small` 에서 변경 (#24). `gpt-6-luna` 는 temperature 기본값만 허용 → `temperature: null` |
 
 ---
 
@@ -188,9 +188,9 @@ PRD 1.2-5)의 고정 버전을 그대로 쓴다 (`requirements.txt`). PRD 목록
 ```yaml
 llm:
   base_url: https://gms.ssafy.io/gmsapi/api.openai.com/v1/
-  chat_model: gpt-5.4-nano
-  embedding_model: text-embedding-3-small
-  temperature: 0
+  chat_model: gpt-6-luna
+  embedding_model: text-embedding-3-large
+  temperature: null      # null이면 모델 기본값 (gpt-6-luna는 0 미지원)
 chunking:
   chunk_size: 1000        # 위키 청크 크기(자)
   chunk_overlap: 200
